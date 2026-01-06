@@ -4,3 +4,4 @@ metadata:
   name: test-namespace
   labels:
     environment: "dev"
+    gitops.mycompany.io/id: actions-namespace
