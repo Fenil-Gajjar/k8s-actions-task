@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: development
+spec:
+  hard:
+    requests.cpu: "10" # Total CPU requests across all pods
+    requests.memory: 20Gi # Total memory requests
+    limits.cpu: "20" # Total CPU limits
+    limits.memory: 40Gi # Total memory limits

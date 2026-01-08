@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-service-account
+  namespace: default
+  labels:
+    app: my-app
+  annotations:
+    description: "Service account for my application"
+automountServiceAccountToken: true

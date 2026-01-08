@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-volumes
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: main-container
+    image: nginx:1.25
+    ports:
+    - containerPort: 80
+      name: http
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
+    volumeMounts:
+    # EmptyDir volume mount
+    - name: cache-volume
+      mountPath: /var/cache/nginx
+
+    # HostPath volume mount
+    - name: host-data
+      mountPath: /host-data
+
+    # Another emptyDir for temporary files
+    - name: tmp-volume
+      mountPath: /tmp
+
+    env:
+    - name: ENVIRONMENT
+      value: "production"
+
+  volumes:
+  # EmptyDir volumes - temporary storage, deleted when Pod is removed
+  - name: cache-volume
+    emptyDir: {}
+
+  - name: tmp-volume
+    emptyDir:
+      medium: Memory # Optional: store in RAM instead of disk
+      sizeLimit: 100Mi # Optional: limit the size
+
+  # HostPath volume - mounts directory from the host node
+  - name: host-data
+    hostPath:
+      path: /data/app-storage # Path on the host machine
+      type: DirectoryOrCreate # Creates directory if it doesn't exist

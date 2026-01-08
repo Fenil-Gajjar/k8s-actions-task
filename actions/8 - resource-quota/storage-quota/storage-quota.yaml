@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: storage-quota
+  namespace: development
+spec:
+  hard:
+    requests.storage: 100Gi # Total storage requests
+    persistentvolumeclaims: "10" # Max number of PVCs
+    requests.ephemeral-storage: 50Gi # Ephemeral storage requests
+    limits.ephemeral-storage: 100Gi # Ephemeral storage limits

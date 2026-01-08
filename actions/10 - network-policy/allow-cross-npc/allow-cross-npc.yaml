@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-dev-namespace
+  namespace: staging
+spec:
+  podSelector:
+    matchLabels:
+      app: api
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    # Allow from specific namespace
+    - namespaceSelector:
+        matchLabels:
+          environment: development
+      podSelector:
+        matchLabels:
+          app: test-client
+    ports:
+    - protocol: TCP
+      port: 8080

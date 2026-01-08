@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job
+spec:
+  activeDeadlineSeconds: 100 # Job must complete within 100 seconds
+  template:
+    spec:
+      containers:
+      - name: processor
+        image: python:3.9-slim
+        command: [ "python", "-c" ]
+        args:
+        - |
+          import time
+          print("Starting batch processing...")
+          time.sleep(5)
+          print("Batch processing completed!")
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      restartPolicy: OnFailure
+  backoffLimit: 2

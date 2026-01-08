@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parallel-job
+spec:
+  parallelism: 3 # Run 3 pods in parallel
+  completions: 6 # Complete 6 total pods
+  template:
+    spec:
+      containers:
+      - name: worker
+        image: busybox:latest
+        command: [ "sh", "-c", "echo Processing task && sleep 10" ]
+      restartPolicy: Never
+  backoffLimit: 3
