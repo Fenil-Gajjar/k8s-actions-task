@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 9-limitrange-pod-limit
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Fenil-Gajjar/k8s-actions-task.git
+    targetRevision: main
+    path: actions/9- limitrange/pod-limit
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
