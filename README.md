@@ -177,7 +177,3 @@ spec:
 This setup guarantees full auditability, reproducibility, and ease of debugging.
 
 ---
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
