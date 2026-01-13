@@ -1,13 +1,17 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1 # read-only mode
+kind: Job # read-only mode
 metadata:
-  name: simple-job
+  name: simple-job # job name
+  namespace: default # namespace for the job
 spec:
   template:
     spec:
       containers:
       - name: job-container
-        image: busybox:latest
-        command: [ "echo", "Hello from Kubernetes Job!" ]
-      restartPolicy: Never
-  backoffLimit: 4
+        image: busybox:latest # lightweight container for simple tasks
+        command: [ "echo", "Hello from Kubernetes Job!" ] # command executed by the job
+      restartPolicy: Never # do not restart completed job pods
+  backoffLimit: 4 # retries on failure
+
+# Title: Job - simple-job
+# Description: Runs a one-off BusyBox job that prints a message; intended as a basic example of a Kubernetes Job.

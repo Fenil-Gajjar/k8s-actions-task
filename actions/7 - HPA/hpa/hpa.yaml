@@ -1,41 +1,49 @@
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata.name: name of the HPA
+# metadata.namespace: namespace where HPA monitors the target
+# spec.scaleTargetRef: the target resource to scale (apiVersion/kind/name)
+# spec.minReplicas/maxReplicas: replica bounds for autoscaling
+# spec.metrics: metrics that drive scaling decisions
+# spec.behavior: advanced scaling behavior (policies, stabilization)
+apiVersion: autoscaling/v2 # read-only mode
+kind: HorizontalPodAutoscaler # read-only mode
 metadata:
-  name: my-app-hpa
-  namespace: default
+  name: my-app-hpa # identifier for this HPA
+  namespace: default # namespace where the HPA exists
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-app
-  minReplicas: 2
-  maxReplicas: 10
+    apiVersion: apps/v1 # target resource API version
+    kind: Deployment # target resource kind to scale
+    name: my-app # name of the target Deployment
+  minReplicas: 2 # minimum number of replicas HPA will scale down to
+  maxReplicas: 10 # maximum number of replicas HPA will scale up to
   metrics:
   - type: Resource
     resource:
-      name: cpu
+      name: cpu # resource metric name
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: 70 # target average CPU utilization percentage
   - type: Resource
     resource:
-      name: memory
+      name: memory # resource metric name
       target:
         type: Utilization
-        averageUtilization: 80
+        averageUtilization: 80 # target average memory utilization percentage
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds: 300 # window to stabilize scale-down
       policies:
       - type: Percent
-        value: 50
-        periodSeconds: 15
+        value: 50 # percent-based policy value
+        periodSeconds: 15 # period for the policy evaluation
       - type: Pods
-        value: 2
+        value: 2 # absolute pod count policy value
         periodSeconds: 15
-      selectPolicy: Min
+      selectPolicy: Min # choose the minimum-impact policy
     scaleUp:
-      stabilizationWindowSeconds: 0
+      stabilizationWindowSeconds: 0 # window to stabilize scale-up
       policies:
       - type: Percent
         value: 100
@@ -43,4 +51,6 @@ spec:
       - type: Pods
         value: 4
         periodSeconds: 15
-      selectPolicy: Max
+      selectPolicy: Max # choose the highest-impact policy
+    # Title: HorizontalPodAutoscaler - my-app-hpa
+    # Description: Creates an HPA for `my-app` Deployment in `default`, scaling between 2 and 10 replicas based on CPU and memory utilization with defined scaling policies.

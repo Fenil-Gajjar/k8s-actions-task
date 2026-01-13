@@ -1,15 +1,16 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1 # read-only mode
+kind: Job # read-only mode
 metadata:
-  name: parallel-job
+  name: parallel-job # job name
+  namespace: default # namespace to run job in
 spec:
-  parallelism: 3 # Run 3 pods in parallel
-  completions: 6 # Complete 6 total pods
+  parallelism: 3 # number of pods to run in parallel
+  completions: 6 # total number of successful completions desired
   template:
     spec:
       containers:
       - name: worker
-        image: busybox:latest
-        command: [ "sh", "-c", "echo Processing task && sleep 10" ]
-      restartPolicy: Never
-  backoffLimit: 3
+        image: busybox:latest # worker container image
+        command: [ "sh", "-c", "echo Processing task && sleep 10" ] # work command
+      restartPolicy: Never # do not restart completed/failed job pods
+  backoffLimit: 3 # retry attempts for failed pods

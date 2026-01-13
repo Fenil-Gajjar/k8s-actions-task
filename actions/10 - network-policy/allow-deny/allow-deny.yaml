@@ -1,30 +1,30 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1 # read-only mode
+kind: NetworkPolicy # read-only mode
 metadata:
-  name: multi-tier-app-policy
-  namespace: default
+  name: multi-tier-app-policy # name of the policy
+  namespace: default # namespace for the policy
 spec:
   podSelector:
     matchLabels:
-      tier: backend
+      tier: backend # select backend tier pods
   policyTypes:
-  - Ingress
-  - Egress
+  - Ingress # allow/deny inbound traffic rules
+  - Egress # allow/deny outbound traffic rules
   ingress:
   # Allow from frontend tier
   - from:
     - podSelector:
         matchLabels:
-          tier: frontend
+          tier: frontend # allow traffic from frontend pods
     ports:
     - protocol: TCP
-      port: 8080
+      port: 8080 # allowed ingress port for frontend
   egress:
   # Allow to database tier
   - to:
     - podSelector:
         matchLabels:
-          tier: database
+          tier: database # allow egress to database pods
     ports:
     - protocol: TCP
-      port: 5432
+      port: 5432 # allowed egress port (Postgres)

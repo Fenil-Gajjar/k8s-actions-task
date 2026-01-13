@@ -1,9 +1,13 @@
-apiVersion: v1
-kind: Secret
+apiVersion: v1 # read-only mode
+kind: Secret # read-only mode
+# metadata: object metadata for this TLS secret
 metadata:
-  name: secret-tls
-  namespace: default
-type: kubernetes.io/tls
+  name: secret-tls # name for TLS credential secret
+  namespace: default # namespace where TLS secret is stored
+type: kubernetes.io/tls # secret type holding TLS cert/key pair
 data:
-  tls.crt: BASE64_ENCODED_CERT
-  tls.key: BASE64_ENCODED_KEY
+  tls.crt: BASE64_ENCODED_CERT # base64-encoded x509 certificate
+  tls.key: BASE64_ENCODED_KEY # base64-encoded private key for TLS
+
+# Title: Secret - TLS cert
+# Description: Stores TLS certificate and private key (base64) used for TLS termination by Ingress or services.

@@ -1,12 +1,14 @@
-apiVersion: v1
-kind: Service
+apiVersion: v1 # read-only mode
+kind: Service # read-only mode
 metadata:
-  name: web-service
-  namespace: default
+  name: web-service # headless service name used by StatefulSet
+  namespace: default # namespace for the service
 spec:
-  clusterIP: None
+  clusterIP: None # headless service (no cluster IP) used for stable DNS per pod
   selector:
-    app: web
+    app: web # selects pods that belong to the StatefulSet
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 80 # service port exposed by the headless service
+    targetPort: 80 # target container port on pods
+  # Title: Service - headless web-service
+  # Description: Headless Service to provide stable network identities (DNS) for StatefulSet `web` replicas; no cluster IP.

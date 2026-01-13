@@ -1,19 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # read-only mode
+kind: Deployment # read-only mode
 metadata:
-  name: my-app
+  name: my-app # deployment name
+  namespace: default # namespace for this deployment
 spec:
-  replicas: 1
+  replicas: 1 # desired replicas
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selector for pods managed by this deployment
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app # labels applied to pod template
     spec:
       containers:
-      - name: my-app-container
-        image: nginx:latest
+      - name: my-app-container # container name
+        image: nginx:latest # container image
         ports:
-        - containerPort: 80
+        - containerPort: 80 # container port exposed

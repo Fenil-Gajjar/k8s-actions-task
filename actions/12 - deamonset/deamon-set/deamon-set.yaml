@@ -1,28 +1,28 @@
-apiVersion: apps/v1
-kind: DaemonSet
+apiVersion: apps/v1 # read-only mode
+kind: DaemonSet # read-only mode
 metadata:
-  name: example-daemonset
-  namespace: default
+  name: example-daemonset # name of the DaemonSet
+  namespace: default # namespace for the DaemonSet
   labels:
-    app: example-daemon
+    app: example-daemon # label group for the DaemonSet
 spec:
   selector:
     matchLabels:
-      app: example-daemon
+      app: example-daemon # selector for pods managed by the DaemonSet
   template:
     metadata:
       labels:
-        app: example-daemon
+        app: example-daemon # labels applied to each daemon pod
     spec:
       containers:
       - name: example-container
-        image: nginx:latest
+        image: nginx:latest # container image to run on each node
         ports:
-        - containerPort: 80
+        - containerPort: 80 # container port exposed by the pod
         resources:
           limits:
-            memory: "200Mi"
-            cpu: "500m"
+            memory: "200Mi" # maximum memory per pod
+            cpu: "500m" # maximum CPU per pod
           requests:
-            memory: "100Mi"
+            memory: "100Mi" # resource requests for scheduling
             cpu: "250m"

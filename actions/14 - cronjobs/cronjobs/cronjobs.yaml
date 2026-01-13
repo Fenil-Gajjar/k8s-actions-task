@@ -1,21 +1,25 @@
-apiVersion: batch/v1
-kind: CronJob
+apiVersion: batch/v1 # read-only mode
+kind: CronJob # read-only mode
 metadata:
-  name: scheduled-job
+  name: scheduled-job # cronjob name
+  namespace: default # namespace where cronjob runs
 spec:
-  schedule: "0 2 * * *" # Run daily at 2 AM
+  schedule: "0 2 * * *" # cron schedule expression (daily at 2 AM)
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: backup
-            image: busybox:latest
-            command: [ "sh", "-c" ]
+            image: busybox:latest # container image for the scheduled task
+            command: [ "sh", "-c" ] # shell command invocation
             args:
             - |
               echo "Running scheduled backup at $(date)"
               echo "Backup completed successfully"
-          restartPolicy: OnFailure
-  successfulJobsHistoryLimit: 3
-  failedJobsHistoryLimit: 1
+          restartPolicy: OnFailure # restart policy for the job pods
+  successfulJobsHistoryLimit: 3 # retain this many successful job runs
+  failedJobsHistoryLimit: 1 # retain this many failed job runs
+
+# Title: CronJob - scheduled backup
+# Description: Schedules a daily backup job at 2 AM in `default` that runs a short BusyBox script and retains limited history.

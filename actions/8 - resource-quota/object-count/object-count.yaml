@@ -1,19 +1,21 @@
-apiVersion: v1
-kind: ResourceQuota
+apiVersion: v1 # read-only mode
+kind: ResourceQuota # read-only mode
 metadata:
-  name: object-count-quota
-  namespace: development
+  name: object-count-quota # identifier for the quota
+  namespace: development # namespace where these object count limits apply
 spec:
   hard:
-    pods: "50" # Max pods
-    services: "10" # Max services
-    configmaps: "20" # Max configmaps
-    secrets: "20" # Max secrets
-    replicationcontrollers: "10" # Max RCs
-    deployments.apps: "15" # Max deployments
-    statefulsets.apps: "5" # Max statefulsets
-    jobs.batch: "10" # Max jobs
-    cronjobs.batch: "5" # Max cronjobs
-    persistentvolumeclaims: "15" # Max PVCs
-    horizontalpodautoscalers.autoscaling: "5" # Max HPAs
-    serviceaccounts: "10" # Max service accounts
+    pods: "50" # maximum number of Pods allowed in the namespace
+    services: "10" # maximum number of Services allowed
+    configmaps: "20" # maximum number of ConfigMaps allowed
+    secrets: "20" # maximum number of Secrets allowed
+    replicationcontrollers: "10" # maximum number of ReplicationControllers
+    deployments.apps: "15" # maximum number of Deployments (apps/v1)
+    statefulsets.apps: "5" # maximum number of StatefulSets
+    jobs.batch: "10" # maximum number of Jobs (batch/v1)
+    cronjobs.batch: "5" # maximum number of CronJobs
+    persistentvolumeclaims: "15" # maximum number of PVCs
+    horizontalpodautoscalers.autoscaling: "5" # maximum number of HPAs
+    serviceaccounts: "10" # maximum number of ServiceAccounts
+  # Title: ResourceQuota - object count
+  # Description: Restricts counts of various resource types in the `development` namespace to control object sprawl.

@@ -1,10 +1,13 @@
-apiVersion: v1
-kind: ServiceAccount
+apiVersion: v1 # read-only mode
+kind: ServiceAccount # read-only mode
 metadata:
-  name: my-service-account
-  namespace: default
+  name: my-service-account # name of the service account
+  namespace: default # namespace for the account
   labels:
-    app: my-app
+    app: my-app # label to group/identify the service account
   annotations:
-    description: "Service account for my application"
-automountServiceAccountToken: true
+    description: "Service account for my application" # human-readable description
+automountServiceAccountToken: true # whether pods using this SA get a token mounted
+
+# Title: ServiceAccount - default SA
+# Description: Creates a namespaced ServiceAccount `my-service-account` in `default`; controls pod token mounting and can be referenced by pods.

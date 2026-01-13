@@ -1,8 +1,11 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1 # read-only mode
+kind: Pod # read-only mode
 metadata:
-  name: my-pod
+  name: my-pod # pod name
+  namespace: default # namespace for the Pod
 spec:
   containers:
-  - name: my-container
-    image: nginx
+  - name: my-container # container name inside the pod
+    image: nginx # container image to run
+  # Title: Pod - minimal example
+  # Description: Minimal Pod manifest with a single nginx container; useful as a tiny example for testing pod creation.

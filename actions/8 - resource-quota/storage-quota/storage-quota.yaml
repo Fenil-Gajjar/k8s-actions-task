@@ -1,11 +1,18 @@
-apiVersion: v1
-kind: ResourceQuota
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata.name: resource name
+# metadata.namespace: namespace to which quota applies
+# spec.hard: hard resource limits for the namespace
+apiVersion: v1 # read-only mode
+kind: ResourceQuota # read-only mode
 metadata:
-  name: storage-quota
-  namespace: development
+  name: storage-quota # identifier for the ResourceQuota
+  namespace: development # namespace to enforce the quota
 spec:
   hard:
-    requests.storage: 100Gi # Total storage requests
-    persistentvolumeclaims: "10" # Max number of PVCs
-    requests.ephemeral-storage: 50Gi # Ephemeral storage requests
-    limits.ephemeral-storage: 100Gi # Ephemeral storage limits
+    requests.storage: 100Gi # maximum total requested persistent storage across namespace
+    persistentvolumeclaims: "10" # maximum number of PVCs allowed
+    requests.ephemeral-storage: 50Gi # maximum ephemeral storage requests across namespace
+    limits.ephemeral-storage: 100Gi # maximum ephemeral storage limits across namespace
+  # Title: ResourceQuota - storage limits
+  # Description: Enforces storage-related hard limits in the `development` namespace (PVC count and total requested/ephemeral storage caps).

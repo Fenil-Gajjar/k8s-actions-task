@@ -1,13 +1,16 @@
-apiVersion: v1
-kind: ConfigMap
+apiVersion: v1 # read-only mode
+kind: ConfigMap # read-only mode
 metadata:
-  name: app-config
-  namespace: default
+  name: app-config # name of the ConfigMap
+  namespace: default # namespace for the ConfigMap
   labels:
-    app: my-app
+    app: my-app # label to identify related resources
 data:
   # configuration that your app will use
-  APP_MODE: "production"
-  MAX_CONNECTIONS: "100"
-  FEATURE_FLAG_X: "true"
-  LOG_LEVEL: "info"
+  APP_MODE: "production" # app mode setting consumed by application
+  MAX_CONNECTIONS: "100" # maximum concurrent connections expected
+  FEATURE_FLAG_X: "true" # feature flag to toggle functionality
+  LOG_LEVEL: "info" # application log verbosity level
+
+# Title: ConfigMap - app-config
+# Description: Key/value ConfigMap for `my-app` in `default`, providing runtime configuration values consumed by the application.

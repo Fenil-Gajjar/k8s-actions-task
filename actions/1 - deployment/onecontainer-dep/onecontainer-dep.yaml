@@ -1,31 +1,32 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # read-only mode
+kind: Deployment # read-only mode
 metadata:
-  name: my-app
+  name: my-app # deployment name
+  namespace: default # namespace for this deployment
   labels:
-    app: my-app
+    app: my-app # app label grouping
 spec:
-  replicas: 2
+  replicas: 2 # desired number of replicas
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selector that matches pod template labels
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app # labels applied to pod template
     spec:
       containers:
-      - name: my-app-container
-        image: nginx:latest
+      - name: my-app-container # container name
+        image: nginx:latest # container image used
         ports:
-        - containerPort: 80
+        - containerPort: 80 # exposed container port
         resources:
           requests:
-            memory: "64Mi"
+            memory: "64Mi" # resource requests for scheduling
             cpu: "250m"
           limits:
-            memory: "128Mi"
+            memory: "128Mi" # resource limits enforced by cgroups
             cpu: "500m"
         env:
         - name: ENVIRONMENT
-          value: "production"
+          value: "production" # environment variable for application

@@ -1,23 +1,23 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1 # read-only mode
+kind: NetworkPolicy # read-only mode
 metadata:
-  name: allow-from-dev-namespace
-  namespace: staging
+  name: allow-from-dev-namespace # policy name
+  namespace: staging # namespace where policy is enforced
 spec:
   podSelector:
     matchLabels:
-      app: api
+      app: api # select API pods in staging
   policyTypes:
-  - Ingress
+  - Ingress # this policy controls incoming traffic
   ingress:
   - from:
     # Allow from specific namespace
     - namespaceSelector:
         matchLabels:
-          environment: development
+          environment: development # allow from namespaces labeled development
       podSelector:
         matchLabels:
-          app: test-client
+          app: test-client # and only pods labeled test-client in that namespace
     ports:
     - protocol: TCP
-      port: 8080
+      port: 8080 # allowed port for cross-namespace traffic

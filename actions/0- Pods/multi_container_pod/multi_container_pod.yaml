@@ -1,1 +1,5 @@
-# (original file was empty)
+# This file is intentionally empty: no Pod manifest present to annotate.
+# If you want a multi-container Pod example, add a `Pod` manifest here.
+
+# Title: Placeholder - multi-container Pod
+# Description: Placeholder file; currently no manifest. Add a Pod manifest here to define a multi-container example with shared volumes and containers.

@@ -1,19 +1,21 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1 # read-only mode
+kind: NetworkPolicy # read-only mode
 metadata:
-  name: backend-allow-frontend
-  namespace: default
+  name: backend-allow-frontend # NetworkPolicy name
+  namespace: default # namespace the NetworkPolicy applies to
 spec:
   podSelector:
     matchLabels:
-      app: backend
+      app: backend # selects backend pods to which this policy applies
   policyTypes:
-  - Ingress
+  - Ingress # policy type controls incoming traffic to matched pods
   ingress:
   - from:
     - podSelector:
         matchLabels:
-          app: frontend
+          app: frontend # allow ingress from pods labeled frontend
     ports:
-    - protocol: TCP
-      port: 8080
+    - protocol: TCP # protocol for allowed traffic
+      port: 8080 # port number allowed from frontend pods
+    # Title: NetworkPolicy - backend-allow-frontend
+    # Description: Allows ingress traffic on port 8080 from frontend-labeled pods to backend pods in `default` namespace.

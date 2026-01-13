@@ -1,14 +1,18 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: storage.k8s.io/v1 # read-only mode
+kind: StorageClass # read-only mode (cluster-scoped resource)
+# StorageClass is cluster-scoped: there is no namespace field
 metadata:
-  name: fast-ssd-gcp
+  name: fast-ssd-gcp # StorageClass identifier
   annotations:
-    storageclass.kubernetes.io/is-default-class: "false"
-provisioner: pd.csi.storage.gke.io
+    storageclass.kubernetes.io/is-default-class: "false" # default-class marker
+provisioner: pd.csi.storage.gke.io # GKE PD CSI provisioner
 parameters:
-  type: pd-ssd
-  replication-type: none
-  fstype: ext4
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: true
-reclaimPolicy: Delete
+  type: pd-ssd # GCP persistent disk type
+  replication-type: none # replication behavior for the underlying volumes
+  fstype: ext4 # filesystem type used on provisioned volumes
+volumeBindingMode: WaitForFirstConsumer # bind volumes when Pod scheduled
+allowVolumeExpansion: true # allow PVC expansion after creation
+reclaimPolicy: Delete # what happens to PV when released
+
+# Title: StorageClass - fast-ssd-gcp
+# Description: Cluster StorageClass for GCP PD SSD volumes; used for dynamic PV provisioning in the cluster.

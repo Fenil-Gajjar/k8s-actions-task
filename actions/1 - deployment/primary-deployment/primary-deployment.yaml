@@ -1,40 +1,41 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # read-only mode
+kind: Deployment # read-only mode
 metadata:
-  name: my-app
+  name: my-app # deployment name
+  namespace: default # namespace for this deployment
   labels:
-    app: my-app
+    app: my-app # app label
 spec:
-  replicas: 3
+  replicas: 3 # desired number of replicas
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selector matching pod labels
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app # labels applied to pods created by this deployment
     spec:
       containers:
-      - name: my-app-container
-        image: nginx:latest
+      - name: my-app-container # main application container
+        image: nginx:latest # container image
         ports:
-        - containerPort: 80
+        - containerPort: 80 # container port to expose
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "250m"
+            memory: "64Mi" # requested memory for scheduling
+            cpu: "250m" # requested CPU for scheduling
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "128Mi" # maximum memory the container can use
+            cpu: "500m" # maximum CPU the container can use
         env:
         - name: ENVIRONMENT
-          value: "production"
+          value: "production" # environment variable provided to container
         livenessProbe:
           httpGet:
             path: /health
             port: 80
-          initialDelaySeconds: 30
-          periodSeconds: 10
+          initialDelaySeconds: 30 # wait before first probe
+          periodSeconds: 10 # probe interval
         readinessProbe:
           httpGet:
             path: /ready

@@ -1,16 +1,24 @@
-apiVersion: v1
-kind: LimitRange
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata.name: resource name
+# metadata.namespace: target namespace for the LimitRange
+# spec: defines the limits to apply to pods/containers in the namespace
+apiVersion: v1 # read-only mode
+kind: LimitRange # read-only mode
 metadata:
-  name: pod-limits-complete
-  namespace: default
+  name: pod-limits-complete # identifier for this LimitRange
+  namespace: default # namespace where limits will apply
 spec:
   limits:
-  - type: Pod
+  - type: Pod # limit type applies to Pod-level resources
     max:
-      cpu: "8"
-      memory: "16Gi"
-      ephemeral-storage: "10Gi"
+      cpu: "8" # maximum CPU per Pod
+      memory: "16Gi" # maximum memory per Pod
+      ephemeral-storage: "10Gi" # maximum ephemeral storage per Pod
     min:
-      cpu: "200m"
-      memory: "256Mi"
-      ephemeral-storage: "1Gi"
+      cpu: "200m" # minimum CPU guaranteed per Pod
+      memory: "256Mi" # minimum memory guaranteed per Pod
+      ephemeral-storage: "1Gi" # minimum ephemeral storage per Pod
+
+# Title: LimitRange - pod limits
+# Description: Defines pod-level resource min/max constraints for the `default` namespace to enforce resource boundaries for pods.

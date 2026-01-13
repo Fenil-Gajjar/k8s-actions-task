@@ -1,9 +1,13 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: v1 # read-only mode
+kind: Namespace # read-only mode (cluster-scoped)
+# metadata.name: the namespace identifier
 metadata:
-  name: my-namespace
+  name: my-namespace # namespace name
   labels:
-    environment: production
-    team: backend
+    environment: production # environment label for the namespace
+    team: backend # owning team for resources in this namespace
   annotations:
-    description: "Namespace for production backend services"
+    description: "Namespace for production backend services" # human-readable description
+
+# Title: Namespace - my-namespace
+# Description: Creates a cluster Namespace `my-namespace` labeled for production backend services; used to scope resources and policies.

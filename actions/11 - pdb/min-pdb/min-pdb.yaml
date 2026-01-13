@@ -1,10 +1,12 @@
-apiVersion: policy/v1
-kind: PodDisruptionBudget
+apiVersion: policy/v1 # read-only mode
+kind: PodDisruptionBudget # read-only mode
 metadata:
-  name: my-app-pdb-min
-  namespace: default
+  name: my-app-pdb-min # name of the PDB
+  namespace: default # namespace where PDB applies
 spec:
-  minAvailable: 2
+  minAvailable: 2 # minimum number of pods that must be available
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selects Pods to which this PDB applies
+    # Title: PodDisruptionBudget - my-app (minAvailable)
+    # Description: Ensures at least 2 `my-app` pods remain available during voluntary disruptions in `default` namespace.

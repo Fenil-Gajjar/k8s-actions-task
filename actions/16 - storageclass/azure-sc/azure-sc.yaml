@@ -1,14 +1,18 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: storage.k8s.io/v1 # read-only mode
+kind: StorageClass # read-only mode (cluster-scoped)
+# StorageClass objects are cluster-scoped; no namespace field applies
 metadata:
-  name: fast-ssd-azure
+  name: fast-ssd-azure # identifier for the StorageClass
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
-provisioner: disk.csi.azure.com
+provisioner: disk.csi.azure.com # Azure disk CSI provisioner
 parameters:
-  skuName: Premium_LRS
-  kind: Managed
-  fsType: ext4
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: true
-reclaimPolicy: Delete
+  skuName: Premium_LRS # Azure disk SKU for performance
+  kind: Managed # managed disk type
+  fsType: ext4 # filesystem type for provisioned volumes
+volumeBindingMode: WaitForFirstConsumer # delay binding until Pod scheduling
+allowVolumeExpansion: true # allows resizing of PVCs using this class
+reclaimPolicy: Delete # PV reclaim policy when released
+
+# Title: StorageClass - fast-ssd-azure
+# Description: Cluster-scoped StorageClass for Azure managed disks (Premium_LRS); used for dynamic provisioning of persistent volumes.

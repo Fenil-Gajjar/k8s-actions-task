@@ -1,9 +1,13 @@
-apiVersion: v1
-kind: Secret
+apiVersion: v1 # read-only mode
+kind: Secret # read-only mode
+# metadata: object metadata (name, namespace, labels, annotations)
 metadata:
-  name: secret-basic
-  namespace: default
-type: kubernetes.io/basic-auth
+  name: secret-basic # name of the Secret
+  namespace: default # namespace where Secret will be created
+type: kubernetes.io/basic-auth # secret type (basic auth credentials)
 stringData:
-  username: admin
-  password: s3cr3t-pass
+  username: admin # plaintext username (will be encoded by kubectl)
+  password: s3cr3t-pass # plaintext password (will be encoded)
+
+# Title: Secret - basic-auth
+# Description: Creates a namespaced Secret holding basic-auth credentials (username/password) used by applications or image registries.

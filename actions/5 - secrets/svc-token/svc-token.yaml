@@ -1,8 +1,12 @@
-apiVersion: v1
-kind: Secret
+apiVersion: v1 # read-only mode
+kind: Secret # read-only mode
+# metadata: name, namespace, and annotations linking secret to a SA
 metadata:
-  name: service-account-token
-  namespace: default
+  name: service-account-token # secret storing a service-account token
+  namespace: default # namespace for the service account token secret
   annotations:
-    kubernetes.io/service-account.name: my-service-account
-type: kubernetes.io/service-account-token
+    kubernetes.io/service-account.name: my-service-account # links this token to the SA
+type: kubernetes.io/service-account-token # secret type representing a SA token
+
+# Title: Secret - service-account token
+# Description: Provides a service-account token secret linked to `my-service-account` for pod authentication and in-cluster API access.

@@ -1,14 +1,18 @@
-apiVersion: v1
-kind: Secret
+apiVersion: v1 # read-only mode
+kind: Secret # read-only mode
+# metadata: name/namespace describing where the Secret lives
 metadata:
-  name: app-credentials
-  namespace: default
-type: Opaque
+  name: app-credentials # identifier for this Secret
+  namespace: default # target namespace for Secret consumption
+type: Opaque # generic secret type for arbitrary key/value data
 data:
   # Values must be base64 encoded
-  username: YWRtaW4= # "admin"
-  password: cGFzc3dvcmQxMjM= # "password123"
+  username: YWRtaW4= # base64 for "admin"
+  password: cGFzc3dvcmQxMjM= # base64 for "password123"
 stringData:
-  # stringData allows plain text (will be auto-encoded)
-  api-key: "my-secret-api-key-12345"
-  database-url: "postgresql://user:pass@localhost:5432/db"
+  # stringData accepts plain text and is encoded server-side
+  api-key: "my-secret-api-key-12345" # API key used by apps
+  database-url: "postgresql://user:pass@localhost:5432/db" # DB connection string
+
+# Title: Secret - app credentials (opaque)
+# Description: Generic namespaced Secret containing application credentials and connection strings; `stringData` values will be encoded on apply.

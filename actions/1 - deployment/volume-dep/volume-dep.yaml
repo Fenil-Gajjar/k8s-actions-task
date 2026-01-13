@@ -1,45 +1,49 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # read-only mode
+kind: Deployment # read-only mode
 metadata:
-  name: my-app
+  name: my-app # deployment name
+  namespace: default # namespace for the Deployment
   labels:
-    app: my-app
+    app: my-app # app label grouping
 spec:
-  replicas: 3
+  replicas: 3 # desired replicas
   strategy:
-    type: RollingUpdate
+    type: RollingUpdate # rollout strategy
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: 1 # extra pods allowed during update
+      maxUnavailable: 1 # pods allowed to be unavailable during update
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selector matching the pod template
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app # labels applied to pod template
     spec:
       containers:
       - name: my-app-container
-        image: nginx:latest
+        image: nginx:latest # container image to run
         ports:
-        - containerPort: 80
+        - containerPort: 80 # exposed container port
         resources:
           requests:
-            memory: "64Mi"
+            memory: "64Mi" # requested memory for scheduling
             cpu: "250m"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "128Mi" # runtime memory limit
+            cpu: "500m" # runtime CPU limit
         volumeMounts:
         - name: cache-volume
-          mountPath: /var/cache/app
+          mountPath: /var/cache/app # mount for temporary cache
         - name: logs-volume
-          mountPath: /var/log/app
+          mountPath: /var/log/app # mount for logs to host path
       volumes:
       - name: cache-volume
-        emptyDir: {}
+        emptyDir: {} # ephemeral storage local to the node
       - name: logs-volume
         hostPath:
-          path: /var/log/my-app
+          path: /var/log/my-app # host path to persist logs
           type: DirectoryOrCreate
+
+# Title: Deployment - my-app (with volumes)
+# Description: Deployment of `my-app` with 3 replicas, mounts an emptyDir and a hostPath for logs; includes resource requests/limits and rolling update strategy.

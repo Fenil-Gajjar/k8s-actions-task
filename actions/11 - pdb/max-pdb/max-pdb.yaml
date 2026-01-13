@@ -1,10 +1,10 @@
-apiVersion: policy/v1
-kind: PodDisruptionBudget
+apiVersion: policy/v1 # read-only mode
+kind: PodDisruptionBudget # read-only mode
 metadata:
-  name: my-app-pdb-max
-  namespace: default
+  name: my-app-pdb-max # name of the PDB
+  namespace: default # namespace where PDB applies
 spec:
-  maxUnavailable: 1
+  maxUnavailable: 1 # maximum number of pods that can be unavailable during disruptions
   selector:
     matchLabels:
-      app: my-app
+      app: my-app # selects Pods to which this PDB applies

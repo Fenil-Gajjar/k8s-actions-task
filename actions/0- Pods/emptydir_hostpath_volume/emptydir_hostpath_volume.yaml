@@ -1,9 +1,12 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1 # read-only mode
+kind: Pod # read-only mode
+# metadata: identifies the Pod and where it runs
 metadata:
-  name: pod-with-volumes
+  name: pod-with-volumes # pod identifier
+  namespace: default # namespace for the Pod
   labels:
-    app: my-app
+    app: my-app # label used for selection/identification
+# spec: container spec, volume mounts and runtime behaviour
 spec:
   containers:
   - name: main-container

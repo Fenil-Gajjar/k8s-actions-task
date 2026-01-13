@@ -1,16 +1,20 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: storage.k8s.io/v1 # read-only mode
+kind: StorageClass # read-only mode (cluster-scoped resource)
+# StorageClass is cluster-scoped: `metadata.namespace` is not applicable
 metadata:
-  name: fast-ssd
+  name: fast-ssd # name of the StorageClass
   annotations:
-    storageclass.kubernetes.io/is-default-class: "false"
-provisioner: ebs.csi.aws.com
+    storageclass.kubernetes.io/is-default-class: "false" # marks default-class status
+provisioner: ebs.csi.aws.com # CSI provisioner/plugin for AWS EBS
 parameters:
-  type: gp3
-  iops: "3000"
-  throughput: "125"
-  fsType: ext4
-  encrypted: "true"
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: true
-reclaimPolicy: Delete
+  type: gp3 # underlying disk type
+  iops: "3000" # IOPS setting for the volume type
+  throughput: "125" # throughput in MiB/s
+  fsType: ext4 # filesystem type to format volumes with
+  encrypted: "true" # whether volumes are encrypted
+volumeBindingMode: WaitForFirstConsumer # delay binding until a Pod is scheduled
+allowVolumeExpansion: true # permit PVCs to request larger sizes later
+reclaimPolicy: Delete # reclaim policy when PV is released (Delete or Retain)
+
+# Title: StorageClass - fast-ssd (AWS)
+# Description: Cluster StorageClass for AWS EBS gp3 volumes; configures IOPS, throughput and encryption for dynamic PV provisioning.

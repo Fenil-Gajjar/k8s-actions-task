@@ -1,15 +1,16 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1 # read-only mode
+kind: Job # read-only mode
 metadata:
-  name: batch-job
+  name: batch-job # job name
+  namespace: default # namespace for job execution
 spec:
-  activeDeadlineSeconds: 100 # Job must complete within 100 seconds
+  activeDeadlineSeconds: 100 # overall time limit for job run
   template:
     spec:
       containers:
       - name: processor
-        image: python:3.9-slim
-        command: [ "python", "-c" ]
+        image: python:3.9-slim # container image for the job
+        command: [ "python", "-c" ] # execute python code inline
         args:
         - |
           import time
@@ -18,10 +19,13 @@ spec:
           print("Batch processing completed!")
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "250m"
+            memory: "64Mi" # requested memory for scheduling
+            cpu: "250m" # requested CPU for scheduling
           limits:
-            memory: "128Mi"
-            cpu: "500m"
-      restartPolicy: OnFailure
-  backoffLimit: 2
+            memory: "128Mi" # memory limit for runtime
+            cpu: "500m" # CPU limit for runtime
+      restartPolicy: OnFailure # restart pods on failure according to job policy
+  backoffLimit: 2 # number of retries before marking job failed
+
+# Title: Job - batch-job (resource-limited)
+# Description: Batch job running a short Python task with resource requests/limits and an overall deadline; suitable as a resource-constrained job example.

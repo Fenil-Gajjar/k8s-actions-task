@@ -1,11 +1,15 @@
-apiVersion: v1
-kind: ResourceQuota
+apiVersion: v1 # read-only mode
+kind: ResourceQuota # read-only mode
+# metadata: identifies the ResourceQuota and the namespace it applies to
 metadata:
-  name: compute-quota
-  namespace: development
+  name: compute-quota # name of the quota object
+  namespace: development # namespace to enforce these hard limits
+# spec.hard: hard resource constraints enforced by the quota controller
 spec:
   hard:
-    requests.cpu: "10" # Total CPU requests across all pods
-    requests.memory: 20Gi # Total memory requests
-    limits.cpu: "20" # Total CPU limits
-    limits.memory: 40Gi # Total memory limits
+    requests.cpu: "10" # maximum total CPU requests allowed in the namespace
+    requests.memory: 20Gi # maximum total memory requests allowed
+    limits.cpu: "20" # maximum total CPU limits allowed
+    limits.memory: 40Gi # maximum total memory limits allowed
+  # Title: ResourceQuota - compute limits
+  # Description: Limits total CPU and memory requests/limits in the `development` namespace to control resource consumption.

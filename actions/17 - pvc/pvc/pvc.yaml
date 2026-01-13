@@ -1,12 +1,21 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata: standard object metadata (name, namespace, labels, annotations)
+# metadata.name: unique name of the object
+# metadata.namespace: namespace where this object is created (namespaced resource)
+# spec: desired state of the PersistentVolumeClaim
+apiVersion: v1 # read-only mode
+kind: PersistentVolumeClaim # read-only mode
 metadata:
-  name: my-pvc
-  namespace: default
+  name: my-pvc # name of the PVC
+  namespace: default # namespace in which the PVC will be created
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteOnce # access mode: only one node can mount the volume as read-write
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: standard
+      storage: 10Gi # requested storage capacity
+  storageClassName: standard # StorageClass to use for provisioning
+
+# Title: PersistentVolumeClaim - my-pvc
+# Description: Creates a namespaced PVC `my-pvc` requesting 10Gi storage with `ReadWriteOnce` access and `standard` StorageClass.

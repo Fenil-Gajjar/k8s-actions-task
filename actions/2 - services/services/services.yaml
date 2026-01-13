@@ -1,17 +1,21 @@
-apiVersion: v1
-kind: Service
+apiVersion: v1 # read-only mode
+kind: Service # read-only mode
+# metadata: object metadata (name, namespace, labels, annotations)
 metadata:
-  name: my-app-svc
-  namespace: default
+  name: my-app-svc # unique service name
+  namespace: default # namespace where the Service is created
   labels:
-    app: my-app
-    tier: frontend
+    app: my-app # label to identify app ownership
+    tier: frontend # label to identify tier (frontend/backend)
+# spec: desired state of the Service (network exposure and ports)
 spec:
-  type: ClusterIP # default type (internal only)
+  type: ClusterIP # Service type: ClusterIP (internal cluster-only load balancer)
   selector:
-    app: my-app
+    app: my-app # selector to match Pods targeted by this Service
   ports:
-  - name: http
-    protocol: TCP
-    port: 80 # Service port
-    targetPort: 80 # Pod container port
+  - name: http # logical name of the port
+    protocol: TCP # transport protocol for the port
+    port: 80 # port exposed by the Service inside the cluster
+    targetPort: 80 # Pod container port to route traffic to
+  # Title: Service - frontend
+  # Description: Defines a ClusterIP Service `my-app-svc` in `default` to expose frontend pods on port 80 within the cluster.

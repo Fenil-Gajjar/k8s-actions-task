@@ -1,23 +1,23 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1 # read-only mode
+kind: NetworkPolicy # read-only mode
 metadata:
-  name: frontend-allow-external
-  namespace: default
+  name: frontend-allow-external # policy name
+  namespace: default # namespace for the policy
 spec:
   podSelector:
     matchLabels:
-      app: frontend
+      app: frontend # select frontend pods
   policyTypes:
-  - Ingress
+  - Ingress # controls inbound traffic
   ingress:
   # Allow from specific external IPs
   - from:
     - ipBlock:
-        cidr: 0.0.0.0/0
+        cidr: 0.0.0.0/0 # allow traffic from the Internet
         except:
-        - 169.254.169.254/32 # Block AWS metadata
+        - 169.254.169.254/32 # exclude cloud metadata service IPs
     ports:
     - protocol: TCP
-      port: 80
+      port: 80 # allow HTTP
     - protocol: TCP
-      port: 443
+      port: 443 # allow HTTPS

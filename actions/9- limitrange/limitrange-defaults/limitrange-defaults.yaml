@@ -1,20 +1,28 @@
-apiVersion: v1
-kind: LimitRange
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata.name: resource name
+# metadata.namespace: target namespace for the LimitRange
+# spec: container-level defaults and limits applied to pods in the namespace
+apiVersion: v1 # read-only mode
+kind: LimitRange # read-only mode
 metadata:
-  name: dev-limits
-  namespace: development
+  name: dev-limits # identifier for this LimitRange
+  namespace: development # namespace where limits apply
 spec:
   limits:
-  - type: Container
+  - type: Container # applies to container-level resources
     max:
-      cpu: "1"
-      memory: "1Gi"
+      cpu: "1" # maximum CPU per container
+      memory: "1Gi" # maximum memory per container
     min:
-      cpu: "50m"
-      memory: "64Mi"
+      cpu: "50m" # minimum CPU per container
+      memory: "64Mi" # minimum memory per container
     default:
-      cpu: "200m"
-      memory: "256Mi"
+      cpu: "200m" # default CPU limit if not specified by container
+      memory: "256Mi" # default memory limit if not specified
     defaultRequest:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: "100m" # default CPU request if container doesn't specify
+      memory: "128Mi" # default memory request if not specified
+
+# Title: LimitRange - container defaults
+# Description: Sets default requests/limits and min/max for containers in the `development` namespace to provide sane defaults for pod resources.

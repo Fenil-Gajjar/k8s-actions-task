@@ -1,34 +1,38 @@
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: apps/v1 # read-only mode
+kind: StatefulSet # read-only mode
+# metadata: object metadata for the StatefulSet (namespaced)
 metadata:
-  name: web
-  namespace: default
+  name: web # name of the StatefulSet
+  namespace: default # namespace where the StatefulSet runs
 spec:
-  serviceName: "web-service"
-  replicas: 3
+  serviceName: "web-service" # headless service that governs the network identities
+  replicas: 3 # desired number of pod replicas managed by the StatefulSet
   selector:
     matchLabels:
-      app: web
+      app: web # selector to match pods belonging to this StatefulSet
   template:
     metadata:
       labels:
-        app: web
+        app: web # labels applied to pod template
     spec:
       containers:
       - name: nginx
-        image: nginx:1.21
+        image: nginx:1.21 # container image to run
         ports:
         - containerPort: 80
-          name: web
+          name: web # named container port
         volumeMounts:
         - name: www
-          mountPath: /usr/share/nginx/html
+          mountPath: /usr/share/nginx/html # mount path for web content
   volumeClaimTemplates:
   - metadata:
-      name: www
+      name: www # PVC template name used per replica
     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
+      accessModes: [ "ReadWriteOnce" ] # access mode for each PVC
+      storageClassName: "standard" # StorageClass for the PVCs
       resources:
         requests:
-          storage: 1Gi
+          storage: 1Gi # requested storage per replica
+
+# Title: StatefulSet - web
+# Description: Manages stateful web replicas (3) with per-pod PersistentVolumeClaims and a headless service for stable network identities.

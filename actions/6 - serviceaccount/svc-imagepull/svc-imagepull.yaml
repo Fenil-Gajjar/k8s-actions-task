@@ -1,7 +1,15 @@
-apiVersion: v1
-kind: ServiceAccount
+# apiVersion: read-only mode - API group and version for this resource
+# kind: read-only mode - resource type
+# metadata.name: name of the ServiceAccount
+# metadata.namespace: namespace where the ServiceAccount exists
+# imagePullSecrets: references to registry secrets to use for pulling images
+apiVersion: v1 # read-only mode
+kind: ServiceAccount # read-only mode
 metadata:
-  name: my-service-account
-  namespace: default
+  name: my-service-account # name of the service account
+  namespace: default # namespace for the account
 imagePullSecrets:
-- name: my-registry-secret
+- name: my-registry-secret # secret used to pull images from private registry
+
+# Title: ServiceAccount - image-pull
+# Description: ServiceAccount in `default` that references `my-registry-secret` for pulling images from private registries.

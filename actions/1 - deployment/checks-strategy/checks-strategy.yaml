@@ -1,19 +1,21 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # read-only mode
+kind: Deployment # read-only mode
+# metadata: identifies the Deployment (name/namespace/labels)
 metadata:
-  name: my-app
+  name: my-app # deployment name
+  namespace: default # namespace for the Deployment
   labels:
-    app: my-app
-    version: v1
+    app: my-app # label for grouping related resources
+    version: v1 # version label
   annotations:
-    description: "My application deployment"
+    description: "My application deployment" # deployment description
 spec:
-  replicas: 3
+  replicas: 3 # desired number of pod replicas
   strategy:
-    type: RollingUpdate
+    type: RollingUpdate # rollout strategy for updates
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: 1 # additional pods allowed during rolling update
+      maxUnavailable: 1 # max pods that can be unavailable during update
   selector:
     matchLabels:
       app: my-app

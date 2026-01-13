@@ -1,22 +1,23 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1 # read-only mode
+kind: Job # read-only mode
 metadata:
-  name: data-processing-job
+  name: data-processing-job # job name
+  namespace: default # namespace where job runs
 spec:
   template:
     metadata:
       labels:
-        app: data-processor
+        app: data-processor # label to identify job pods
     spec:
       containers:
       - name: processor
-        image: alpine:latest
+        image: alpine:latest # job container image
         env:
         - name: JOB_TYPE
-          value: "data-processing"
+          value: "data-processing" # environment variable specifying job type
         - name: LOG_LEVEL
-          value: "info"
-        command: [ "sh", "-c" ]
+          value: "info" # log level for job runtime
+        command: [ "sh", "-c" ] # command to execute inside container
         args:
         - |
           echo "Job Type: $JOB_TYPE"
@@ -26,9 +27,9 @@ spec:
           echo "Processing complete at $(date)" > /output/results.txt
         volumeMounts:
         - name: output-volume
-          mountPath: /output
+          mountPath: /output # mount path for job output
       volumes:
       - name: output-volume
-        emptyDir: {}
-      restartPolicy: Never
-  backoffLimit: 3
+        emptyDir: {} # temporary scratch space for the job
+      restartPolicy: Never # job restart policy on failure
+  backoffLimit: 3 # retry limit for failed pods

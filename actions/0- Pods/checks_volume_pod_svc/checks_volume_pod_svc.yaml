@@ -1,14 +1,17 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1 # read-only mode
+kind: Pod # read-only mode
+# metadata: object metadata (name/namespace/labels/annotations)
 metadata:
-  name: my-pod
+  name: my-pod # unique Pod name
+  namespace: default # namespace for the Pod
   labels:
-    app: my-app
-    environment: dev
-    version: "1.0"
+    app: my-app # label to identify app ownership
+    environment: dev # environment label (dev/staging/prod)
+    version: "1.0" # version label for the Pod
   annotations:
-    description: "My application pod"
-    owner: "platform-team"
+    description: "My application pod" # human-readable description
+    owner: "platform-team" # owning team or owner contact
+# spec: Pod spec defines the containers, volumes and runtime behavior
 spec:
   restartPolicy: Always
   serviceAccountName: default
