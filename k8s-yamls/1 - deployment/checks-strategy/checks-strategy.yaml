@@ -1,0 +1,365 @@
+action_type: deployment
+action_type_description: A Deployment with RollingUpdate strategy demonstrating controlled pod rollouts with health checks and resource limits
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource (apps/v1 for Deployment)
+  type: string
+  required: true
+  regex: ^apps\/v[0-9]+[a-z0-9]*$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource (Deployment)
+  type: string
+  required: true
+  regex: ^Deployment$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Deployment Name
+    editable: true
+    description: Unique identifier for the Deployment within the namespace
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+  
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where the Deployment will be created
+    type: string
+    required: false
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+  
+  labels:
+    app:
+      label: App Label
+      editable: true
+      description: Label to identify the application ownership
+      type: string
+      required: false
+      regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
+
+      view_type: text_field
+    
+    version:
+      label: Version Label
+      editable: true
+      description: Version identifier for the Deployment
+      type: string
+      required: false
+      regex: ^[a-zA-Z0-9._-]+$
+
+      view_type: text_field
+  
+  annotations:
+    description:
+      label: Description Annotation
+      editable: true
+      description: Human-readable description of the Deployment
+      type: string
+      required: false
+      regex: .*
+
+      view_type: text_field
+
+spec:
+  replicas:
+    label: Replicas
+    editable: true
+    description: Desired number of Pod replicas
+    type: integer
+    required: true
+    regex: ^[0-9]+$
+
+    view_type: text_field
+  
+  strategy:
+    type:
+      label: Strategy Type
+      editable: true
+      description: Rollout strategy for updates (RollingUpdate/Recreate)
+      type: string
+      required: true
+      regex: ^(RollingUpdate|Recreate)$
+
+      view_type: dropdown
+      dropdown_values: RollingUpdate, Recreate
+    
+    rollingUpdate:
+      maxSurge:
+        label: Max Surge
+        editable: true
+        description: Number of additional pods allowed during rolling update
+        type: integer
+        required: false
+        regex: ^[0-9]+$
+
+        view_type: text_field
+      
+      maxUnavailable:
+        label: Max Unavailable
+        editable: true
+        description: Maximum number of pods that can be unavailable during update
+        type: integer
+        required: false
+        regex: ^[0-9]+$
+
+        view_type: text_field
+  
+  selector:
+    matchLabels:
+      app:
+        label: App Label Selector
+        editable: true
+        description: Label value to select pods for this Deployment
+        type: string
+        required: true
+        regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
+
+        view_type: text_field
+  
+  template:
+    metadata:
+      labels:
+        app:
+          label: App Label
+          editable: true
+          description: Label to identify the application ownership
+          type: string
+          required: true
+          regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
+
+          view_type: text_field
+        
+        version:
+          label: Version Label
+          editable: true
+          description: Version identifier for the pod template
+          type: string
+          required: false
+          regex: ^[a-zA-Z0-9._-]+$
+
+          view_type: text_field
+    
+    spec:
+      containers:
+        - name:
+            label: Container Name
+            editable: true
+            description: Name of the container
+            type: string
+            required: true
+            regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+            view_type: text_field
+          
+          image:
+            label: Container Image
+            editable: true
+            description: Docker image URI (format: repository:tag)
+            type: string
+            required: true
+            regex: ^[a-z0-9./:-]+$
+
+            view_type: text_field
+          
+          ports:
+            - containerPort:
+                label: Container Port
+                editable: true
+                description: Port number the container listens on
+                type: integer
+                required: true
+                regex: ^[0-9]{1,5}$
+
+                view_type: text_field
+              
+              name:
+                label: Port Name
+                editable: true
+                description: Name for the port
+                type: string
+                required: false
+                regex: ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$
+
+                view_type: text_field
+          
+          resources:
+            requests:
+              memory:
+                label: Memory Request
+                editable: true
+                description: Minimum memory required (e.g., 64Mi, 1Gi)
+                type: string
+                required: false
+                regex: ^[0-9]+(Mi|Gi|Ki)$
+
+                view_type: text_field
+              
+              cpu:
+                label: CPU Request
+                editable: true
+                description: Minimum CPU required (e.g., 250m, 1)
+                type: string
+                required: false
+                regex: ^[0-9]+(m|[0-9])?$
+
+                view_type: text_field
+            
+            limits:
+              memory:
+                label: Memory Limit
+                editable: true
+                description: Maximum memory allowed (e.g., 128Mi, 2Gi)
+                type: string
+                required: false
+                regex: ^[0-9]+(Mi|Gi|Ki)$
+
+                view_type: text_field
+              
+              cpu:
+                label: CPU Limit
+                editable: true
+                description: Maximum CPU allowed (e.g., 500m, 2)
+                type: string
+                required: false
+                regex: ^[0-9]+(m|[0-9])?$
+
+                view_type: text_field
+          
+          env:
+            - name:
+                label: Environment Variable Name
+                editable: true
+                description: Name of the environment variable
+                type: string
+                required: true
+                regex: ^[A-Z_][A-Z0-9_]*$
+
+                view_type: text_field
+              
+              value:
+                label: Environment Variable Value
+                editable: true
+                description: Value of the environment variable
+                type: string
+                required: false
+                regex: .*
+
+                view_type: text_field
+          
+          livenessProbe:
+            httpGet:
+              path:
+                label: HTTP Path
+                editable: true
+                description: HTTP path to check for liveness
+                type: string
+                required: false
+                regex: ^\/.*$
+
+                view_type: text_field
+              
+              port:
+                label: Probe Port
+                editable: true
+                description: Port number for the probe
+                type: integer
+                required: false
+                regex: ^[0-9]{1,5}$
+
+                view_type: text_field
+            
+            initialDelaySeconds:
+              label: Initial Delay Seconds
+              editable: true
+              description: Delay before first liveness check (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field
+            
+            periodSeconds:
+              label: Period Seconds
+              editable: true
+              description: Interval between liveness checks (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field
+            
+            timeoutSeconds:
+              label: Timeout Seconds
+              editable: true
+              description: Timeout for the liveness probe (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field
+          
+          readinessProbe:
+            httpGet:
+              path:
+                label: HTTP Path
+                editable: true
+                description: HTTP path to check for readiness
+                type: string
+                required: false
+                regex: ^\/.*$
+
+                view_type: text_field
+              
+              port:
+                label: Probe Port
+                editable: true
+                description: Port number for the probe
+                type: integer
+                required: false
+                regex: ^[0-9]{1,5}$
+
+                view_type: text_field
+            
+            initialDelaySeconds:
+              label: Initial Delay Seconds
+              editable: true
+              description: Delay before first readiness check (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field
+            
+            periodSeconds:
+              label: Period Seconds
+              editable: true
+              description: Interval between readiness checks (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field
+            
+            timeoutSeconds:
+              label: Timeout Seconds
+              editable: true
+              description: Timeout for the readiness probe (seconds)
+              type: integer
+              required: false
+              regex: ^[0-9]+$
+
+              view_type: text_field

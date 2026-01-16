@@ -1,0 +1,64 @@
+action_type: secrets
+action_type_description: An SSH authentication Secret storing base64-encoded SSH private key for authentication
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource (v1 for Secret)
+  type: string
+  required: true
+  regex: ^v[0-9]+[a-z0-9]*$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource (Secret)
+  type: string
+  required: true
+  regex: ^Secret$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Secret Name
+    editable: true
+    description: Unique identifier for the Secret within the namespace
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where the Secret will be created
+    type: string
+    required: false
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+type:
+  label: Secret Type
+  editable: true
+  description: Type of Secret (kubernetes.io/ssh-auth for SSH authentication)
+  type: string
+  required: true
+  regex: ^kubernetes\.io\/ssh-auth$
+
+  view_type: text_field
+
+data:
+  ssh-privatekey:
+    label: SSH Private Key
+    editable: true
+    description: Base64-encoded SSH private key for authentication
+    type: string
+    required: true
+    regex: ^[A-Za-z0-9+/\n]*={0,2}$
+
+    view_type: text_field

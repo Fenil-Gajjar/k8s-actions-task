@@ -1,0 +1,132 @@
+action_type: limitrange
+action_type_description: Sets default requests/limits and min/max for containers in the `development` namespace to provide sane defaults for pod resources.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^LimitRange$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Identifier for this LimitRange
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where limits apply
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  limits:
+  - type:
+      label: Limit Type
+      editable: true
+      description: Applies to container or pod level
+      type: string
+      required: true
+      regex: ^(Container|Pod|PersistentVolumeClaim)$
+
+      view_type: dropdown
+      dropdown_values: Container,Pod,PersistentVolumeClaim
+    max:
+      cpu:
+        label: Max CPU
+        editable: true
+        description: Maximum CPU per container
+        type: string
+        required: false
+        regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+        view_type: text_field
+      memory:
+        label: Max Memory
+        editable: true
+        description: Maximum memory per container
+        type: string
+        required: false
+        regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+        view_type: text_field
+    min:
+      cpu:
+        label: Min CPU
+        editable: true
+        description: Minimum CPU per container
+        type: string
+        required: false
+        regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+        view_type: text_field
+      memory:
+        label: Min Memory
+        editable: true
+        description: Minimum memory per container
+        type: string
+        required: false
+        regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+        view_type: text_field
+    default:
+      cpu:
+        label: Default CPU Limit
+        editable: true
+        description: Default CPU limit if not specified
+        type: string
+        required: false
+        regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+        view_type: text_field
+      memory:
+        label: Default Memory Limit
+        editable: true
+        description: Default memory limit if not specified
+        type: string
+        required: false
+        regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+        view_type: text_field
+    defaultRequest:
+      cpu:
+        label: Default CPU Request
+        editable: true
+        description: Default CPU request if not specified
+        type: string
+        required: false
+        regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+        view_type: text_field
+      memory:
+        label: Default Memory Request
+        editable: true
+        description: Default memory request if not specified
+        type: string
+        required: false
+        regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+        view_type: text_field

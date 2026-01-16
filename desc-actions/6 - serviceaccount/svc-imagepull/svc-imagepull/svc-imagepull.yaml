@@ -1,0 +1,35 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: ServiceAccount
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-service-account
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+imagePullSecrets:
+- name: my-registry-secret
+  name_info:
+    description: name field
+    type: string
+    required: false
+imagePullSecrets_info:
+  description: imagePullSecrets field
+  type: array
+  required: false

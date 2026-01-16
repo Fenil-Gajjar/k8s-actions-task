@@ -1,0 +1,82 @@
+action_type: resource-quota
+action_type_description: Limits total CPU and memory requests/limits in the `development` namespace to control resource consumption.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^ResourceQuota$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the quota object
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace to enforce these hard limits
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  hard:
+    "requests.cpu":
+      label: CPU Requests Limit
+      editable: true
+      description: Maximum total CPU requests allowed
+      type: string
+      required: false
+      regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+      view_type: text_field
+    "requests.memory":
+      label: Memory Requests Limit
+      editable: true
+      description: Maximum total memory requests allowed
+      type: string
+      required: false
+      regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+      view_type: text_field
+    "limits.cpu":
+      label: CPU Limits
+      editable: true
+      description: Maximum total CPU limits allowed
+      type: string
+      required: false
+      regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+      view_type: text_field
+    "limits.memory":
+      label: Memory Limits
+      editable: true
+      description: Maximum total memory limits allowed
+      type: string
+      required: false
+      regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+      view_type: text_field

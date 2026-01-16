@@ -1,0 +1,45 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Pod
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-pod
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  containers:
+  - name: my-container
+    name_info:
+      description: name field
+      type: string
+      required: false
+    image: nginx
+    image_info:
+      description: image field
+      type: string
+      required: false
+  containers_info:
+    description: containers field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

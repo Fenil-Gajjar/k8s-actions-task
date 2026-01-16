@@ -1,0 +1,60 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: ConfigMap
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: app-config
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+  labels:
+    app: my-app
+    app_info:
+      description: app field
+      type: string
+      required: false
+  labels_info:
+    description: labels field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+data:
+  APP_MODE: production
+  APP_MODE_info:
+    description: APP_MODE field
+    type: string
+    required: false
+  MAX_CONNECTIONS: '100'
+  MAX_CONNECTIONS_info:
+    description: MAX_CONNECTIONS field
+    type: string
+    required: false
+  FEATURE_FLAG_X: 'true'
+  FEATURE_FLAG_X_info:
+    description: FEATURE_FLAG_X field
+    type: string
+    required: false
+  LOG_LEVEL: info
+  LOG_LEVEL_info:
+    description: LOG_LEVEL field
+    type: string
+    required: false
+data_info:
+  description: data field
+  type: object
+  required: false

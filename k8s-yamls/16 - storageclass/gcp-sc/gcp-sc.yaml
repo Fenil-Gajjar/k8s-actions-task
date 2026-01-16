@@ -1,0 +1,105 @@
+action_type: storageclass
+action_type_description: Cluster StorageClass for GCP PD SSD volumes.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^storage\.k8s\.io\/v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^StorageClass$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the StorageClass
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+provisioner:
+  label: Provisioner
+  editable: true
+  description: Driver for provisioning volumes
+  type: string
+  required: true
+  regex: .*
+
+  view_type: text_field
+
+reclaimPolicy:
+  label: Reclaim Policy
+  editable: true
+  description: Policy for reclaiming PVs
+  type: string
+  required: true
+  regex: ^(Delete|Retain)$
+
+  view_type: dropdown
+  dropdown_values: Delete,Retain
+
+volumeBindingMode:
+  label: Binding Mode
+  editable: true
+  description: When to bind volume
+  type: string
+  required: true
+  regex: ^(Immediate|WaitForFirstConsumer)$
+
+  view_type: dropdown
+  dropdown_values: Immediate,WaitForFirstConsumer
+
+allowVolumeExpansion:
+  label: Allow Expansion
+  editable: true
+  description: Allow PVC expansion
+  type: boolean
+  required: false
+  regex: ^(true|false)$
+
+  view_type: dropdown
+  dropdown_values: true,false
+
+parameters:
+  type:
+    label: Type
+    editable: true
+    description: GCP PD type
+    type: string
+    required: true
+    regex: .*
+
+    view_type: text_field
+  replication-type:
+    label: Replication Type
+    editable: true
+    description: Replication behavior
+    type: string
+    required: false
+    regex: .*
+
+    view_type: text_field
+  fstype:
+    label: Filesystem Type
+    editable: true
+    description: Filesystem type
+    type: string
+    required: false
+    regex: .*
+
+    view_type: text_field

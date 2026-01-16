@@ -1,0 +1,45 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Namespace
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-namespace
+  name_info:
+    description: name field
+    type: string
+    required: false
+  labels:
+    environment: production
+    environment_info:
+      description: environment field
+      type: string
+      required: false
+    team: backend
+    team_info:
+      description: team field
+      type: string
+      required: false
+  labels_info:
+    description: labels field
+    type: object
+    required: false
+  annotations:
+    description: Namespace for production backend services
+    description_info:
+      description: description field
+      type: string
+      required: false
+  annotations_info:
+    description: annotations field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true

@@ -1,0 +1,82 @@
+action_type: resource-quota
+action_type_description: Enforces storage-related hard limits in the `development` namespace (PVC count and total requested/ephemeral storage caps).
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^ResourceQuota$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Identifier for the ResourceQuota
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace to enforce the quota
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  hard:
+    "requests.storage":
+      label: Storage Requests Limit
+      editable: true
+      description: Maximum total requested persistent storage
+      type: string
+      required: false
+      regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+      view_type: text_field
+    persistentvolumeclaims:
+      label: PVC Limit
+      editable: true
+      description: Maximum number of PVCs allowed
+      type: string
+      required: false
+      regex: ^[0-9]+$
+
+      view_type: text_field
+    "requests.ephemeral-storage":
+      label: Eph. Storage Requests
+      editable: true
+      description: Maximum ephemeral storage requests
+      type: string
+      required: false
+      regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+      view_type: text_field
+    "limits.ephemeral-storage":
+      label: Eph. Storage Limits
+      editable: true
+      description: Maximum ephemeral storage limits
+      type: string
+      required: false
+      regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+      view_type: text_field

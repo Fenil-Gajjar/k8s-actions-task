@@ -1,0 +1,50 @@
+apiVersion: policy/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: PodDisruptionBudget
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-app-pdb-min
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  minAvailable: 2
+  minAvailable_info:
+    description: minAvailable field
+    type: integer
+    required: false
+  selector:
+    matchLabels:
+      app: my-app
+      app_info:
+        description: app field
+        type: string
+        required: false
+    matchLabels_info:
+      description: matchLabels field
+      type: object
+      required: false
+  selector_info:
+    description: selector field
+    type: object
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

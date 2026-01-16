@@ -1,0 +1,158 @@
+apiVersion: batch/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Job
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: data-processing-job
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  template:
+    metadata:
+      labels:
+        app: data-processor
+        app_info:
+          description: app field
+          type: string
+          required: false
+      labels_info:
+        description: labels field
+        type: object
+        required: false
+    metadata_info:
+      description: metadata field
+      type: object
+      required: true
+    spec:
+      containers:
+      - name: processor
+        name_info:
+          description: name field
+          type: string
+          required: false
+        image: alpine:latest
+        image_info:
+          description: image field
+          type: string
+          required: false
+        env:
+        - name: JOB_TYPE
+          name_info:
+            description: name field
+            type: string
+            required: false
+          value: data-processing
+          value_info:
+            description: value field
+            type: string
+            required: false
+        - name: LOG_LEVEL
+          name_info:
+            description: name field
+            type: string
+            required: false
+          value: info
+          value_info:
+            description: value field
+            type: string
+            required: false
+        env_info:
+          description: env field
+          type: array
+          required: false
+        command:
+        - sh
+        - -c
+        command_info:
+          description: command field
+          type: array
+          required: false
+        args:
+        - 'echo "Job Type: $JOB_TYPE"
+
+          echo "Processing data..."
+
+          echo "Results written to /output/results.txt"
+
+          mkdir -p /output
+
+          echo "Processing complete at $(date)" > /output/results.txt
+
+          '
+        args_info:
+          description: args field
+          type: array
+          required: false
+        volumeMounts:
+        - name: output-volume
+          name_info:
+            description: name field
+            type: string
+            required: false
+          mountPath: /output
+          mountPath_info:
+            description: mountPath field
+            type: string
+            required: false
+        volumeMounts_info:
+          description: volumeMounts field
+          type: array
+          required: false
+      containers_info:
+        description: containers field
+        type: array
+        required: false
+      volumes:
+      - name: output-volume
+        name_info:
+          description: name field
+          type: string
+          required: false
+        emptyDir: {}
+        emptyDir_info:
+          description: emptyDir field
+          type: object
+          required: false
+      volumes_info:
+        description: volumes field
+        type: array
+        required: false
+      restartPolicy: Never
+      restartPolicy_info:
+        description: restartPolicy field
+        type: string
+        required: false
+    spec_info:
+      description: spec field
+      type: object
+      required: true
+  template_info:
+    description: template field
+    type: object
+    required: false
+  backoffLimit: 3
+  backoffLimit_info:
+    description: backoffLimit field
+    type: integer
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

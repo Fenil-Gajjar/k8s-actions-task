@@ -1,0 +1,230 @@
+apiVersion: autoscaling/v2
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: HorizontalPodAutoscaler
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-app-hpa
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    apiVersion_info:
+      description: apiVersion field
+      type: string
+      required: true
+    kind: Deployment
+    kind_info:
+      description: kind field
+      type: string
+      required: true
+    name: my-app
+    name_info:
+      description: name field
+      type: string
+      required: false
+  scaleTargetRef_info:
+    description: scaleTargetRef field
+    type: object
+    required: false
+  minReplicas: 2
+  minReplicas_info:
+    description: minReplicas field
+    type: integer
+    required: false
+  maxReplicas: 10
+  maxReplicas_info:
+    description: maxReplicas field
+    type: integer
+    required: false
+  metrics:
+  - type: Resource
+    type_info:
+      description: type field
+      type: string
+      required: false
+    resource:
+      name: cpu
+      name_info:
+        description: name field
+        type: string
+        required: false
+      target:
+        type: Utilization
+        type_info:
+          description: type field
+          type: string
+          required: false
+        averageUtilization: 70
+        averageUtilization_info:
+          description: averageUtilization field
+          type: integer
+          required: false
+      target_info:
+        description: target field
+        type: object
+        required: false
+    resource_info:
+      description: resource field
+      type: object
+      required: false
+  - type: Resource
+    type_info:
+      description: type field
+      type: string
+      required: false
+    resource:
+      name: memory
+      name_info:
+        description: name field
+        type: string
+        required: false
+      target:
+        type: Utilization
+        type_info:
+          description: type field
+          type: string
+          required: false
+        averageUtilization: 80
+        averageUtilization_info:
+          description: averageUtilization field
+          type: integer
+          required: false
+      target_info:
+        description: target field
+        type: object
+        required: false
+    resource_info:
+      description: resource field
+      type: object
+      required: false
+  metrics_info:
+    description: metrics field
+    type: array
+    required: false
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds_info:
+        description: stabilizationWindowSeconds field
+        type: integer
+        required: false
+      policies:
+      - type: Percent
+        type_info:
+          description: type field
+          type: string
+          required: false
+        value: 50
+        value_info:
+          description: value field
+          type: integer
+          required: false
+        periodSeconds: 15
+        periodSeconds_info:
+          description: periodSeconds field
+          type: integer
+          required: false
+      - type: Pods
+        type_info:
+          description: type field
+          type: string
+          required: false
+        value: 2
+        value_info:
+          description: value field
+          type: integer
+          required: false
+        periodSeconds: 15
+        periodSeconds_info:
+          description: periodSeconds field
+          type: integer
+          required: false
+      policies_info:
+        description: policies field
+        type: array
+        required: false
+      selectPolicy: Min
+      selectPolicy_info:
+        description: selectPolicy field
+        type: string
+        required: false
+    scaleDown_info:
+      description: scaleDown field
+      type: object
+      required: false
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      stabilizationWindowSeconds_info:
+        description: stabilizationWindowSeconds field
+        type: integer
+        required: false
+      policies:
+      - type: Percent
+        type_info:
+          description: type field
+          type: string
+          required: false
+        value: 100
+        value_info:
+          description: value field
+          type: integer
+          required: false
+        periodSeconds: 15
+        periodSeconds_info:
+          description: periodSeconds field
+          type: integer
+          required: false
+      - type: Pods
+        type_info:
+          description: type field
+          type: string
+          required: false
+        value: 4
+        value_info:
+          description: value field
+          type: integer
+          required: false
+        periodSeconds: 15
+        periodSeconds_info:
+          description: periodSeconds field
+          type: integer
+          required: false
+      policies_info:
+        description: policies field
+        type: array
+        required: false
+      selectPolicy: Max
+      selectPolicy_info:
+        description: selectPolicy field
+        type: string
+        required: false
+    scaleUp_info:
+      description: scaleUp field
+      type: object
+      required: false
+  behavior_info:
+    description: behavior field
+    type: object
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

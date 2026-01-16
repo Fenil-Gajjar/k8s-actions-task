@@ -1,0 +1,85 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Service
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-app-svc
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+  labels:
+    app: my-app
+    app_info:
+      description: app field
+      type: string
+      required: false
+    tier: frontend
+    tier_info:
+      description: tier field
+      type: string
+      required: false
+  labels_info:
+    description: labels field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  type: ClusterIP
+  type_info:
+    description: type field
+    type: string
+    required: false
+  selector:
+    app: my-app
+    app_info:
+      description: app field
+      type: string
+      required: false
+  selector_info:
+    description: selector field
+    type: object
+    required: false
+  ports:
+  - name: http
+    name_info:
+      description: name field
+      type: string
+      required: false
+    protocol: TCP
+    protocol_info:
+      description: protocol field
+      type: string
+      required: false
+    port: 80
+    port_info:
+      description: port field
+      type: integer
+      required: false
+    targetPort: 80
+    targetPort_info:
+      description: targetPort field
+      type: integer
+      required: false
+  ports_info:
+    description: ports field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

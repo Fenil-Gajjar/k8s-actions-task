@@ -1,0 +1,141 @@
+action_type: network-policy
+action_type_description: Multi-tier app policy allowing logic between tiers.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^networking\.k8s\.io\/v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^NetworkPolicy$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the policy
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace for the policy
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  podSelector:
+    matchLabels:
+      tier:
+        label: Tier Label
+        editable: true
+        description: Selects pods matching this tier
+        type: string
+        required: true
+        regex: ^[a-z0-9-]+$
+
+        view_type: text_field
+  policyTypes:
+  - label: Policy Type Ingress
+    editable: true
+    description: Controls inbound traffic
+    type: string
+    required: true
+    regex: ^(Ingress|Egress)$
+
+    view_type: dropdown
+    dropdown_values: Ingress,Egress
+  - label: Policy Type Egress
+    editable: true
+    description: Controls outbound traffic
+    type: string
+    required: true
+    regex: ^(Ingress|Egress)$
+
+    view_type: dropdown
+    dropdown_values: Ingress,Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          tier:
+            label: Source Tier
+            editable: true
+            description: Allow traffic from frontend tier
+            type: string
+            required: true
+            regex: ^[a-z0-9-]+$
+
+            view_type: text_field
+    ports:
+    - protocol:
+        label: Protocol
+        editable: true
+        description: Traffic protocol
+        type: string
+        required: true
+        regex: ^(TCP|UDP|SCTP)$
+
+        view_type: dropdown
+        dropdown_values: TCP,UDP,SCTP
+      port:
+        label: Port
+        editable: true
+        description: Allowed ingress port
+        type: integer
+        required: true
+        regex: ^[0-9]+$
+
+        view_type: text_field
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          tier:
+            label: Destination Tier
+            editable: true
+            description: Allow egress to database tier
+            type: string
+            required: true
+            regex: ^[a-z0-9-]+$
+
+            view_type: text_field
+    ports:
+    - protocol:
+        label: Protocol
+        editable: true
+        description: Traffic protocol
+        type: string
+        required: true
+        regex: ^(TCP|UDP|SCTP)$
+
+        view_type: dropdown
+        dropdown_values: TCP,UDP,SCTP
+      port:
+        label: Port
+        editable: true
+        description: Allowed egress port
+        type: integer
+        required: true
+        regex: ^[0-9]+$
+
+        view_type: text_field

@@ -1,0 +1,100 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: LimitRange
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: dev-limits
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: development
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  limits:
+  - type: Container
+    type_info:
+      description: type field
+      type: string
+      required: false
+    max:
+      cpu: '1'
+      cpu_info:
+        description: cpu field
+        type: string
+        required: false
+      memory: 1Gi
+      memory_info:
+        description: memory field
+        type: string
+        required: false
+    max_info:
+      description: max field
+      type: object
+      required: false
+    min:
+      cpu: 50m
+      cpu_info:
+        description: cpu field
+        type: string
+        required: false
+      memory: 64Mi
+      memory_info:
+        description: memory field
+        type: string
+        required: false
+    min_info:
+      description: min field
+      type: object
+      required: false
+    default:
+      cpu: 200m
+      cpu_info:
+        description: cpu field
+        type: string
+        required: false
+      memory: 256Mi
+      memory_info:
+        description: memory field
+        type: string
+        required: false
+    default_info:
+      description: default field
+      type: object
+      required: false
+    defaultRequest:
+      cpu: 100m
+      cpu_info:
+        description: cpu field
+        type: string
+        required: false
+      memory: 128Mi
+      memory_info:
+        description: memory field
+        type: string
+        required: false
+    defaultRequest_info:
+      description: defaultRequest field
+      type: object
+      required: false
+  limits_info:
+    description: limits field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

@@ -1,0 +1,151 @@
+action_type: jobs
+action_type_description: Batch job running a short Python task with resource requests/limits and an overall deadline.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^batch\/v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^Job$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the job
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace for job execution
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  activeDeadlineSeconds:
+    label: Active Deadline Seconds
+    editable: true
+    description: Overall time limit for job run
+    type: integer
+    required: false
+    regex: ^[0-9]+$
+
+    view_type: text_field
+  backoffLimit:
+    label: Backoff Limit
+    editable: true
+    description: Number of retries before marking job failed
+    type: integer
+    required: false
+    regex: ^[0-9]+$
+
+    view_type: text_field
+  template:
+    spec:
+      restartPolicy:
+        label: Restart Policy
+        editable: true
+        description: Job restart policy
+        type: string
+        required: true
+        regex: ^(Never|OnFailure)$
+
+        view_type: dropdown
+        dropdown_values: Never,OnFailure
+      containers:
+      - name:
+          label: Container Name
+          editable: true
+          description: Name of the container
+          type: string
+          required: true
+          regex: ^[a-z0-9-]+$
+
+          view_type: text_field
+        image:
+          label: Image
+          editable: true
+          description: Container image
+          type: string
+          required: true
+          regex: .*
+
+          view_type: text_field
+        command:
+        - label: Command
+          editable: true
+          description: Command to execute
+          type: string
+          required: true
+          regex: .*
+
+          view_type: text_field
+        args:
+        - label: Arguments
+          editable: true
+          description: Arguments for the command
+          type: string
+          required: false
+          regex: .*
+
+          view_type: text_field
+        resources:
+          requests:
+            memory:
+              label: Memory Request
+              editable: true
+              description: Requested memory for scheduling
+              type: string
+              required: false
+              regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+              view_type: text_field
+            cpu:
+              label: CPU Request
+              editable: true
+              description: Requested CPU for scheduling
+              type: string
+              required: false
+              regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+              view_type: text_field
+          limits:
+            memory:
+              label: Memory Limit
+              editable: true
+              description: Memory limit for runtime
+              type: string
+              required: false
+              regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
+
+              view_type: text_field
+            cpu:
+              label: CPU Limit
+              editable: true
+              description: CPU limit for runtime
+              type: string
+              required: false
+              regex: ^[0-9]+([mun]|\.[0-9]+)?$
+
+              view_type: text_field

@@ -1,0 +1,94 @@
+action_type: jobs
+action_type_description: Runs a one-off BusyBox job that prints a message.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^batch\/v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^Job$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the job
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace for the job
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  backoffLimit:
+    label: Backoff Limit
+    editable: true
+    description: Retries on failure
+    type: integer
+    required: false
+    regex: ^[0-9]+$
+
+    view_type: text_field
+  template:
+    spec:
+      restartPolicy:
+        label: Restart Policy
+        editable: true
+        description: Job restart policy
+        type: string
+        required: true
+        regex: ^(Never|OnFailure)$
+
+        view_type: dropdown
+        dropdown_values: Never,OnFailure
+      containers:
+      - name:
+          label: Container Name
+          editable: true
+          description: Name of the container
+          type: string
+          required: true
+          regex: ^[a-z0-9-]+$
+
+          view_type: text_field
+        image:
+          label: Image
+          editable: true
+          description: Container image
+          type: string
+          required: true
+          regex: .*
+
+          view_type: text_field
+        command:
+        - label: Command
+          editable: true
+          description: Command to execute
+          type: string
+          required: true
+          regex: .*
+
+          view_type: text_field

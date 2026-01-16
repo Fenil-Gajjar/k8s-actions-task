@@ -1,0 +1,64 @@
+action_type: secrets
+action_type_description: A service-account token Secret for pod authentication and in-cluster API access
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource (v1 for Secret)
+  type: string
+  required: true
+  regex: ^v[0-9]+[a-z0-9]*$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource (Secret)
+  type: string
+  required: true
+  regex: ^Secret$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Secret Name
+    editable: true
+    description: Unique identifier for the Secret within the namespace
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where the Secret will be created
+    type: string
+    required: false
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+  annotations:
+    kubernetes.io/service-account.name:
+      label: Service Account Name
+      editable: true
+      description: Name of the service account this token is linked to
+      type: string
+      required: true
+      regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+      view_type: text_field
+
+type:
+  label: Secret Type
+  editable: true
+  description: Type of Secret (kubernetes.io/service-account-token for service account tokens)
+  type: string
+  required: true
+  regex: ^kubernetes\.io\/service-account-token$
+
+  view_type: text_field

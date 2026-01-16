@@ -1,0 +1,110 @@
+action_type: network-policy
+action_type_description: Allow traffic from specific namespace.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^networking\.k8s\.io\/v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^NetworkPolicy$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Policy name
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where policy is enforced
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  podSelector:
+    matchLabels:
+      app:
+        label: Pod Selector Label
+        editable: true
+        description: Selects pods matching this label
+        type: string
+        required: true
+        regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+        view_type: text_field
+  policyTypes:
+  - label: Policy Type
+    editable: true
+    description: Controls inbound/outbound traffic
+    type: string
+    required: true
+    regex: ^(Ingress|Egress)$
+
+    view_type: dropdown
+    dropdown_values: Ingress,Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          environment:
+            label: Namespace Label
+            editable: true
+            description: Allow from namespaces with this label
+            type: string
+            required: true
+            regex: ^[a-z0-9-]+$
+
+            view_type: text_field
+      podSelector:
+        matchLabels:
+          app:
+            label: Source Pod Label
+            editable: true
+            description: Allow from pods with this label
+            type: string
+            required: true
+            regex: ^[a-z0-9-]+$
+
+            view_type: text_field
+    ports:
+    - protocol:
+        label: Protocol
+        editable: true
+        description: Traffic protocol
+        type: string
+        required: true
+        regex: ^(TCP|UDP|SCTP)$
+
+        view_type: dropdown
+        dropdown_values: TCP,UDP,SCTP
+      port:
+        label: Port
+        editable: true
+        description: Allowed port
+        type: integer
+        required: true
+        regex: ^[0-9]+$
+
+        view_type: text_field

@@ -1,0 +1,150 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Pod
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-pod
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+  labels:
+    app: my-app
+    app_info:
+      description: app field
+      type: string
+      required: false
+    environment: dev
+    environment_info:
+      description: environment field
+      type: string
+      required: false
+  labels_info:
+    description: labels field
+    type: object
+    required: false
+  annotations:
+    description: My application pod
+    description_info:
+      description: description field
+      type: string
+      required: false
+  annotations_info:
+    description: annotations field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  restartPolicy: Always
+  restartPolicy_info:
+    description: restartPolicy field
+    type: string
+    required: false
+  containers:
+  - name: my-container
+    name_info:
+      description: name field
+      type: string
+      required: false
+    image: nginx
+    image_info:
+      description: image field
+      type: string
+      required: false
+    ports:
+    - containerPort: 80
+      containerPort_info:
+        description: containerPort field
+        type: integer
+        required: false
+      protocol: TCP
+      protocol_info:
+        description: protocol field
+        type: string
+        required: false
+    ports_info:
+      description: ports field
+      type: array
+      required: false
+    resources:
+      requests:
+        memory: 64Mi
+        memory_info:
+          description: memory field
+          type: string
+          required: false
+        cpu: 250m
+        cpu_info:
+          description: cpu field
+          type: string
+          required: false
+      requests_info:
+        description: requests field
+        type: object
+        required: false
+      limits:
+        memory: 128Mi
+        memory_info:
+          description: memory field
+          type: string
+          required: false
+        cpu: 500m
+        cpu_info:
+          description: cpu field
+          type: string
+          required: false
+      limits_info:
+        description: limits field
+        type: object
+        required: false
+    resources_info:
+      description: resources field
+      type: object
+      required: false
+    env:
+    - name: ENVIRONMENT
+      name_info:
+        description: name field
+        type: string
+        required: false
+      value: development
+      value_info:
+        description: value field
+        type: string
+        required: false
+    - name: APP_PORT
+      name_info:
+        description: name field
+        type: string
+        required: false
+      value: '80'
+      value_info:
+        description: value field
+        type: string
+        required: false
+    env_info:
+      description: env field
+      type: array
+      required: false
+  containers_info:
+    description: containers field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

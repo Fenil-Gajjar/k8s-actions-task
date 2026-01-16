@@ -1,0 +1,95 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: ResourceQuota
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: object-count-quota
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: development
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  hard:
+    pods: '50'
+    pods_info:
+      description: pods field
+      type: string
+      required: false
+    services: '10'
+    services_info:
+      description: services field
+      type: string
+      required: false
+    configmaps: '20'
+    configmaps_info:
+      description: configmaps field
+      type: string
+      required: false
+    secrets: '20'
+    secrets_info:
+      description: secrets field
+      type: string
+      required: false
+    replicationcontrollers: '10'
+    replicationcontrollers_info:
+      description: replicationcontrollers field
+      type: string
+      required: false
+    deployments.apps: '15'
+    deployments.apps_info:
+      description: deployments.apps field
+      type: string
+      required: false
+    statefulsets.apps: '5'
+    statefulsets.apps_info:
+      description: statefulsets.apps field
+      type: string
+      required: false
+    jobs.batch: '10'
+    jobs.batch_info:
+      description: jobs.batch field
+      type: string
+      required: false
+    cronjobs.batch: '5'
+    cronjobs.batch_info:
+      description: cronjobs.batch field
+      type: string
+      required: false
+    persistentvolumeclaims: '15'
+    persistentvolumeclaims_info:
+      description: persistentvolumeclaims field
+      type: string
+      required: false
+    horizontalpodautoscalers.autoscaling: '5'
+    horizontalpodautoscalers.autoscaling_info:
+      description: horizontalpodautoscalers.autoscaling field
+      type: string
+      required: false
+    serviceaccounts: '10'
+    serviceaccounts_info:
+      description: serviceaccounts field
+      type: string
+      required: false
+  hard_info:
+    description: hard field
+    type: object
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

@@ -1,0 +1,56 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: PersistentVolumeClaim
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: my-pvc
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  accessModes:
+  - ReadWriteOnce
+  accessModes_info:
+    description: accessModes field
+    type: array
+    required: false
+  resources:
+    requests:
+      storage: 10Gi
+      storage_info:
+        description: storage field
+        type: string
+        required: false
+    requests_info:
+      description: requests field
+      type: object
+      required: false
+  resources_info:
+    description: resources field
+    type: object
+    required: false
+  storageClassName: standard
+  storageClassName_info:
+    description: storageClassName field
+    type: string
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

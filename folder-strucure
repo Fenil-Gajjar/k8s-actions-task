@@ -1,0 +1,8 @@
+apps-repo/
+└── apps/
+    ├── cart/
+    │   └── kustomization.yaml
+    ├── payment/
+    │   └── manifest.yaml/
+    └── user/
+        └── manifests/

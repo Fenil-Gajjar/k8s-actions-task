@@ -1,0 +1,106 @@
+apiVersion: networking.k8s.io/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: NetworkPolicy
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: allow-from-dev-namespace
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: staging
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  podSelector:
+    matchLabels:
+      app: api
+      app_info:
+        description: app field
+        type: string
+        required: false
+    matchLabels_info:
+      description: matchLabels field
+      type: object
+      required: false
+  podSelector_info:
+    description: podSelector field
+    type: object
+    required: false
+  policyTypes:
+  - Ingress
+  policyTypes_info:
+    description: policyTypes field
+    type: array
+    required: false
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          environment: development
+          environment_info:
+            description: environment field
+            type: string
+            required: false
+        matchLabels_info:
+          description: matchLabels field
+          type: object
+          required: false
+      namespaceSelector_info:
+        description: namespaceSelector field
+        type: object
+        required: false
+      podSelector:
+        matchLabels:
+          app: test-client
+          app_info:
+            description: app field
+            type: string
+            required: false
+        matchLabels_info:
+          description: matchLabels field
+          type: object
+          required: false
+      podSelector_info:
+        description: podSelector field
+        type: object
+        required: false
+    from_info:
+      description: from field
+      type: array
+      required: false
+    ports:
+    - protocol: TCP
+      protocol_info:
+        description: protocol field
+        type: string
+        required: false
+      port: 8080
+      port_info:
+        description: port field
+        type: integer
+        required: false
+    ports_info:
+      description: ports field
+      type: array
+      required: false
+  ingress_info:
+    description: ingress field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

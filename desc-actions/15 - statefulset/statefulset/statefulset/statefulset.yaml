@@ -1,0 +1,171 @@
+apiVersion: apps/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: StatefulSet
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: web
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  serviceName: web-service
+  serviceName_info:
+    description: serviceName field
+    type: string
+    required: false
+  replicas: 3
+  replicas_info:
+    description: replicas field
+    type: integer
+    required: false
+  selector:
+    matchLabels:
+      app: web
+      app_info:
+        description: app field
+        type: string
+        required: false
+    matchLabels_info:
+      description: matchLabels field
+      type: object
+      required: false
+  selector_info:
+    description: selector field
+    type: object
+    required: false
+  template:
+    metadata:
+      labels:
+        app: web
+        app_info:
+          description: app field
+          type: string
+          required: false
+      labels_info:
+        description: labels field
+        type: object
+        required: false
+    metadata_info:
+      description: metadata field
+      type: object
+      required: true
+    spec:
+      containers:
+      - name: nginx
+        name_info:
+          description: name field
+          type: string
+          required: false
+        image: nginx:1.21
+        image_info:
+          description: image field
+          type: string
+          required: false
+        ports:
+        - containerPort: 80
+          containerPort_info:
+            description: containerPort field
+            type: integer
+            required: false
+          name: web
+          name_info:
+            description: name field
+            type: string
+            required: false
+        ports_info:
+          description: ports field
+          type: array
+          required: false
+        volumeMounts:
+        - name: www
+          name_info:
+            description: name field
+            type: string
+            required: false
+          mountPath: /usr/share/nginx/html
+          mountPath_info:
+            description: mountPath field
+            type: string
+            required: false
+        volumeMounts_info:
+          description: volumeMounts field
+          type: array
+          required: false
+      containers_info:
+        description: containers field
+        type: array
+        required: false
+    spec_info:
+      description: spec field
+      type: object
+      required: true
+  template_info:
+    description: template field
+    type: object
+    required: false
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+      name_info:
+        description: name field
+        type: string
+        required: false
+    metadata_info:
+      description: metadata field
+      type: object
+      required: true
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      accessModes_info:
+        description: accessModes field
+        type: array
+        required: false
+      storageClassName: standard
+      storageClassName_info:
+        description: storageClassName field
+        type: string
+        required: false
+      resources:
+        requests:
+          storage: 1Gi
+          storage_info:
+            description: storage field
+            type: string
+            required: false
+        requests_info:
+          description: requests field
+          type: object
+          required: false
+      resources_info:
+        description: resources field
+        type: object
+        required: false
+    spec_info:
+      description: spec field
+      type: object
+      required: true
+  volumeClaimTemplates_info:
+    description: volumeClaimTemplates field
+    type: array
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

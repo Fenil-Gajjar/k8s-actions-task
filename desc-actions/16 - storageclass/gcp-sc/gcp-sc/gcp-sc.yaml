@@ -1,0 +1,70 @@
+apiVersion: storage.k8s.io/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: StorageClass
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: fast-ssd-gcp
+  name_info:
+    description: name field
+    type: string
+    required: false
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'false'
+    storageclass.kubernetes.io/is-default-class_info:
+      description: storageclass.kubernetes.io/is-default-class field
+      type: string
+      required: false
+  annotations_info:
+    description: annotations field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+provisioner: pd.csi.storage.gke.io
+provisioner_info:
+  description: provisioner field
+  type: string
+  required: false
+parameters:
+  type: pd-ssd
+  type_info:
+    description: type field
+    type: string
+    required: false
+  replication-type: none
+  replication-type_info:
+    description: replication-type field
+    type: string
+    required: false
+  fstype: ext4
+  fstype_info:
+    description: fstype field
+    type: string
+    required: false
+parameters_info:
+  description: parameters field
+  type: object
+  required: false
+volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode_info:
+  description: volumeBindingMode field
+  type: string
+  required: false
+allowVolumeExpansion: true
+allowVolumeExpansion_info:
+  description: allowVolumeExpansion field
+  type: boolean
+  required: false
+reclaimPolicy: Delete
+reclaimPolicy_info:
+  description: reclaimPolicy field
+  type: string
+  required: false

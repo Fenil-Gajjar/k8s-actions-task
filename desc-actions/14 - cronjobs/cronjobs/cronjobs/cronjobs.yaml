@@ -1,0 +1,102 @@
+apiVersion: batch/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: CronJob
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: scheduled-job
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  schedule: 0 2 * * *
+  schedule_info:
+    description: schedule field
+    type: string
+    required: false
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup
+            name_info:
+              description: name field
+              type: string
+              required: false
+            image: busybox:latest
+            image_info:
+              description: image field
+              type: string
+              required: false
+            command:
+            - sh
+            - -c
+            command_info:
+              description: command field
+              type: array
+              required: false
+            args:
+            - 'echo "Running scheduled backup at $(date)"
+
+              echo "Backup completed successfully"
+
+              '
+            args_info:
+              description: args field
+              type: array
+              required: false
+          containers_info:
+            description: containers field
+            type: array
+            required: false
+          restartPolicy: OnFailure
+          restartPolicy_info:
+            description: restartPolicy field
+            type: string
+            required: false
+        spec_info:
+          description: spec field
+          type: object
+          required: true
+      template_info:
+        description: template field
+        type: object
+        required: false
+    spec_info:
+      description: spec field
+      type: object
+      required: true
+  jobTemplate_info:
+    description: jobTemplate field
+    type: object
+    required: false
+  successfulJobsHistoryLimit: 3
+  successfulJobsHistoryLimit_info:
+    description: successfulJobsHistoryLimit field
+    type: integer
+    required: false
+  failedJobsHistoryLimit: 1
+  failedJobsHistoryLimit_info:
+    description: failedJobsHistoryLimit field
+    type: integer
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true

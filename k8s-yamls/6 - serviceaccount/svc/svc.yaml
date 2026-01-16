@@ -1,0 +1,76 @@
+action_type: serviceaccount
+action_type_description: Creates a namespaced ServiceAccount `my-service-account` in `default`; controls pod token mounting and can be referenced by pods.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource
+  type: string
+  required: true
+  regex: ^v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource
+  type: string
+  required: true
+  regex: ^ServiceAccount$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the service account
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace for the account
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+  labels:
+    app:
+      label: App Label
+      editable: true
+      description: Label to group/identify the service account
+      type: string
+      required: false
+      regex: .*
+
+      view_type: text_field
+
+  annotations:
+    description:
+      label: Description
+      editable: true
+      description: Human-readable description
+      type: string
+      required: false
+      regex: .*
+
+      view_type: text_field
+
+automountServiceAccountToken:
+  label: Automount Token
+  editable: true
+  description: Whether pods using this SA get a token mounted
+  type: boolean
+  required: false
+  regex: ^(true|false)$
+
+  view_type: dropdown
+  dropdown_values: true,false

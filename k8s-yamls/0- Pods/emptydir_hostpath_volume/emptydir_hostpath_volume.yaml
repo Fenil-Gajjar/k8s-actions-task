@@ -1,0 +1,263 @@
+action_type: Pods
+action_type_description: A Pod demonstrating EmptyDir and HostPath volume mounting for temporary and node-level storage access
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource (v1 for Pod)
+  type: string
+  required: true
+  regex: ^v[0-9]+[a-z0-9]*$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource (Pod)
+  type: string
+  required: true
+  regex: ^Pod$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Pod Name
+    editable: true
+    description: Unique identifier for the Pod within the namespace
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace where the Pod will be created
+    type: string
+    required: false
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+  labels:
+    app:
+      label: App Label
+      editable: true
+      description: Label to identify the application ownership
+      type: string
+      required: false
+      regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
+
+      view_type: text_field
+
+spec:
+  containers:
+    - name:
+        label: Container Name
+        editable: true
+        description: Name of the container
+        type: string
+        required: true
+        regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+        view_type: text_field
+      
+      image:
+        label: Container Image
+        editable: true
+        description: Docker image URI (format: repository:tag)
+        type: string
+        required: true
+        regex: ^[a-z0-9./:-]+$
+
+        view_type: text_field
+      
+      ports:
+        - containerPort:
+            label: Container Port
+            editable: true
+            description: Port number the container listens on
+            type: integer
+            required: true
+            regex: ^[0-9]{1,5}$
+
+            view_type: text_field
+          
+          name:
+            label: Port Name
+            editable: true
+            description: Name for the port
+            type: string
+            required: false
+            regex: ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$
+
+            view_type: text_field
+      
+      resources:
+        requests:
+          memory:
+            label: Memory Request
+            editable: true
+            description: Minimum memory required (e.g., 64Mi, 1Gi)
+            type: string
+            required: false
+            regex: ^[0-9]+(Mi|Gi|Ki)$
+
+            view_type: text_field
+          
+          cpu:
+            label: CPU Request
+            editable: true
+            description: Minimum CPU required (e.g., 250m, 1)
+            type: string
+            required: false
+            regex: ^[0-9]+(m|[0-9])?$
+
+            view_type: text_field
+        
+        limits:
+          memory:
+            label: Memory Limit
+            editable: true
+            description: Maximum memory allowed (e.g., 128Mi, 2Gi)
+            type: string
+            required: false
+            regex: ^[0-9]+(Mi|Gi|Ki)$
+
+            view_type: text_field
+          
+          cpu:
+            label: CPU Limit
+            editable: true
+            description: Maximum CPU allowed (e.g., 500m, 2)
+            type: string
+            required: false
+            regex: ^[0-9]+(m|[0-9])?$
+
+            view_type: text_field
+      
+      volumeMounts:
+        - name:
+            label: Volume Mount Name
+            editable: true
+            description: Name of the volume to mount
+            type: string
+            required: true
+            regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+            view_type: text_field
+          
+          mountPath:
+            label: Mount Path
+            editable: true
+            description: Path where the volume is mounted in the container
+            type: string
+            required: true
+            regex: ^\/.*$
+
+            view_type: text_field
+      
+      env:
+        - name:
+            label: Environment Variable Name
+            editable: true
+            description: Name of the environment variable
+            type: string
+            required: true
+            regex: ^[A-Z_][A-Z0-9_]*$
+
+            view_type: text_field
+          
+          value:
+            label: Environment Variable Value
+            editable: true
+            description: Value of the environment variable
+            type: string
+            required: false
+            regex: .*
+
+            view_type: text_field
+
+  volumes:
+    - name:
+        label: Volume Name
+        editable: true
+        description: Name of the volume
+        type: string
+        required: true
+        regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+        view_type: text_field
+      
+      emptyDir:
+        label: Empty Directory
+        editable: true
+        description: Temporary directory that exists for the Pod's lifetime
+        type: object
+        required: false
+        regex: .*
+
+        view_type: text_field
+        
+        medium:
+          label: Storage Medium
+          editable: true
+          description: Storage medium for emptyDir (empty for disk, Memory for RAM)
+          type: string
+          required: false
+          regex: ^(Memory)?$
+
+          view_type: dropdown
+          dropdown_values: Memory
+        
+        sizeLimit:
+          label: Size Limit
+          editable: true
+          description: Maximum size for the emptyDir volume (e.g., 100Mi, 1Gi)
+          type: string
+          required: false
+          regex: ^[0-9]+(Mi|Gi|Ki)$
+
+          view_type: text_field
+    
+    - name:
+        label: Volume Name
+        editable: true
+        description: Name of the volume
+        type: string
+        required: true
+        regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+        view_type: text_field
+      
+      hostPath:
+        label: Host Path
+        editable: true
+        description: Mounts a file or directory from the host node
+        type: object
+        required: false
+        regex: .*
+
+        view_type: text_field
+        
+        path:
+          label: Host Path
+          editable: true
+          description: Path on the host machine to mount
+          type: string
+          required: true
+          regex: ^\/.*$
+
+          view_type: text_field
+        
+        type:
+          label: Path Type
+          editable: true
+          description: Type of path (DirectoryOrCreate/Directory/FileOrCreate/File)
+          type: string
+          required: false
+          regex: ^(DirectoryOrCreate|Directory|FileOrCreate|File)$
+
+          view_type: dropdown
+          dropdown_values: DirectoryOrCreate, Directory, FileOrCreate, File

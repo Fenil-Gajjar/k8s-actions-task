@@ -1,0 +1,80 @@
+apiVersion: storage.k8s.io/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: StorageClass
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: fast-ssd
+  name_info:
+    description: name field
+    type: string
+    required: false
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'false'
+    storageclass.kubernetes.io/is-default-class_info:
+      description: storageclass.kubernetes.io/is-default-class field
+      type: string
+      required: false
+  annotations_info:
+    description: annotations field
+    type: object
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+provisioner: ebs.csi.aws.com
+provisioner_info:
+  description: provisioner field
+  type: string
+  required: false
+parameters:
+  type: gp3
+  type_info:
+    description: type field
+    type: string
+    required: false
+  iops: '3000'
+  iops_info:
+    description: iops field
+    type: string
+    required: false
+  throughput: '125'
+  throughput_info:
+    description: throughput field
+    type: string
+    required: false
+  fsType: ext4
+  fsType_info:
+    description: fsType field
+    type: string
+    required: false
+  encrypted: 'true'
+  encrypted_info:
+    description: encrypted field
+    type: string
+    required: false
+parameters_info:
+  description: parameters field
+  type: object
+  required: false
+volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode_info:
+  description: volumeBindingMode field
+  type: string
+  required: false
+allowVolumeExpansion: true
+allowVolumeExpansion_info:
+  description: allowVolumeExpansion field
+  type: boolean
+  required: false
+reclaimPolicy: Delete
+reclaimPolicy_info:
+  description: reclaimPolicy field
+  type: string
+  required: false

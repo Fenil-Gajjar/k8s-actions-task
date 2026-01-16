@@ -1,0 +1,65 @@
+action_type: namespace
+action_type_description: A Namespace resource to logically partition cluster resources for production backend services with team ownership labels
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: Defines the API version of the Kubernetes resource (v1 for Namespace)
+  type: string
+  required: true
+  regex: ^v[0-9]+[a-z0-9]*$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Defines the kind of Kubernetes resource (Namespace)
+  type: string
+  required: true
+  regex: ^Namespace$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Namespace Name
+    editable: true
+    description: Unique identifier for the Namespace across the cluster
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  labels:
+    environment:
+      label: Environment Label
+      editable: true
+      description: Environment identifier (development/staging/production)
+      type: string
+      required: false
+      regex: ^[a-z]+$
+
+      view_type: text_field
+
+    team:
+      label: Team Label
+      editable: true
+      description: Owning team for resources in this namespace
+      type: string
+      required: false
+      regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
+
+      view_type: text_field
+
+  annotations:
+    description:
+      label: Description Annotation
+      editable: true
+      description: Human-readable description of the Namespace
+      type: string
+      required: false
+      regex: .*
+
+      view_type: text_field

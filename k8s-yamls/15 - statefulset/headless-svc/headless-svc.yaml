@@ -1,0 +1,83 @@
+action_type: statefulset
+action_type_description: Headless Service to provide stable network identities (DNS) for StatefulSet.
+
+apiVersion:
+  label: API Version
+  editable: false
+  description: API group and version for this resource
+  type: string
+  required: true
+  regex: ^v1$
+
+  view_type: text_field
+
+kind:
+  label: Kind
+  editable: false
+  description: Resource type
+  type: string
+  required: true
+  regex: ^Service$
+
+  view_type: text_field
+
+metadata:
+  name:
+    label: Name
+    editable: true
+    description: Name of the service
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: text_field
+
+  namespace:
+    label: Namespace
+    editable: true
+    description: Namespace for the service
+    type: string
+    required: true
+    regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
+
+    view_type: dropdown
+
+spec:
+  clusterIP:
+    label: Cluster IP
+    editable: true
+    description: IP address of the service (None for headless)
+    type: string
+    required: true
+    regex: ^None$
+
+    view_type: text_field
+  selector:
+    app:
+      label: Selector App
+      editable: true
+      description: Selects pods that belong to the StatefulSet
+      type: string
+      required: true
+      regex: ^[a-z0-9-]+$
+
+      view_type: text_field
+  ports:
+  - port:
+      label: Port
+      editable: true
+      description: Service exposed port
+      type: integer
+      required: true
+      regex: ^[0-9]+$
+
+      view_type: text_field
+    targetPort:
+      label: Target Port
+      editable: true
+      description: Target container port
+      type: integer
+      required: true
+      regex: ^[0-9]+$
+
+      view_type: text_field

@@ -1,0 +1,60 @@
+apiVersion: v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Secret
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: app-credentials
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+type: Opaque
+type_info:
+  description: type field
+  type: string
+  required: false
+data:
+  username: YWRtaW4=
+  username_info:
+    description: username field
+    type: string
+    required: false
+  password: cGFzc3dvcmQxMjM=
+  password_info:
+    description: password field
+    type: string
+    required: false
+data_info:
+  description: data field
+  type: object
+  required: false
+stringData:
+  api-key: my-secret-api-key-12345
+  api-key_info:
+    description: api-key field
+    type: string
+    required: false
+  database-url: postgresql://user:pass@localhost:5432/db
+  database-url_info:
+    description: database-url field
+    type: string
+    required: false
+stringData_info:
+  description: stringData field
+  type: object
+  required: false

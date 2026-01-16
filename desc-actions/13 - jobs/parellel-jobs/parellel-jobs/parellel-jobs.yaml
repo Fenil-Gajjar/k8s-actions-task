@@ -1,0 +1,83 @@
+apiVersion: batch/v1
+apiVersion_info:
+  description: apiVersion field
+  type: string
+  required: true
+kind: Job
+kind_info:
+  description: kind field
+  type: string
+  required: true
+metadata:
+  name: parallel-job
+  name_info:
+    description: name field
+    type: string
+    required: false
+  namespace: default
+  namespace_info:
+    description: namespace field
+    type: string
+    required: false
+metadata_info:
+  description: metadata field
+  type: object
+  required: true
+spec:
+  parallelism: 3
+  parallelism_info:
+    description: parallelism field
+    type: integer
+    required: false
+  completions: 6
+  completions_info:
+    description: completions field
+    type: integer
+    required: false
+  template:
+    spec:
+      containers:
+      - name: worker
+        name_info:
+          description: name field
+          type: string
+          required: false
+        image: busybox:latest
+        image_info:
+          description: image field
+          type: string
+          required: false
+        command:
+        - sh
+        - -c
+        - echo Processing task && sleep 10
+        command_info:
+          description: command field
+          type: array
+          required: false
+      containers_info:
+        description: containers field
+        type: array
+        required: false
+      restartPolicy: Never
+      restartPolicy_info:
+        description: restartPolicy field
+        type: string
+        required: false
+    spec_info:
+      description: spec field
+      type: object
+      required: true
+  template_info:
+    description: template field
+    type: object
+    required: false
+  backoffLimit: 3
+  backoffLimit_info:
+    description: backoffLimit field
+    type: integer
+    required: false
+spec_info:
+  description: spec field
+  type: object
+  required: true
