@@ -1,4 +1,4 @@
-action_type: configmap
+action_type: Key Value Cm
 action_type_description: A ConfigMap with key-value configuration data for application runtime settings and feature flags
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^ConfigMap$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the ConfigMap will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
   labels:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
 
 data:
@@ -60,8 +55,6 @@ data:
     description: Application mode setting consumed by the application
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
 
   MAX_CONNECTIONS:
@@ -70,8 +63,6 @@ data:
     description: Maximum concurrent connections expected
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
 
   FEATURE_FLAG_X:
@@ -80,8 +71,6 @@ data:
     description: Feature flag to toggle functionality
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
 
   LOG_LEVEL:
@@ -90,6 +79,4 @@ data:
     description: Application log verbosity level
     type: string
     required: false
-    regex: .*
-
     view_type: text_field

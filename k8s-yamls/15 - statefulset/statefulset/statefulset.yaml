@@ -1,4 +1,4 @@
-action_type: statefulset
+action_type: StatefulSet with PVC Templates
 action_type_description: Manages stateful web replicas with per-pod PersistentVolumeClaims and a headless service.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^apps\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^StatefulSet$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   replicas:
     label: Replicas
@@ -59,7 +54,6 @@ spec:
     type: integer
     required: true
     regex: ^[0-9]+$
-
     view_type: text_field
   selector:
     matchLabels:
@@ -70,7 +64,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-
         view_type: text_field
   template:
     metadata:
@@ -82,7 +75,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
     spec:
       containers:
@@ -93,7 +85,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
         image:
           label: Image
@@ -101,8 +92,6 @@ spec:
           description: Container image
           type: string
           required: true
-          regex: .*
-
           view_type: text_field
         ports:
         - containerPort:
@@ -112,7 +101,6 @@ spec:
             type: integer
             required: true
             regex: ^[0-9]+$
-
             view_type: text_field
           name:
             label: Port Name
@@ -121,7 +109,6 @@ spec:
             type: string
             required: false
             regex: ^[a-z0-9-]+$
-
             view_type: text_field
         volumeMounts:
         - name:
@@ -131,7 +118,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-
             view_type: text_field
           mountPath:
             label: Mount Path
@@ -140,7 +126,6 @@ spec:
             type: string
             required: true
             regex: ^\/.*$
-
             view_type: text_field
   volumeClaimTemplates:
   - metadata:
@@ -151,7 +136,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-
         view_type: text_field
     spec:
       accessModes:
@@ -161,7 +145,6 @@ spec:
         type: string
         required: true
         regex: ^(ReadWriteOnce|ReadOnlyMany|ReadWriteMany)$
-
         view_type: dropdown
         dropdown_values: ReadWriteOnce,ReadOnlyMany,ReadWriteMany
       storageClassName:
@@ -171,7 +154,6 @@ spec:
         type: string
         required: false
         regex: ^[a-z0-9-]+$
-
         view_type: text_field
       resources:
         requests:
@@ -182,5 +164,4 @@ spec:
             type: string
             required: true
             regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
             view_type: text_field

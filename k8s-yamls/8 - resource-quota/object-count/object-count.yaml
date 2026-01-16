@@ -1,4 +1,4 @@
-action_type: resource-quota
+action_type: Resource Quota: Object Count Limits
 action_type_description: Restricts counts of various resource types in the `development` namespace to control object sprawl.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^ResourceQuota$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -51,7 +47,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     services:
       label: Services Limit
@@ -60,7 +55,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     configmaps:
       label: ConfigMaps Limit
@@ -69,7 +63,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     secrets:
       label: Secrets Limit
@@ -78,7 +71,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     replicationcontrollers:
       label: RCs Limit
@@ -87,7 +79,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "deployments.apps":
       label: Deployments Limit
@@ -96,7 +87,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "statefulsets.apps":
       label: StatefulSets Limit
@@ -105,7 +95,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "jobs.batch":
       label: Jobs Limit
@@ -114,7 +103,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "cronjobs.batch":
       label: CronJobs Limit
@@ -123,7 +111,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     persistentvolumeclaims:
       label: PVCs Limit
@@ -132,7 +119,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "horizontalpodautoscalers.autoscaling":
       label: HPAs Limit
@@ -141,7 +127,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     serviceaccounts:
       label: ServiceAccounts Limit
@@ -150,5 +135,4 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field

@@ -1,4 +1,4 @@
-action_type: pvc
+action_type: Persistent Volume Claim (ReadWriteOnce)
 action_type_description: Creates a namespaced PVC requesting storage.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^PersistentVolumeClaim$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: string
     required: true
     regex: ^(ReadWriteOnce|ReadOnlyMany|ReadWriteMany)$
-
     view_type: dropdown
     dropdown_values: ReadWriteOnce,ReadOnlyMany,ReadWriteMany
   resources:
@@ -62,7 +57,6 @@ spec:
         type: string
         required: true
         regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
         view_type: text_field
   storageClassName:
     label: Storage Class
@@ -71,5 +65,4 @@ spec:
     type: string
     required: false
     regex: ^[a-z0-9-]+$
-
     view_type: text_field

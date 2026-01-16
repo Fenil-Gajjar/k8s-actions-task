@@ -1,4 +1,4 @@
-action_type: network-policy
+action_type: Network Policy: Allow External CIDR
 action_type_description: Allows traffic from specific external IPs.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^networking\.k8s\.io\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^NetworkPolicy$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -52,7 +48,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
         view_type: text_field
   policyTypes:
   - label: Policy Type
@@ -61,7 +56,6 @@ spec:
     type: string
     required: true
     regex: ^(Ingress|Egress)$
-
     view_type: dropdown
     dropdown_values: Ingress,Egress
   ingress:
@@ -74,7 +68,6 @@ spec:
           type: string
           required: true
           regex: ^[0-9./]+$
-
           view_type: text_field
         except:
           - label: Excluded IP
@@ -83,7 +76,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9./]+$
-
             view_type: text_field
     ports:
     - protocol:
@@ -93,7 +85,6 @@ spec:
         type: string
         required: true
         regex: ^(TCP|UDP|SCTP)$
-
         view_type: dropdown
         dropdown_values: TCP,UDP,SCTP
       port:
@@ -103,7 +94,6 @@ spec:
         type: integer
         required: true
         regex: ^[0-9]+$
-
         view_type: text_field
     - protocol:
         label: Protocol
@@ -112,7 +102,6 @@ spec:
         type: string
         required: true
         regex: ^(TCP|UDP|SCTP)$
-
         view_type: dropdown
         dropdown_values: TCP,UDP,SCTP
       port:
@@ -122,5 +111,4 @@ spec:
         type: integer
         required: true
         regex: ^[0-9]+$
-
         view_type: text_field

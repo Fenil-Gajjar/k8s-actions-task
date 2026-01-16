@@ -1,4 +1,4 @@
-action_type: resource-quota
+action_type: Resource Quota: Storage Limits
 action_type_description: Enforces storage-related hard limits in the `development` namespace (PVC count and total requested/ephemeral storage caps).
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^ResourceQuota$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -51,7 +47,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
       view_type: text_field
     persistentvolumeclaims:
       label: PVC Limit
@@ -60,7 +55,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+$
-
       view_type: text_field
     "requests.ephemeral-storage":
       label: Eph. Storage Requests
@@ -69,7 +63,6 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
       view_type: text_field
     "limits.ephemeral-storage":
       label: Eph. Storage Limits
@@ -78,5 +71,4 @@ spec:
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
       view_type: text_field

@@ -1,4 +1,4 @@
-action_type: statefulset
+action_type: Headless Service for StatefulSet
 action_type_description: Headless Service to provide stable network identities (DNS) for StatefulSet.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Service$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: string
     required: true
     regex: ^None$
-
     view_type: text_field
   selector:
     app:
@@ -60,7 +55,6 @@ spec:
       type: string
       required: true
       regex: ^[a-z0-9-]+$
-
       view_type: text_field
   ports:
   - port:
@@ -70,7 +64,6 @@ spec:
       type: integer
       required: true
       regex: ^[0-9]+$
-
       view_type: text_field
     targetPort:
       label: Target Port
@@ -79,5 +72,4 @@ spec:
       type: integer
       required: true
       regex: ^[0-9]+$
-
       view_type: text_field

@@ -1,4 +1,4 @@
-action_type: deployment
+action_type: Primary Deployment
 action_type_description: A primary Deployment with 3 replicas, resource limits, health checks (liveness and readiness probes), and environment variables
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^apps\/v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Deployment$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Deployment will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
   
   labels:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
 
 spec:
@@ -61,7 +56,6 @@ spec:
     type: integer
     required: true
     regex: ^[0-9]+$
-
     view_type: text_field
   
   selector:
@@ -73,7 +67,6 @@ spec:
         type: string
         required: true
         regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
         view_type: text_field
   
   template:
@@ -86,7 +79,6 @@ spec:
           type: string
           required: true
           regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
           view_type: text_field
     
     spec:
@@ -98,7 +90,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           image:
@@ -108,7 +99,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9./:-]+$
-
             view_type: text_field
           
           ports:
@@ -119,7 +109,6 @@ spec:
                 type: integer
                 required: true
                 regex: ^[0-9]{1,5}$
-
                 view_type: text_field
           
           resources:
@@ -131,7 +120,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(Mi|Gi|Ki)$
-
                 view_type: text_field
               
               cpu:
@@ -141,7 +129,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(m|[0-9])?$
-
                 view_type: text_field
             
             limits:
@@ -152,7 +139,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(Mi|Gi|Ki)$
-
                 view_type: text_field
               
               cpu:
@@ -162,7 +148,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(m|[0-9])?$
-
                 view_type: text_field
           
           env:
@@ -173,7 +158,6 @@ spec:
                 type: string
                 required: true
                 regex: ^[A-Z_][A-Z0-9_]*$
-
                 view_type: text_field
               
               value:
@@ -182,8 +166,6 @@ spec:
                 description: Value of the environment variable
                 type: string
                 required: false
-                regex: .*
-
                 view_type: text_field
           
           livenessProbe:
@@ -195,7 +177,6 @@ spec:
                 type: string
                 required: false
                 regex: ^\/.*$
-
                 view_type: text_field
               
               port:
@@ -205,7 +186,6 @@ spec:
                 type: integer
                 required: false
                 regex: ^[0-9]{1,5}$
-
                 view_type: text_field
             
             initialDelaySeconds:
@@ -215,7 +195,6 @@ spec:
               type: integer
               required: false
               regex: ^[0-9]+$
-
               view_type: text_field
             
             periodSeconds:
@@ -225,7 +204,6 @@ spec:
               type: integer
               required: false
               regex: ^[0-9]+$
-
               view_type: text_field
           
           readinessProbe:
@@ -237,7 +215,6 @@ spec:
                 type: string
                 required: false
                 regex: ^\/.*$
-
                 view_type: text_field
               
               port:
@@ -247,7 +224,6 @@ spec:
                 type: integer
                 required: false
                 regex: ^[0-9]{1,5}$
-
                 view_type: text_field
             
             initialDelaySeconds:
@@ -257,7 +233,6 @@ spec:
               type: integer
               required: false
               regex: ^[0-9]+$
-
               view_type: text_field
             
             periodSeconds:
@@ -267,5 +242,4 @@ spec:
               type: integer
               required: false
               regex: ^[0-9]+$
-
               view_type: text_field

@@ -1,4 +1,4 @@
-action_type: secrets
+action_type: Sec Ssh
 action_type_description: An SSH authentication Secret storing base64-encoded SSH private key for authentication
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Secret$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Secret will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 type:
@@ -49,7 +45,6 @@ type:
   type: string
   required: true
   regex: ^kubernetes\.io\/ssh-auth$
-
   view_type: text_field
 
 data:
@@ -60,5 +55,4 @@ data:
     type: string
     required: true
     regex: ^[A-Za-z0-9+/\n]*={0,2}$
-
     view_type: text_field

@@ -1,4 +1,4 @@
-action_type: deamonset
+action_type: DaemonSet: Nginx on All Nodes
 action_type_description: Runs a copy of `nginx` pod on every node in the cluster.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^apps\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^DaemonSet$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
   
   labels:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: true
       regex: ^[a-z0-9-]+$
-
       view_type: text_field
 
 spec:
@@ -63,7 +58,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-
         view_type: text_field
   template:
     metadata:
@@ -75,7 +69,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
     spec:
       containers:
@@ -86,7 +79,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
         image:
           label: Image
@@ -94,8 +86,6 @@ spec:
           description: Container image
           type: string
           required: true
-          regex: .*
-
           view_type: text_field
         ports:
         - containerPort:
@@ -105,7 +95,6 @@ spec:
             type: integer
             required: true
             regex: ^[0-9]+$
-
             view_type: text_field
         resources:
           limits:
@@ -116,7 +105,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
               view_type: text_field
             cpu:
               label: CPU Limit
@@ -125,7 +113,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-
               view_type: text_field
           requests:
             memory:
@@ -135,7 +122,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
               view_type: text_field
             cpu:
               label: CPU Request
@@ -144,5 +130,4 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-
               view_type: text_field

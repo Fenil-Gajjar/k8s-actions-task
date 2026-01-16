@@ -1,4 +1,4 @@
-action_type: secrets
+action_type: Basic Auth
 action_type_description: A basic-auth Secret holding username and password credentials for authentication
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Secret$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Secret will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 type:
@@ -49,7 +45,6 @@ type:
   type: string
   required: true
   regex: ^kubernetes\.io\/[a-z-]+$
-
   view_type: dropdown
   dropdown_values: kubernetes.io/basic-auth
 
@@ -60,8 +55,6 @@ stringData:
     description: Username for basic authentication
     type: string
     required: true
-    regex: .*
-
     view_type: text_field
 
   password:
@@ -70,6 +63,4 @@ stringData:
     description: Password for basic authentication (will be encoded)
     type: string
     required: true
-    regex: .*
-
     view_type: text_field

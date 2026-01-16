@@ -1,4 +1,4 @@
-action_type: cronjobs
+action_type: Scheduled CronJob (Daily Backup)
 action_type_description: Schedules a daily backup job at 2 AM.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^batch\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^CronJob$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -49,8 +45,6 @@ spec:
     description: Cron schedule expression
     type: string
     required: true
-    regex: .*
-
     view_type: text_field
   successfulJobsHistoryLimit:
     label: History Limit (Success)
@@ -59,7 +53,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   failedJobsHistoryLimit:
     label: History Limit (Failed)
@@ -68,7 +61,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   jobTemplate:
     spec:
@@ -81,7 +73,6 @@ spec:
             type: string
             required: true
             regex: ^(Never|OnFailure)$
-
             view_type: dropdown
             dropdown_values: Never,OnFailure
           containers:
@@ -92,7 +83,6 @@ spec:
               type: string
               required: true
               regex: ^[a-z0-9-]+$
-
               view_type: text_field
             image:
               label: Image
@@ -100,8 +90,6 @@ spec:
               description: Container image
               type: string
               required: true
-              regex: .*
-
               view_type: text_field
             command:
             - label: Command
@@ -109,8 +97,6 @@ spec:
               description: Command to execute
               type: string
               required: true
-              regex: .*
-
               view_type: text_field
             args:
             - label: Arguments
@@ -118,6 +104,4 @@ spec:
               description: Arguments for the command
               type: string
               required: false
-              regex: .*
-
               view_type: text_field

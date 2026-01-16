@@ -1,4 +1,4 @@
-action_type: Pods
+action_type: Emptydir Hostpath Volume
 action_type_description: A Pod demonstrating EmptyDir and HostPath volume mounting for temporary and node-level storage access
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Pod$
-
   view_type: text_field
 
 metadata:
@@ -29,16 +27,14 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   namespace:
     label: Namespace
     editable: true
     description: Namespace where the Pod will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
   labels:
     app:
@@ -48,7 +44,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
 
 spec:
@@ -60,7 +55,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
         view_type: text_field
       
       image:
@@ -70,7 +64,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9./:-]+$
-
         view_type: text_field
       
       ports:
@@ -81,7 +74,6 @@ spec:
             type: integer
             required: true
             regex: ^[0-9]{1,5}$
-
             view_type: text_field
           
           name:
@@ -91,7 +83,6 @@ spec:
             type: string
             required: false
             regex: ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$
-
             view_type: text_field
       
       resources:
@@ -103,7 +94,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(Mi|Gi|Ki)$
-
             view_type: text_field
           
           cpu:
@@ -113,7 +103,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(m|[0-9])?$
-
             view_type: text_field
         
         limits:
@@ -124,7 +113,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(Mi|Gi|Ki)$
-
             view_type: text_field
           
           cpu:
@@ -134,7 +122,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(m|[0-9])?$
-
             view_type: text_field
       
       volumeMounts:
@@ -145,7 +132,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           mountPath:
@@ -155,7 +141,6 @@ spec:
             type: string
             required: true
             regex: ^\/.*$
-
             view_type: text_field
       
       env:
@@ -166,7 +151,6 @@ spec:
             type: string
             required: true
             regex: ^[A-Z_][A-Z0-9_]*$
-
             view_type: text_field
           
           value:
@@ -175,8 +159,6 @@ spec:
             description: Value of the environment variable
             type: string
             required: false
-            regex: .*
-
             view_type: text_field
 
   volumes:
@@ -187,7 +169,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
         view_type: text_field
       
       emptyDir:
@@ -196,8 +177,6 @@ spec:
         description: Temporary directory that exists for the Pod's lifetime
         type: object
         required: false
-        regex: .*
-
         view_type: text_field
         
         medium:
@@ -207,7 +186,6 @@ spec:
           type: string
           required: false
           regex: ^(Memory)?$
-
           view_type: dropdown
           dropdown_values: Memory
         
@@ -218,7 +196,6 @@ spec:
           type: string
           required: false
           regex: ^[0-9]+(Mi|Gi|Ki)$
-
           view_type: text_field
     
     - name:
@@ -228,7 +205,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
         view_type: text_field
       
       hostPath:
@@ -237,8 +213,6 @@ spec:
         description: Mounts a file or directory from the host node
         type: object
         required: false
-        regex: .*
-
         view_type: text_field
         
         path:
@@ -248,7 +222,6 @@ spec:
           type: string
           required: true
           regex: ^\/.*$
-
           view_type: text_field
         
         type:
@@ -258,6 +231,5 @@ spec:
           type: string
           required: false
           regex: ^(DirectoryOrCreate|Directory|FileOrCreate|File)$
-
           view_type: dropdown
           dropdown_values: DirectoryOrCreate, Directory, FileOrCreate, File

@@ -1,4 +1,4 @@
-action_type: jobs
+action_type: Job with Resource Limits and Deadline
 action_type_description: Batch job running a short Python task with resource requests/limits and an overall deadline.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^batch\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Job$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   backoffLimit:
     label: Backoff Limit
@@ -59,7 +54,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   template:
     spec:
@@ -70,7 +64,6 @@ spec:
         type: string
         required: true
         regex: ^(Never|OnFailure)$
-
         view_type: dropdown
         dropdown_values: Never,OnFailure
       containers:
@@ -81,7 +74,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
         image:
           label: Image
@@ -89,8 +81,6 @@ spec:
           description: Container image
           type: string
           required: true
-          regex: .*
-
           view_type: text_field
         command:
         - label: Command
@@ -98,8 +88,6 @@ spec:
           description: Command to execute
           type: string
           required: true
-          regex: .*
-
           view_type: text_field
         args:
         - label: Arguments
@@ -107,8 +95,6 @@ spec:
           description: Arguments for the command
           type: string
           required: false
-          regex: .*
-
           view_type: text_field
         resources:
           requests:
@@ -119,7 +105,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
               view_type: text_field
             cpu:
               label: CPU Request
@@ -128,7 +113,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-
               view_type: text_field
           limits:
             memory:
@@ -138,7 +122,6 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-
               view_type: text_field
             cpu:
               label: CPU Limit
@@ -147,5 +130,4 @@ spec:
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-
               view_type: text_field

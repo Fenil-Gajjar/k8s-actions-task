@@ -1,4 +1,4 @@
-action_type: deployment
+action_type: Minimal Dep
 action_type_description: A minimal Deployment with a single replica running a basic nginx container without advanced configuration
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^apps\/v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Deployment$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Deployment will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: integer
     required: true
     regex: ^[0-9]+$
-
     view_type: text_field
   
   selector:
@@ -62,7 +57,6 @@ spec:
         type: string
         required: true
         regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
         view_type: text_field
   
   template:
@@ -75,7 +69,6 @@ spec:
           type: string
           required: true
           regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
           view_type: text_field
     
     spec:
@@ -87,7 +80,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           image:
@@ -97,7 +89,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9./:-]+$
-
             view_type: text_field
           
           ports:
@@ -108,5 +99,4 @@ spec:
                 type: integer
                 required: true
                 regex: ^[0-9]{1,5}$
-
                 view_type: text_field

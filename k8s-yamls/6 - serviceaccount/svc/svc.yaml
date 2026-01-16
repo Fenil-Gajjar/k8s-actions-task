@@ -1,4 +1,4 @@
-action_type: serviceaccount
+action_type: Standard Service Account
 action_type_description: Creates a namespaced ServiceAccount `my-service-account` in `default`; controls pod token mounting and can be referenced by pods.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^ServiceAccount$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
   labels:
@@ -49,8 +45,6 @@ metadata:
       description: Label to group/identify the service account
       type: string
       required: false
-      regex: .*
-
       view_type: text_field
 
   annotations:
@@ -60,8 +54,6 @@ metadata:
       description: Human-readable description
       type: string
       required: false
-      regex: .*
-
       view_type: text_field
 
 automountServiceAccountToken:
@@ -71,6 +63,5 @@ automountServiceAccountToken:
   type: boolean
   required: false
   regex: ^(true|false)$
-
   view_type: dropdown
   dropdown_values: true,false

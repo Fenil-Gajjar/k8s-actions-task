@@ -1,4 +1,4 @@
-action_type: Pods
+action_type: One Container Pod
 action_type_description: A single-container Pod running nginx with resource requests/limits and environment variables for basic application deployment
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Pod$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Pod will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
   
   labels:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
     
     environment:
@@ -60,7 +55,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-z]+$
-
       view_type: text_field
   
   annotations:
@@ -70,8 +64,6 @@ metadata:
       description: Human-readable description of the Pod
       type: string
       required: false
-      regex: .*
-
       view_type: text_field
 
 spec:
@@ -82,7 +74,6 @@ spec:
     type: string
     required: true
     regex: ^(Always|OnFailure|Never)$
-
     view_type: dropdown
     dropdown_values: Always, OnFailure, Never
   
@@ -94,7 +85,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
         view_type: text_field
       
       image:
@@ -104,7 +94,6 @@ spec:
         type: string
         required: true
         regex: ^[a-z0-9./:-]+$
-
         view_type: text_field
       
       ports:
@@ -115,7 +104,6 @@ spec:
             type: integer
             required: true
             regex: ^[0-9]{1,5}$
-
             view_type: text_field
           
           protocol:
@@ -125,7 +113,6 @@ spec:
             type: string
             required: false
             regex: ^(TCP|UDP)$
-
             view_type: dropdown
             dropdown_values: TCP, UDP
       
@@ -138,7 +125,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(Mi|Gi|Ki)$
-
             view_type: text_field
           
           cpu:
@@ -148,7 +134,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(m|[0-9])?$
-
             view_type: text_field
         
         limits:
@@ -159,7 +144,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(Mi|Gi|Ki)$
-
             view_type: text_field
           
           cpu:
@@ -169,7 +153,6 @@ spec:
             type: string
             required: false
             regex: ^[0-9]+(m|[0-9])?$
-
             view_type: text_field
       
       env:
@@ -180,7 +163,6 @@ spec:
             type: string
             required: true
             regex: ^[A-Z_][A-Z0-9_]*$
-
             view_type: text_field
           
           value:
@@ -189,6 +171,4 @@ spec:
             description: Value of the environment variable
             type: string
             required: false
-            regex: .*
-
             view_type: text_field

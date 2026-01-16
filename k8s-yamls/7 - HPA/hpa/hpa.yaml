@@ -1,4 +1,4 @@
-action_type: HPA
+action_type: Horizontal Pod Autoscaler (CPU/Memory)
 action_type_description: Creates an HPA for `my-app` Deployment, scaling based on CPU and memory utilization.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^autoscaling\/v2$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^HorizontalPodAutoscaler$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -51,7 +47,6 @@ spec:
       type: string
       required: true
       regex: ^apps\/v1$
-
       view_type: text_field
     kind:
       label: Kind
@@ -60,7 +55,6 @@ spec:
       type: string
       required: true
       regex: ^Deployment$
-
       view_type: text_field
     name:
       label: Target Name
@@ -69,7 +63,6 @@ spec:
       type: string
       required: true
       regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
       view_type: text_field
 
   minReplicas:
@@ -79,7 +72,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
 
   maxReplicas:
@@ -89,7 +81,6 @@ spec:
     type: integer
     required: true
     regex: ^[0-9]+$
-
     view_type: text_field
 
   metrics:
@@ -100,7 +91,6 @@ spec:
       type: string
       required: true
       regex: ^(Resource|Pods|Object|External)$
-
       view_type: dropdown
       dropdown_values: Resource,Pods,Object,External
     resource:
@@ -111,7 +101,6 @@ spec:
         type: string
         required: true
         regex: ^(cpu|memory)$
-
         view_type: dropdown
         dropdown_values: cpu,memory
       target:
@@ -122,7 +111,6 @@ spec:
           type: string
           required: true
           regex: ^(Utilization|AverageValue|Value)$
-
           view_type: dropdown
           dropdown_values: Utilization,AverageValue,Value
         averageUtilization:
@@ -132,7 +120,6 @@ spec:
           type: integer
           required: false
           regex: ^[0-9]+$
-
           view_type: text_field
 
   behavior:
@@ -144,7 +131,6 @@ spec:
         type: integer
         required: false
         regex: ^[0-9]+$
-
         view_type: text_field
       policies:
       - type:
@@ -154,7 +140,6 @@ spec:
           type: string
           required: true
           regex: ^(Percent|Pods)$
-
           view_type: dropdown
           dropdown_values: Percent,Pods
         value:
@@ -164,7 +149,6 @@ spec:
           type: integer
           required: true
           regex: ^[0-9]+$
-
           view_type: text_field
         periodSeconds:
           label: Period Seconds
@@ -173,7 +157,6 @@ spec:
           type: integer
           required: true
           regex: ^[0-9]+$
-
           view_type: text_field
       selectPolicy:
         label: Select Policy
@@ -182,7 +165,6 @@ spec:
         type: string
         required: false
         regex: ^(Min|Max|Disabled)$
-
         view_type: dropdown
         dropdown_values: Min,Max,Disabled
     scaleUp:
@@ -193,7 +175,6 @@ spec:
         type: integer
         required: false
         regex: ^[0-9]+$
-
         view_type: text_field
       policies:
       - type:
@@ -203,7 +184,6 @@ spec:
           type: string
           required: true
           regex: ^(Percent|Pods)$
-
           view_type: dropdown
           dropdown_values: Percent,Pods
         value:
@@ -213,7 +193,6 @@ spec:
           type: integer
           required: true
           regex: ^[0-9]+$
-
           view_type: text_field
         periodSeconds:
           label: Period Seconds
@@ -222,7 +201,6 @@ spec:
           type: integer
           required: true
           regex: ^[0-9]+$
-
           view_type: text_field
       selectPolicy:
         label: Select Policy
@@ -231,6 +209,5 @@ spec:
         type: string
         required: false
         regex: ^(Min|Max|Disabled)$
-
         view_type: dropdown
         dropdown_values: Min,Max,Disabled

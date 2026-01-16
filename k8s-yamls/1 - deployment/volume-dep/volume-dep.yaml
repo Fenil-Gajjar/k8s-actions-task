@@ -1,4 +1,4 @@
-action_type: deployment
+action_type: Volume Dep
 action_type_description: A Deployment with volume mounts (emptyDir and hostPath) for temporary cache and persistent logs storage with rolling update strategy
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^apps\/v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Deployment$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
   
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Deployment will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
   
   labels:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
 
 spec:
@@ -61,7 +56,6 @@ spec:
     type: integer
     required: true
     regex: ^[0-9]+$
-
     view_type: text_field
   
   strategy:
@@ -72,7 +66,6 @@ spec:
       type: string
       required: true
       regex: ^(RollingUpdate|Recreate)$
-
       view_type: dropdown
       dropdown_values: RollingUpdate, Recreate
     
@@ -84,7 +77,6 @@ spec:
         type: integer
         required: false
         regex: ^[0-9]+$
-
         view_type: text_field
       
       maxUnavailable:
@@ -94,7 +86,6 @@ spec:
         type: integer
         required: false
         regex: ^[0-9]+$
-
         view_type: text_field
   
   selector:
@@ -106,7 +97,6 @@ spec:
         type: string
         required: true
         regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
         view_type: text_field
   
   template:
@@ -119,7 +109,6 @@ spec:
           type: string
           required: true
           regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
           view_type: text_field
     
     spec:
@@ -131,7 +120,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           image:
@@ -141,7 +129,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9./:-]+$
-
             view_type: text_field
           
           ports:
@@ -152,7 +139,6 @@ spec:
                 type: integer
                 required: true
                 regex: ^[0-9]{1,5}$
-
                 view_type: text_field
           
           resources:
@@ -164,7 +150,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(Mi|Gi|Ki)$
-
                 view_type: text_field
               
               cpu:
@@ -174,7 +159,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(m|[0-9])?$
-
                 view_type: text_field
             
             limits:
@@ -185,7 +169,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(Mi|Gi|Ki)$
-
                 view_type: text_field
               
               cpu:
@@ -195,7 +178,6 @@ spec:
                 type: string
                 required: false
                 regex: ^[0-9]+(m|[0-9])?$
-
                 view_type: text_field
           
           volumeMounts:
@@ -206,7 +188,6 @@ spec:
                 type: string
                 required: true
                 regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
                 view_type: text_field
               
               mountPath:
@@ -216,7 +197,6 @@ spec:
                 type: string
                 required: true
                 regex: ^\/.*$
-
                 view_type: text_field
       
       volumes:
@@ -227,7 +207,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           emptyDir:
@@ -236,8 +215,6 @@ spec:
             description: Temporary directory that exists for the Pod's lifetime
             type: object
             required: false
-            regex: .*
-
             view_type: text_field
         
         - name:
@@ -247,7 +224,6 @@ spec:
             type: string
             required: true
             regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
             view_type: text_field
           
           hostPath:
@@ -256,8 +232,6 @@ spec:
             description: Mounts a file or directory from the host node
             type: object
             required: false
-            regex: .*
-
             view_type: text_field
             
             path:
@@ -267,7 +241,6 @@ spec:
               type: string
               required: true
               regex: ^\/.*$
-
               view_type: text_field
             
             type:
@@ -277,6 +250,5 @@ spec:
               type: string
               required: false
               regex: ^(DirectoryOrCreate|Directory|FileOrCreate|File)$
-
               view_type: dropdown
               dropdown_values: DirectoryOrCreate, Directory, FileOrCreate, File

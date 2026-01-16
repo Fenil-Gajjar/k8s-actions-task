@@ -1,4 +1,4 @@
-action_type: namespace
+action_type: Namespace
 action_type_description: A Namespace resource to logically partition cluster resources for production backend services with team ownership labels
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Namespace$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   labels:
@@ -40,7 +37,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-z]+$
-
       view_type: text_field
 
     team:
@@ -50,7 +46,6 @@ metadata:
       type: string
       required: false
       regex: ^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$
-
       view_type: text_field
 
   annotations:
@@ -60,6 +55,4 @@ metadata:
       description: Human-readable description of the Namespace
       type: string
       required: false
-      regex: .*
-
       view_type: text_field

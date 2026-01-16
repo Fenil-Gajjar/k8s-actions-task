@@ -1,4 +1,4 @@
-action_type: jobs
+action_type: Parallel Job Execution
 action_type_description: Job running multiple pods in parallel.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^batch\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Job$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -39,7 +36,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 spec:
@@ -50,7 +46,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   completions:
     label: Completions
@@ -59,7 +54,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   backoffLimit:
     label: Backoff Limit
@@ -68,7 +62,6 @@ spec:
     type: integer
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   template:
     spec:
@@ -79,7 +72,6 @@ spec:
         type: string
         required: true
         regex: ^(Never|OnFailure)$
-
         view_type: dropdown
         dropdown_values: Never,OnFailure
       containers:
@@ -90,7 +82,6 @@ spec:
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-
           view_type: text_field
         image:
           label: Image
@@ -98,8 +89,6 @@ spec:
           description: Container image
           type: string
           required: true
-          regex: .*
-
           view_type: text_field
         command:
         - label: Command
@@ -107,6 +96,4 @@ spec:
           description: Command to execute
           type: string
           required: true
-          regex: .*
-
           view_type: text_field

@@ -1,4 +1,4 @@
-action_type: secrets
+action_type: Opaque Sec
 action_type_description: An Opaque Secret containing generic key-value application credentials and connection strings
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^Secret$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the Secret will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 type:
@@ -49,7 +45,6 @@ type:
   type: string
   required: true
   regex: ^(Opaque|kubernetes\.io\/[a-z-]+)$
-
   view_type: dropdown
   dropdown_values: Opaque
 
@@ -61,7 +56,6 @@ data:
     type: string
     required: false
     regex: ^[A-Za-z0-9+/]*={0,2}$
-
     view_type: text_field
 
   password:
@@ -71,7 +65,6 @@ data:
     type: string
     required: false
     regex: ^[A-Za-z0-9+/]*={0,2}$
-
     view_type: text_field
 
 stringData:
@@ -81,8 +74,6 @@ stringData:
     description: API key for authentication (will be encoded server-side)
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
 
   database-url:
@@ -91,6 +82,4 @@ stringData:
     description: Database connection string (will be encoded server-side)
     type: string
     required: false
-    regex: .*
-
     view_type: text_field

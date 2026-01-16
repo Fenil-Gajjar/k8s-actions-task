@@ -1,4 +1,4 @@
-action_type: storageclass
+action_type: StorageClass: AWS EBS gp3
 action_type_description: Cluster StorageClass for AWS EBS gp3 volumes.
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^storage\.k8s\.io\/v1$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^StorageClass$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
 provisioner:
@@ -38,8 +35,6 @@ provisioner:
   description: Driver for provisioning volumes
   type: string
   required: true
-  regex: .*
-
   view_type: text_field
 
 reclaimPolicy:
@@ -49,7 +44,6 @@ reclaimPolicy:
   type: string
   required: true
   regex: ^(Delete|Retain)$
-
   view_type: dropdown
   dropdown_values: Delete,Retain
 
@@ -60,7 +54,6 @@ volumeBindingMode:
   type: string
   required: true
   regex: ^(Immediate|WaitForFirstConsumer)$
-
   view_type: dropdown
   dropdown_values: Immediate,WaitForFirstConsumer
 
@@ -71,7 +64,6 @@ allowVolumeExpansion:
   type: boolean
   required: false
   regex: ^(true|false)$
-
   view_type: dropdown
   dropdown_values: true,false
 
@@ -82,8 +74,6 @@ parameters:
     description: Volume type (e.g. gp3)
     type: string
     required: true
-    regex: .*
-
     view_type: text_field
   iops:
     label: IOPS
@@ -92,7 +82,6 @@ parameters:
     type: string
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   throughput:
     label: Throughput
@@ -101,7 +90,6 @@ parameters:
     type: string
     required: false
     regex: ^[0-9]+$
-
     view_type: text_field
   fsType:
     label: Filesystem Type
@@ -109,8 +97,6 @@ parameters:
     description: Filesystem type (ext4, xfs)
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
   encrypted:
     label: Encrypted
@@ -119,6 +105,5 @@ parameters:
     type: string
     required: false
     regex: ^(true|false)$
-
     view_type: dropdown
     dropdown_values: true,false

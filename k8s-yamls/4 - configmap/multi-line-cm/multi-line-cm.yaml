@@ -1,4 +1,4 @@
-action_type: configmap
+action_type: Multi Line Cm
 action_type_description: A ConfigMap with multi-line text data storing application properties configuration file content
 
 apiVersion:
@@ -8,7 +8,6 @@ apiVersion:
   type: string
   required: true
   regex: ^v[0-9]+[a-z0-9]*$
-
   view_type: text_field
 
 kind:
@@ -18,7 +17,6 @@ kind:
   type: string
   required: true
   regex: ^ConfigMap$
-
   view_type: text_field
 
 metadata:
@@ -29,7 +27,6 @@ metadata:
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: text_field
 
   namespace:
@@ -37,9 +34,8 @@ metadata:
     editable: true
     description: Namespace where the ConfigMap will be created
     type: string
-    required: false
+    required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-
     view_type: dropdown
 
 data:
@@ -49,6 +45,4 @@ data:
     description: Multi-line application properties configuration (properties format)
     type: string
     required: false
-    regex: .*
-
     view_type: text_field
