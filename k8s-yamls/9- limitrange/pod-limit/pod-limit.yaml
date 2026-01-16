@@ -1,5 +1,5 @@
-action_type: LimitRange: Pod Resource Limits
-action_type_description: Defines pod-level resource min/max constraints for the `default` namespace to enforce resource boundaries for pods.
+action_type: LimitRange Pod Resource Limits
+action_type_description: LimitRange setting minimum and maximum limits for Pods.
 
 apiVersion:
   label: API Version

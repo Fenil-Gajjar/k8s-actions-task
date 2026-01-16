@@ -1,5 +1,5 @@
-action_type: Network Policy: Allow External CIDR
-action_type_description: Allows traffic from specific external IPs.
+action_type: Network Policy Allow External CIDR
+action_type_description: Network Policy allowing traffic from specific IP ranges.
 
 apiVersion:
   label: API Version

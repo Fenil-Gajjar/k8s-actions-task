@@ -1,5 +1,5 @@
-action_type: Resource Quota: Storage Limits
-action_type_description: Enforces storage-related hard limits in the `development` namespace (PVC count and total requested/ephemeral storage caps).
+action_type: Resource Quota Storage Limits
+action_type_description: Resource Quota limiting total storage consumption.
 
 apiVersion:
   label: API Version

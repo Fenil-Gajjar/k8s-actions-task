@@ -1,5 +1,5 @@
-action_type: Namespace
-action_type_description: A Namespace resource to logically partition cluster resources for production backend services with team ownership labels
+action_type: Namespace Configuration
+action_type_description: Namespace to isolate resources.
 
 apiVersion:
   label: API Version

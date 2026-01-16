@@ -1,5 +1,5 @@
-action_type: Emptydir Hostpath Volume
-action_type_description: A Pod demonstrating EmptyDir and HostPath volume mounting for temporary and node-level storage access
+action_type: Pod With EmptyDir And HostPath
+action_type_description: Pod using EmptyDir and HostPath volumes.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Resource Quota: Object Count Limits
-action_type_description: Restricts counts of various resource types in the `development` namespace to control object sprawl.
+action_type: Resource Quota Object Count Limits
+action_type_description: Resource Quota limiting the count of objects in a namespace.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Volume Dep
-action_type_description: A Deployment with volume mounts (emptyDir and hostPath) for temporary cache and persistent logs storage with rolling update strategy
+action_type: Deployment With Volumes
+action_type_description: Deployment with persistent volume mounts.
 
 apiVersion:
   label: API Version

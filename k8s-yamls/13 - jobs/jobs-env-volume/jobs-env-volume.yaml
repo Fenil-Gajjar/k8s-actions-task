@@ -1,5 +1,5 @@
-action_type: Job with Env Vars and Volumes
-action_type_description: Job that uses environment variables and volumes to process data.
+action_type: Job With Env Vars And Volumes
+action_type_description: Job using environment variables and volumes.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Svc Token
-action_type_description: A service-account token Secret for pod authentication and in-cluster API access
+action_type: Secret Service Account Token
+action_type_description: Secret storing a Service Account token.
 
 apiVersion:
   label: API Version

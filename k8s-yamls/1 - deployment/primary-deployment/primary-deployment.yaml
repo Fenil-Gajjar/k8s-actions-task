@@ -1,5 +1,5 @@
 action_type: Primary Deployment
-action_type_description: A primary Deployment with 3 replicas, resource limits, health checks (liveness and readiness probes), and environment variables
+action_type_description: Primary Deployment configuration for an application.
 
 apiVersion:
   label: API Version

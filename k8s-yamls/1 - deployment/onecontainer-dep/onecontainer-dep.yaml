@@ -1,5 +1,5 @@
-action_type: Onecontainer Dep
-action_type_description: A Deployment with a single container, resource requests and limits, and environment variables for basic application deployment
+action_type: Single Container Deployment
+action_type_description: Deployment managing a single-container application.
 
 apiVersion:
   label: API Version

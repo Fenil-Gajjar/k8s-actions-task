@@ -1,5 +1,5 @@
-action_type: Network Policy: Multi-Tier Allow/Deny Rules
-action_type_description: Multi-tier app policy allowing logic between tiers.
+action_type: Network Policy Multi Tier Allow Deny Rules
+action_type_description: Network Policy with complex allow and deny rules.
 
 apiVersion:
   label: API Version

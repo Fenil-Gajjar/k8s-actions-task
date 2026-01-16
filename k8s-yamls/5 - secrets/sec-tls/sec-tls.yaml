@@ -1,5 +1,5 @@
-action_type: Sec Tls
-action_type_description: A TLS Secret storing base64-encoded certificate and private key for TLS termination
+action_type: Secret TLS Config
+action_type_description: Secret storing TLS certificates.
 
 apiVersion:
   label: API Version

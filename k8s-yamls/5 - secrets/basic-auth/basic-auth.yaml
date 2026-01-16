@@ -1,5 +1,5 @@
-action_type: Basic Auth
-action_type_description: A basic-auth Secret holding username and password credentials for authentication
+action_type: Secret Basic Auth
+action_type_description: Secret storing basic authentication credentials.
 
 apiVersion:
   label: API Version

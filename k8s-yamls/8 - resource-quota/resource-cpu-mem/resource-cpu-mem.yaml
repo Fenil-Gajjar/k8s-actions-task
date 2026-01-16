@@ -1,5 +1,5 @@
-action_type: Resource Quota: Compute Resource Limits
-action_type_description: Limits total CPU and memory requests/limits in the `development` namespace to control resource consumption.
+action_type: Resource Quota Compute Resource Limits
+action_type_description: Resource Quota limiting total CPU and memory usage.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Minimal Dep
-action_type_description: A minimal Deployment with a single replica running a basic nginx container without advanced configuration
+action_type: Minimal Deployment
+action_type_description: A minimal Deployment configuration.
 
 apiVersion:
   label: API Version

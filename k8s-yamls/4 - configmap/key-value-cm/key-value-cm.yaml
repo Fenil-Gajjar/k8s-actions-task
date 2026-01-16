@@ -1,5 +1,5 @@
-action_type: Key Value Cm
-action_type_description: A ConfigMap with key-value configuration data for application runtime settings and feature flags
+action_type: ConfigMap Key Value Pairs
+action_type_description: ConfigMap storing configuration as key-value pairs.
 
 apiVersion:
   label: API Version

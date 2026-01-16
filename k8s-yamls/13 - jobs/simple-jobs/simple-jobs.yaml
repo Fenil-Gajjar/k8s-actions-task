@@ -1,5 +1,5 @@
-action_type: Simple BusyBox Job
-action_type_description: Runs a one-off BusyBox job that prints a message.
+action_type: Simple Container Job
+action_type_description: A simple Job running a defined task.
 
 apiVersion:
   label: API Version

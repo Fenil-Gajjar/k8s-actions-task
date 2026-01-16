@@ -1,5 +1,5 @@
-action_type: Minimal Pod
-action_type_description: A minimal Pod manifest with a single container, useful for basic testing and Pod creation verification
+action_type: Minimal Pod Configuration
+action_type_description: A minimal Pod configuration with a single container.
 
 apiVersion:
   label: API Version

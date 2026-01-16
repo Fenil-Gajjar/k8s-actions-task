@@ -1,5 +1,5 @@
-action_type: Mutliport Svc
-action_type_description: A ClusterIP Service exposing multiple ports (HTTP and HTTPS) to select backend API pods for internal cluster communication
+action_type: Multi Port Service
+action_type_description: Service exposing multiple ports.
 
 apiVersion:
   label: API Version

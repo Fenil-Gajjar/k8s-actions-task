@@ -1,5 +1,5 @@
-action_type: Headless Service for StatefulSet
-action_type_description: Headless Service to provide stable network identities (DNS) for StatefulSet.
+action_type: Headless Service For StatefulSet
+action_type_description: Headless Service providing stable network IDs for StatefulSet.
 
 apiVersion:
   label: API Version

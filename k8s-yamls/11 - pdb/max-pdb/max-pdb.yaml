@@ -1,5 +1,5 @@
-action_type: Pod Disruption Budget: Max Unavailable
-action_type_description: Ensures maximum unavailability for an application during disruptions.
+action_type: Pod Disruption Budget Max Unavailable
+action_type_description: Pod Disruption Budget specifying maximum unavailability.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Service Account with Image Pull Secrets
-action_type_description: ServiceAccount in `default` that references `my-registry-secret` for pulling images from private registries.
+action_type: Service Account With Image Pull Secrets
+action_type_description: Service Account configured with image pull secrets.
 
 apiVersion:
   label: API Version

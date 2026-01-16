@@ -1,5 +1,5 @@
-action_type: Opaque Sec
-action_type_description: An Opaque Secret containing generic key-value application credentials and connection strings
+action_type: Secret Opaque Data
+action_type_description: Secret storing arbitrary opaque data.
 
 apiVersion:
   label: API Version

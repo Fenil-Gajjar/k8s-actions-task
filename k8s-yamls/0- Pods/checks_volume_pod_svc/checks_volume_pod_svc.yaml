@@ -1,5 +1,5 @@
-action_type: Checks Volume Pod Svc
-action_type_description: A Pod with volume mounting, resource limits, and service account configuration for running containers with cache storage
+action_type: Pod With Volume Check
+action_type_description: Pod having a readiness check and a volume mount.
 
 apiVersion:
   label: API Version

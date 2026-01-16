@@ -1,5 +1,5 @@
-action_type: StorageClass: AWS EBS gp3
-action_type_description: Cluster StorageClass for AWS EBS gp3 volumes.
+action_type: StorageClass AWS EBS General Purpose
+action_type_description: StorageClass for AWS EBS volumes.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Persistent Volume Claim (ReadWriteOnce)
-action_type_description: Creates a namespaced PVC requesting storage.
+action_type: Persistent Volume Claim ReadWriteOnce
+action_type_description: Persistent Volume Claim requesting storage.
 
 apiVersion:
   label: API Version

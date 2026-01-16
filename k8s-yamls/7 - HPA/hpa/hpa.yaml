@@ -1,5 +1,5 @@
-action_type: Horizontal Pod Autoscaler (CPU/Memory)
-action_type_description: Creates an HPA for `my-app` Deployment, scaling based on CPU and memory utilization.
+action_type: Horizontal Pod Autoscaler CPU Memory
+action_type_description: Horizontal Pod Autoscaler based on CPU and memory usage.
 
 apiVersion:
   label: API Version

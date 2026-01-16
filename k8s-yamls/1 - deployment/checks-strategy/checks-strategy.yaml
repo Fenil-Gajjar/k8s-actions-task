@@ -1,5 +1,5 @@
-action_type: Checks Strategy
-action_type_description: A Deployment with RollingUpdate strategy demonstrating controlled pod rollouts with health checks and resource limits
+action_type: Deployment With Strategy Checks
+action_type_description: Deployment with liveness/readiness probes and update strategy.
 
 apiVersion:
   label: API Version

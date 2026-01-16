@@ -1,5 +1,5 @@
-action_type: Network Policy: Frontend to Backend Ingress
-action_type_description: Allows ingress traffic on port 8080 from frontend-labeled pods to backend pods.
+action_type: Network Policy Frontend To Backend Ingress
+action_type_description: Network Policy allowing ingress from frontend to backend.
 
 apiVersion:
   label: API Version

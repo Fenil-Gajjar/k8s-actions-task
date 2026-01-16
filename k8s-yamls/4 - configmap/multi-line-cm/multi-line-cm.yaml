@@ -1,5 +1,5 @@
-action_type: Multi Line Cm
-action_type_description: A ConfigMap with multi-line text data storing application properties configuration file content
+action_type: ConfigMap Multi Line Data
+action_type_description: ConfigMap storing multi-line configuration data.
 
 apiVersion:
   label: API Version

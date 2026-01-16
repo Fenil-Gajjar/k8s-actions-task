@@ -1,5 +1,5 @@
-action_type: StorageClass: Azure Managed Disk
-action_type_description: Cluster-scoped StorageClass for Azure managed disks.
+action_type: StorageClass Azure Managed Disk
+action_type_description: StorageClass for Azure Managed Disks.
 
 apiVersion:
   label: API Version

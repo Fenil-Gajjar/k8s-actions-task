@@ -1,5 +1,5 @@
-action_type: StorageClass: GCP PD SSD
-action_type_description: Cluster StorageClass for GCP PD SSD volumes.
+action_type: StorageClass GCP Persistent Disk SSD
+action_type_description: StorageClass for GCP Persistent Disks.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Scheduled CronJob (Daily Backup)
-action_type_description: Schedules a daily backup job at 2 AM.
+action_type: Scheduled CronJob Daily Backup
+action_type_description: CronJob running a scheduled task at specified intervals.
 
 apiVersion:
   label: API Version

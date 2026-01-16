@@ -1,5 +1,5 @@
-action_type: StatefulSet with PVC Templates
-action_type_description: Manages stateful web replicas with per-pod PersistentVolumeClaims and a headless service.
+action_type: StatefulSet With PVC Templates
+action_type_description: StatefulSet managing stateful application with PVC templates.
 
 apiVersion:
   label: API Version

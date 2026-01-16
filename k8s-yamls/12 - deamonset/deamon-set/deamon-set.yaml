@@ -1,5 +1,5 @@
-action_type: DaemonSet: Nginx on All Nodes
-action_type_description: Runs a copy of `nginx` pod on every node in the cluster.
+action_type: DaemonSet Running Containers On All Nodes
+action_type_description: DaemonSet running a pod replica on every node.
 
 apiVersion:
   label: API Version

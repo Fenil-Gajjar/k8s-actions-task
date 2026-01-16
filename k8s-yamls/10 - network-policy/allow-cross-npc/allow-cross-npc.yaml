@@ -1,5 +1,5 @@
-action_type: Network Policy: Allow Cross-Namespace Traffic
-action_type_description: Allow traffic from specific namespace.
+action_type: Network Policy Allow Cross Namespace Traffic
+action_type_description: Network Policy allowing traffic from specific namespaces.
 
 apiVersion:
   label: API Version

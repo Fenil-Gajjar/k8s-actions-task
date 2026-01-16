@@ -1,5 +1,5 @@
-action_type: One Container Pod
-action_type_description: A single-container Pod running nginx with resource requests/limits and environment variables for basic application deployment
+action_type: Single Container Pod
+action_type_description: A standard Pod running a single container.
 
 apiVersion:
   label: API Version

@@ -1,5 +1,5 @@
-action_type: Job with Resource Limits and Deadline
-action_type_description: Batch job running a short Python task with resource requests/limits and an overall deadline.
+action_type: Job With Resource Limits And Deadline
+action_type_description: Job configured with resource limits and active deadline.
 
 apiVersion:
   label: API Version

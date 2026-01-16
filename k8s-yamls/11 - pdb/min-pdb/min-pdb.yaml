@@ -1,5 +1,5 @@
-action_type: Pod Disruption Budget: Min Available
-action_type_description: Ensures minimum availability for an application during disruptions.
+action_type: Pod Disruption Budget Min Available
+action_type_description: Pod Disruption Budget specifying minimum availability.
 
 apiVersion:
   label: API Version

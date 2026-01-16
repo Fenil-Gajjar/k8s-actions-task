@@ -1,5 +1,5 @@
-action_type: Sec Ssh
-action_type_description: An SSH authentication Secret storing base64-encoded SSH private key for authentication
+action_type: Secret SSH Auth
+action_type_description: Secret storing SSH authentication keys.
 
 apiVersion:
   label: API Version

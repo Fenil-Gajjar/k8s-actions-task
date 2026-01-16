@@ -1,5 +1,5 @@
-action_type: LimitRange: Container Defaults
-action_type_description: Sets default requests/limits and min/max for containers in the `development` namespace to provide sane defaults for pod resources.
+action_type: LimitRange Container Defaults
+action_type_description: LimitRange setting default requests and limits for containers.
 
 apiVersion:
   label: API Version

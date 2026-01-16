@@ -1,5 +1,5 @@
 action_type: Standard Service Account
-action_type_description: Creates a namespaced ServiceAccount `my-service-account` in `default`; controls pod token mounting and can be referenced by pods.
+action_type_description: Service Account for workload identity.
 
 apiVersion:
   label: API Version

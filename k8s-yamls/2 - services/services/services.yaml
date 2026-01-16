@@ -1,5 +1,5 @@
-action_type: Services
-action_type_description: A ClusterIP Service exposing frontend pods on port 80 for internal cluster communication
+action_type: Standard Service
+action_type_description: Standard Service exposing an application.
 
 apiVersion:
   label: API Version
