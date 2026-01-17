@@ -1,4 +1,4 @@
-action_type: Deployment With Volumes
+action_type: Deployment With Volumes and Volume Mounts
 action_type_description: Deployment with persistent volume mounts.
 
 apiVersion:

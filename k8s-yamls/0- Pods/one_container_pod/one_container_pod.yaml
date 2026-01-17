@@ -1,4 +1,4 @@
-action_type: Single Container Pod
+action_type: Single Container Pod deployment
 action_type_description: A standard Pod running a single container.
 
 apiVersion:

@@ -1,4 +1,4 @@
-action_type: Pod With EmptyDir And HostPath
+action_type: Pod With EmptyDir And HostPath Volumes
 action_type_description: Pod using EmptyDir and HostPath volumes.
 
 apiVersion:

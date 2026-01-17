@@ -1,4 +1,4 @@
-action_type: Minimal Deployment
+action_type: Minimal Deployment configuration
 action_type_description: A minimal Deployment configuration.
 
 apiVersion:

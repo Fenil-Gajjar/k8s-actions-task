@@ -1,4 +1,4 @@
-action_type: Single Container Deployment
+action_type: Single Container Deployment with Resources and Env
 action_type_description: Deployment managing a single-container application.
 
 apiVersion:

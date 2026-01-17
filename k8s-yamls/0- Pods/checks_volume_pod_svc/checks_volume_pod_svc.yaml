@@ -1,4 +1,4 @@
-action_type: Pod With Volume Check
+action_type: Pod with Probes Resources and Volume Mount
 action_type_description: Pod having a readiness check and a volume mount.
 
 apiVersion:

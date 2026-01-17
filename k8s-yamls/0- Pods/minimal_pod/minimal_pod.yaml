@@ -1,4 +1,4 @@
-action_type: Minimal Pod Configuration
+action_type: Minimal Pod Configuration deployment
 action_type_description: A minimal Pod configuration with a single container.
 
 apiVersion:

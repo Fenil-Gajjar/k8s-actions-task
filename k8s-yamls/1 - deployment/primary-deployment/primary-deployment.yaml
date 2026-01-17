@@ -1,4 +1,4 @@
-action_type: Primary Deployment
+action_type: Primary Deployment with Resources Probes and Env
 action_type_description: Primary Deployment configuration for an application.
 
 apiVersion:
