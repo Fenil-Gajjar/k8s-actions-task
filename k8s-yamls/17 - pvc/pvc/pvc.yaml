@@ -1,68 +1,68 @@
-action_type: Persistent Volume Claim ReadWriteOnce
-action_type_description: Persistent Volume Claim requesting storage.
+action_type: "Persistent Volume Claim ReadWriteOnce"
+action_type_description: "Persistent Volume Claim requesting storage."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^PersistentVolumeClaim$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the PVC
+    description: "Name of the PVC"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace where the PVC will be created
+    description: "Namespace where the PVC will be created"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   accessModes:
   - label: Access Mode
     editable: true
-    description: Access mode for the PVC
+    description: "Access mode for the PVC"
     type: string
     required: true
     regex: ^(ReadWriteOnce|ReadOnlyMany|ReadWriteMany)$
-    view_type: dropdown
-    dropdown_values: ReadWriteOnce,ReadOnlyMany,ReadWriteMany
+    view_type: "dropdown"
+    dropdown_values: "ReadWriteOnce,ReadOnlyMany,ReadWriteMany"
   resources:
     requests:
       storage:
-        label: Storage Request
+        label: "Storage Request"
         editable: true
-        description: Requested storage capacity
+        description: "Requested storage capacity"
         type: string
         required: true
         regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-        view_type: text_field
+        view_type: "text_field"
   storageClassName:
-    label: Storage Class
+    label: "Storage Class"
     editable: true
-    description: StorageClass to use for provisioning
+    description: "StorageClass to use for provisioning"
     type: string
     required: false
     regex: ^[a-z0-9-]+$
-    view_type: text_field
+    view_type: "text_field"

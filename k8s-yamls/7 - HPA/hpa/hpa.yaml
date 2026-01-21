@@ -1,213 +1,213 @@
-action_type: Horizontal Pod Autoscaler CPU Memory
-action_type_description: Horizontal Pod Autoscaler based on CPU and memory usage.
+action_type: "Horizontal Pod Autoscaler CPU Memory"
+action_type_description: "Horizontal Pod Autoscaler based on CPU and memory usage."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^autoscaling\/v2$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^HorizontalPodAutoscaler$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Identifier for this HPA
+    description: "Identifier for this HPA"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace where the HPA exists
+    description: "Namespace where the HPA exists"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   scaleTargetRef:
     apiVersion:
-      label: API Version
+      label: "API Version"
       editable: true
-      description: Target resource API version
+      description: "Target resource API version"
       type: string
       required: true
       regex: ^apps\/v1$
-      view_type: text_field
+      view_type: "text_field"
     kind:
-      label: Kind
+      label: "Kind"
       editable: true
-      description: Target resource kind to scale
+      description: "Target resource kind to scale"
       type: string
       required: true
       regex: ^Deployment$
-      view_type: text_field
+      view_type: "text_field"
     name:
-      label: Target Name
+      label: "Target Name"
       editable: true
-      description: Name of the target Deployment
+      description: "Name of the target Deployment"
       type: string
       required: true
       regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-      view_type: text_field
+      view_type: "text_field"
 
   minReplicas:
-    label: Min Replicas
+    label: "Min Replicas"
     editable: true
-    description: Minimum number of replicas
+    description: "Minimum number of replicas"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
 
   maxReplicas:
-    label: Max Replicas
+    label: "Max Replicas"
     editable: true
-    description: Maximum number of replicas
+    description: "Maximum number of replicas"
     type: integer
     required: true
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
 
   metrics:
   - type:
-      label: Metric Type
+      label: "Metric Type"
       editable: true
-      description: Type of metric
+      description: "Type of metric"
       type: string
       required: true
       regex: ^(Resource|Pods|Object|External)$
-      view_type: dropdown
-      dropdown_values: Resource,Pods,Object,External
+      view_type: "dropdown"
+      dropdown_values: "Resource,Pods,Object,External"
     resource:
       name:
-        label: Resource Name
+        label: "Resource Name"
         editable: true
-        description: Resource metric name (cpu/memory)
+        description: "Resource metric name (cpu/memory)"
         type: string
         required: true
         regex: ^(cpu|memory)$
-        view_type: dropdown
-        dropdown_values: cpu,memory
+        view_type: "dropdown"
+        dropdown_values: "cpu,memory"
       target:
         type:
-          label: Target Type
+          label: "Target Type"
           editable: true
-          description: Type of target
+          description: "Type of target"
           type: string
           required: true
           regex: ^(Utilization|AverageValue|Value)$
-          view_type: dropdown
-          dropdown_values: Utilization,AverageValue,Value
+          view_type: "dropdown"
+          dropdown_values: "Utilization,AverageValue,Value"
         averageUtilization:
-          label: Average Utilization
+          label: "Average Utilization"
           editable: true
-          description: Target average utilization percentage
+          description: "Target average utilization percentage"
           type: integer
           required: false
           regex: ^[0-9]+$
-          view_type: text_field
+          view_type: "text_field"
 
   behavior:
     scaleDown:
       stabilizationWindowSeconds:
-        label: Stabilization Window
+        label: "Stabilization Window"
         editable: true
-        description: Window to stabilize scale-down
+        description: "Window to stabilize scale-down"
         type: integer
         required: false
         regex: ^[0-9]+$
-        view_type: text_field
+        view_type: "text_field"
       policies:
       - type:
-          label: Policy Type
+          label: "Policy Type"
           editable: true
-          description: Type of policy
+          description: "Type of policy"
           type: string
           required: true
           regex: ^(Percent|Pods)$
-          view_type: dropdown
-          dropdown_values: Percent,Pods
+          view_type: "dropdown"
+          dropdown_values: "Percent,Pods"
         value:
-          label: Value
+          label: "Value"
           editable: true
-          description: Policy value
+          description: "Policy value"
           type: integer
           required: true
           regex: ^[0-9]+$
-          view_type: text_field
+          view_type: "text_field"
         periodSeconds:
-          label: Period Seconds
+          label: "Period Seconds"
           editable: true
-          description: Period for the policy evaluation
+          description: "Period for the policy evaluation"
           type: integer
           required: true
           regex: ^[0-9]+$
-          view_type: text_field
+          view_type: "text_field"
       selectPolicy:
-        label: Select Policy
+        label: "Select Policy"
         editable: true
-        description: Policy selection strategy
+        description: "Policy selection strategy"
         type: string
         required: false
         regex: ^(Min|Max|Disabled)$
-        view_type: dropdown
-        dropdown_values: Min,Max,Disabled
+        view_type: "dropdown"
+        dropdown_values: "Min,Max,Disabled"
     scaleUp:
       stabilizationWindowSeconds:
-        label: Stabilization Window
+        label: "Stabilization Window"
         editable: true
-        description: Window to stabilize scale-up
+        description: "Window to stabilize scale-up"
         type: integer
         required: false
         regex: ^[0-9]+$
-        view_type: text_field
+        view_type: "text_field"
       policies:
       - type:
-          label: Policy Type
+          label: "Policy Type"
           editable: true
-          description: Type of policy
+          description: "Type of policy"
           type: string
           required: true
           regex: ^(Percent|Pods)$
-          view_type: dropdown
-          dropdown_values: Percent,Pods
+          view_type: "dropdown"
+          dropdown_values: "Percent,Pods"
         value:
-          label: Value
+          label: "Value"
           editable: true
-          description: Policy value
+          description: "Policy value"
           type: integer
           required: true
           regex: ^[0-9]+$
-          view_type: text_field
+          view_type: "text_field"
         periodSeconds:
-          label: Period Seconds
+          label: "Period Seconds"
           editable: true
-          description: Period for the policy evaluation
+          description: "Period for the policy evaluation"
           type: integer
           required: true
           regex: ^[0-9]+$
-          view_type: text_field
+          view_type: "text_field"
       selectPolicy:
-        label: Select Policy
+        label: "Select Policy"
         editable: true
-        description: Policy selection strategy
+        description: "Policy selection strategy"
         type: string
         required: false
         regex: ^(Min|Max|Disabled)$
-        view_type: dropdown
-        dropdown_values: Min,Max,Disabled
+        view_type: "dropdown"
+        dropdown_values: "Min,Max,Disabled"

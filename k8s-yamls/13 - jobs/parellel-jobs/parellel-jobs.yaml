@@ -1,99 +1,99 @@
-action_type: Parallel Job Execution
-action_type_description: Job running multiple pods in parallel.
+action_type: "Parallel Job Execution"
+action_type_description: "Job running multiple pods in parallel."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^batch\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^Job$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the job
+    description: "Name of the job"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace to run job in
+    description: "Namespace to run job in"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   parallelism:
-    label: Parallelism
+    label: "Parallelism"
     editable: true
-    description: Number of pods to run in parallel
+    description: "Number of pods to run in parallel"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   completions:
-    label: Completions
+    label: "Completions"
     editable: true
-    description: Total number of successful completions desired
+    description: "Total number of successful completions desired"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   backoffLimit:
-    label: Backoff Limit
+    label: "Backoff Limit"
     editable: true
-    description: Retry attempts for failed pods
+    description: "Retry attempts for failed pods"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   template:
     spec:
       restartPolicy:
-        label: Restart Policy
+        label: "Restart Policy"
         editable: true
-        description: Job restart policy
+        description: "Job restart policy"
         type: string
         required: true
         regex: ^(Never|OnFailure)$
-        view_type: dropdown
-        dropdown_values: Never,OnFailure
+        view_type: "dropdown"
+        dropdown_values: "Never,OnFailure"
       containers:
       - name:
-          label: Container Name
+          label: "Container Name"
           editable: true
-          description: Name of the container
+          description: "Name of the container"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
         image:
-          label: Image
+          label: "Image"
           editable: true
-          description: Container image
+          description: "Container image"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"
         command:
         - label: Command
           editable: true
-          description: Command to execute
+          description: "Command to execute"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"

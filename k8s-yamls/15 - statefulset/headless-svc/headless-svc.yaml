@@ -1,75 +1,75 @@
-action_type: Headless Service For StatefulSet
-action_type_description: Headless Service providing stable network IDs for StatefulSet.
+action_type: "Headless Service For StatefulSet"
+action_type_description: "Headless Service providing stable network IDs for StatefulSet."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^Service$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the service
+    description: "Name of the service"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace for the service
+    description: "Namespace for the service"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   clusterIP:
-    label: Cluster IP
+    label: "Cluster IP"
     editable: true
-    description: IP address of the service (None for headless)
+    description: "IP address of the service (None for headless)"
     type: string
     required: true
     regex: ^None$
-    view_type: text_field
+    view_type: "text_field"
   selector:
     app:
-      label: Selector App
+      label: "Selector App"
       editable: true
-      description: Selects pods that belong to the StatefulSet
+      description: "Selects pods that belong to the StatefulSet"
       type: string
       required: true
       regex: ^[a-z0-9-]+$
-      view_type: text_field
+      view_type: "text_field"
   ports:
   - port:
-      label: Port
+      label: "Port"
       editable: true
-      description: Service exposed port
+      description: "Service exposed port"
       type: integer
       required: true
       regex: ^[0-9]+$
-      view_type: text_field
+      view_type: "text_field"
     targetPort:
-      label: Target Port
+      label: "Target Port"
       editable: true
-      description: Target container port
+      description: "Target container port"
       type: integer
       required: true
       regex: ^[0-9]+$
-      view_type: text_field
+      view_type: "text_field"

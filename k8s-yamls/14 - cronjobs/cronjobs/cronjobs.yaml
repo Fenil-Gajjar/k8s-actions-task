@@ -1,107 +1,107 @@
-action_type: Scheduled CronJob Daily Backup
-action_type_description: CronJob running a scheduled task at specified intervals.
+action_type: "Scheduled CronJob Daily Backup"
+action_type_description: "CronJob running a scheduled task at specified intervals."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^batch\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^CronJob$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the CronJob
+    description: "Name of the CronJob"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace where CronJob runs
+    description: "Namespace where CronJob runs"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   schedule:
-    label: Schedule
+    label: "Schedule"
     editable: true
-    description: Cron schedule expression
+    description: "Cron schedule expression"
     type: string
     required: true
-    view_type: text_field
+    view_type: "text_field"
   successfulJobsHistoryLimit:
-    label: History Limit (Success)
+    label: "History Limit (Success)"
     editable: true
-    description: Retain this many successful job runs
+    description: "Retain this many successful job runs"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   failedJobsHistoryLimit:
-    label: History Limit (Failed)
+    label: "History Limit (Failed)"
     editable: true
-    description: Retain this many failed job runs
+    description: "Retain this many failed job runs"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   jobTemplate:
     spec:
       template:
         spec:
           restartPolicy:
-            label: Restart Policy
+            label: "Restart Policy"
             editable: true
-            description: Job restart policy
+            description: "Job restart policy"
             type: string
             required: true
             regex: ^(Never|OnFailure)$
-            view_type: dropdown
-            dropdown_values: Never,OnFailure
+            view_type: "dropdown"
+            dropdown_values: "Never,OnFailure"
           containers:
           - name:
-              label: Container Name
+              label: "Container Name"
               editable: true
-              description: Name of the container
+              description: "Name of the container"
               type: string
               required: true
               regex: ^[a-z0-9-]+$
-              view_type: text_field
+              view_type: "text_field"
             image:
-              label: Image
+              label: "Image"
               editable: true
-              description: Container image
+              description: "Container image"
               type: string
               required: true
-              view_type: text_field
+              view_type: "text_field"
             command:
             - label: Command
               editable: true
-              description: Command to execute
+              description: "Command to execute"
               type: string
               required: true
-              view_type: text_field
+              view_type: "text_field"
             args:
             - label: Arguments
               editable: true
-              description: Arguments for the command
+              description: "Arguments for the command"
               type: string
               required: false
-              view_type: text_field
+              view_type: "text_field"

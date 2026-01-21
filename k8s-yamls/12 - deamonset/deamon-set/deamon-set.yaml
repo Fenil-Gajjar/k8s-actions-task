@@ -1,133 +1,133 @@
-action_type: DaemonSet Running Containers On All Nodes
-action_type_description: DaemonSet running a pod replica on every node.
+action_type: "DaemonSet Running Containers On All Nodes"
+action_type_description: "DaemonSet running a pod replica on every node."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^apps\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^DaemonSet$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the DaemonSet
+    description: "Name of the DaemonSet"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace for the DaemonSet
+    description: "Namespace for the DaemonSet"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
   
   labels:
     app:
-      label: App Label
+      label: "App Label"
       editable: true
-      description: Label group for the DaemonSet
+      description: "Label group for the DaemonSet"
       type: string
       required: true
       regex: ^[a-z0-9-]+$
-      view_type: text_field
+      view_type: "text_field"
 
 spec:
   selector:
     matchLabels:
       app:
-        label: Selector Label
+        label: "Selector Label"
         editable: true
-        description: Selector for pods managed by this DaemonSet
+        description: "Selector for pods managed by this DaemonSet"
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
   template:
     metadata:
       labels:
         app:
-          label: Pod Template Label
+          label: "Pod Template Label"
           editable: true
-          description: Labels applied to each daemon pod
+          description: "Labels applied to each daemon pod"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
     spec:
       containers:
       - name:
-          label: Container Name
+          label: "Container Name"
           editable: true
-          description: Name of the container
+          description: "Name of the container"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
         image:
-          label: Image
+          label: "Image"
           editable: true
-          description: Container image
+          description: "Container image"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"
         ports:
         - containerPort:
-            label: Container Port
+            label: "Container Port"
             editable: true
-            description: Port exposed by the container
+            description: "Port exposed by the container"
             type: integer
             required: true
             regex: ^[0-9]+$
-            view_type: text_field
+            view_type: "text_field"
         resources:
           limits:
             memory:
-              label: Memory Limit
+              label: "Memory Limit"
               editable: true
-              description: Maximum memory per pod
+              description: "Maximum memory per pod"
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-              view_type: text_field
+              view_type: "text_field"
             cpu:
-              label: CPU Limit
+              label: "CPU Limit"
               editable: true
-              description: Maximum CPU per pod
+              description: "Maximum CPU per pod"
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-              view_type: text_field
+              view_type: "text_field"
           requests:
             memory:
-              label: Memory Request
+              label: "Memory Request"
               editable: true
-              description: Memory request for scheduling
+              description: "Memory request for scheduling"
               type: string
               required: false
               regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-              view_type: text_field
+              view_type: "text_field"
             cpu:
-              label: CPU Request
+              label: "CPU Request"
               editable: true
-              description: CPU request for scheduling
+              description: "CPU request for scheduling"
               type: string
               required: false
               regex: ^[0-9]+([mun]|\.[0-9]+)?$
-              view_type: text_field
+              view_type: "text_field"

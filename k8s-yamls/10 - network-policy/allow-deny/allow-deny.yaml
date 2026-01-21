@@ -1,128 +1,128 @@
-action_type: Network Policy Multi Tier Allow Deny Rules
-action_type_description: Network Policy with complex allow and deny rules.
+action_type: "Network Policy Multi Tier Allow Deny Rules"
+action_type_description: "Network Policy with complex allow and deny rules."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^networking\.k8s\.io\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^NetworkPolicy$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the policy
+    description: "Name of the policy"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace for the policy
+    description: "Namespace for the policy"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   podSelector:
     matchLabels:
       tier:
-        label: Tier Label
+        label: "Tier Label"
         editable: true
-        description: Selects pods matching this tier
+        description: "Selects pods matching this tier"
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
   policyTypes:
   - label: Policy Type Ingress
     editable: true
-    description: Controls inbound traffic
+    description: "Controls inbound traffic"
     type: string
     required: true
     regex: ^(Ingress|Egress)$
-    view_type: dropdown
-    dropdown_values: Ingress,Egress
+    view_type: "dropdown"
+    dropdown_values: "Ingress,Egress"
   - label: Policy Type Egress
     editable: true
-    description: Controls outbound traffic
+    description: "Controls outbound traffic"
     type: string
     required: true
     regex: ^(Ingress|Egress)$
-    view_type: dropdown
-    dropdown_values: Ingress,Egress
+    view_type: "dropdown"
+    dropdown_values: "Ingress,Egress"
   ingress:
   - from:
     - podSelector:
         matchLabels:
           tier:
-            label: Source Tier
+            label: "Source Tier"
             editable: true
-            description: Allow traffic from frontend tier
+            description: "Allow traffic from frontend tier"
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
     ports:
     - protocol:
-        label: Protocol
+        label: "Protocol"
         editable: true
-        description: Traffic protocol
+        description: "Traffic protocol"
         type: string
         required: true
         regex: ^(TCP|UDP|SCTP)$
-        view_type: dropdown
-        dropdown_values: TCP,UDP,SCTP
+        view_type: "dropdown"
+        dropdown_values: "TCP,UDP,SCTP"
       port:
-        label: Port
+        label: "Port"
         editable: true
-        description: Allowed ingress port
+        description: "Allowed ingress port"
         type: integer
         required: true
         regex: ^[0-9]+$
-        view_type: text_field
+        view_type: "text_field"
   egress:
   - to:
     - podSelector:
         matchLabels:
           tier:
-            label: Destination Tier
+            label: "Destination Tier"
             editable: true
-            description: Allow egress to database tier
+            description: "Allow egress to database tier"
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
     ports:
     - protocol:
-        label: Protocol
+        label: "Protocol"
         editable: true
-        description: Traffic protocol
+        description: "Traffic protocol"
         type: string
         required: true
         regex: ^(TCP|UDP|SCTP)$
-        view_type: dropdown
-        dropdown_values: TCP,UDP,SCTP
+        view_type: "dropdown"
+        dropdown_values: "TCP,UDP,SCTP"
       port:
-        label: Port
+        label: "Port"
         editable: true
-        description: Allowed egress port
+        description: "Allowed egress port"
         type: integer
         required: true
         regex: ^[0-9]+$
-        view_type: text_field
+        view_type: "text_field"

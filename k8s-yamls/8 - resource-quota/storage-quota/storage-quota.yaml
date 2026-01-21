@@ -1,74 +1,74 @@
-action_type: Resource Quota Storage Limits
-action_type_description: Resource Quota limiting total storage consumption.
+action_type: "Resource Quota Storage Limits"
+action_type_description: "Resource Quota limiting total storage consumption."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^ResourceQuota$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Identifier for the ResourceQuota
+    description: "Identifier for the ResourceQuota"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace to enforce the quota
+    description: "Namespace to enforce the quota"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   hard:
     "requests.storage":
-      label: Storage Requests Limit
+      label: "Storage Requests Limit"
       editable: true
-      description: Maximum total requested persistent storage
+      description: "Maximum total requested persistent storage"
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-      view_type: text_field
+      view_type: "text_field"
     persistentvolumeclaims:
-      label: PVC Limit
+      label: "PVC Limit"
       editable: true
-      description: Maximum number of PVCs allowed
+      description: "Maximum number of PVCs allowed"
       type: string
       required: false
       regex: ^[0-9]+$
-      view_type: text_field
+      view_type: "text_field"
     "requests.ephemeral-storage":
-      label: Eph. Storage Requests
+      label: "Eph. Storage Requests"
       editable: true
-      description: Maximum ephemeral storage requests
+      description: "Maximum ephemeral storage requests"
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-      view_type: text_field
+      view_type: "text_field"
     "limits.ephemeral-storage":
-      label: Eph. Storage Limits
+      label: "Eph. Storage Limits"
       editable: true
-      description: Maximum ephemeral storage limits
+      description: "Maximum ephemeral storage limits"
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-      view_type: text_field
+      view_type: "text_field"

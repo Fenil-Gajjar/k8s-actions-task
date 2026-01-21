@@ -1,149 +1,149 @@
-action_type: Job With Env Vars And Volumes
-action_type_description: Job using environment variables and volumes.
+action_type: "Job With Env Vars And Volumes"
+action_type_description: "Job using environment variables and volumes."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^batch\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^Job$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the job
+    description: "Name of the job"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace where job runs
+    description: "Namespace where job runs"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   backoffLimit:
-    label: Backoff Limit
+    label: "Backoff Limit"
     editable: true
-    description: Number of retries before marking job failed
+    description: "Number of retries before marking job failed"
     type: integer
     required: false
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   template:
     metadata:
       labels:
         app:
-          label: App Label
+          label: "App Label"
           editable: true
-          description: Label to identify job pods
+          description: "Label to identify job pods"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
     spec:
       restartPolicy:
-        label: Restart Policy
+        label: "Restart Policy"
         editable: true
-        description: Job restart policy on failure
+        description: "Job restart policy on failure"
         type: string
         required: true
         regex: ^(Never|OnFailure)$
-        view_type: dropdown
-        dropdown_values: Never,OnFailure
+        view_type: "dropdown"
+        dropdown_values: "Never,OnFailure"
       containers:
       - name:
-          label: Container Name
+          label: "Container Name"
           editable: true
-          description: Name of the container
+          description: "Name of the container"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
         image:
-          label: Image
+          label: "Image"
           editable: true
-          description: Container image
+          description: "Container image"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"
         command:
         - label: Command
           editable: true
-          description: Command to execute
+          description: "Command to execute"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"
         args:
         - label: Arguments
           editable: true
-          description: Arguments for the command
+          description: "Arguments for the command"
           type: string
           required: false
-          view_type: text_field
+          view_type: "text_field"
         env:
         - name:
-            label: Env Var Name
+            label: "Env Var Name"
             editable: true
-            description: Environment variable name
+            description: "Environment variable name"
             type: string
             required: true
             regex: ^[A-Z0-9_]+$
-            view_type: text_field
+            view_type: "text_field"
           value:
-            label: Env Var Value
+            label: "Env Var Value"
             editable: true
-            description: Environment variable value
+            description: "Environment variable value"
             type: string
             required: true
-            view_type: text_field
+            view_type: "text_field"
         volumeMounts:
         - name:
-            label: Volume Name
+            label: "Volume Name"
             editable: true
-            description: Name of the volume to mount
+            description: "Name of the volume to mount"
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
           mountPath:
-            label: Mount Path
+            label: "Mount Path"
             editable: true
-            description: Path to mount the volume
+            description: "Path to mount the volume"
             type: string
             required: true
             regex: ^\/.*$
-            view_type: text_field
+            view_type: "text_field"
       volumes:
       - name:
-          label: Volume Name
+          label: "Volume Name"
           editable: true
-          description: Name of the volume
+          description: "Name of the volume"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
         emptyDir:
-          label: EmptyDir
+          label: "EmptyDir"
           editable: true
-          description: EmptyDir volume type
+          description: "EmptyDir volume type"
           type: object
           required: false
-          view_type: text_field
+          view_type: "text_field"

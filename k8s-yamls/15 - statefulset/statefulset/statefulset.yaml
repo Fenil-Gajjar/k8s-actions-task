@@ -1,167 +1,167 @@
-action_type: StatefulSet With PVC Templates
-action_type_description: StatefulSet managing stateful application with PVC templates.
+action_type: "StatefulSet With PVC Templates"
+action_type_description: "StatefulSet managing stateful application with PVC templates."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^apps\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^StatefulSet$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the StatefulSet
+    description: "Name of the StatefulSet"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace where the StatefulSet runs
+    description: "Namespace where the StatefulSet runs"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   serviceName:
-    label: Service Name
+    label: "Service Name"
     editable: true
-    description: Headless service that governs the network identities
+    description: "Headless service that governs the network identities"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
   replicas:
-    label: Replicas
+    label: "Replicas"
     editable: true
-    description: Desired number of pod replicas
+    description: "Desired number of pod replicas"
     type: integer
     required: true
     regex: ^[0-9]+$
-    view_type: text_field
+    view_type: "text_field"
   selector:
     matchLabels:
       app:
-        label: Selector App
+        label: "Selector App"
         editable: true
-        description: Selector to match pods
+        description: "Selector to match pods"
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
   template:
     metadata:
       labels:
         app:
-          label: Pod Label
+          label: "Pod Label"
           editable: true
-          description: Labels applied to pod template
+          description: "Labels applied to pod template"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
     spec:
       containers:
       - name:
-          label: Container Name
+          label: "Container Name"
           editable: true
-          description: Name of the container
+          description: "Name of the container"
           type: string
           required: true
           regex: ^[a-z0-9-]+$
-          view_type: text_field
+          view_type: "text_field"
         image:
-          label: Image
+          label: "Image"
           editable: true
-          description: Container image
+          description: "Container image"
           type: string
           required: true
-          view_type: text_field
+          view_type: "text_field"
         ports:
         - containerPort:
-            label: Container Port
+            label: "Container Port"
             editable: true
-            description: Container port
+            description: "Container port"
             type: integer
             required: true
             regex: ^[0-9]+$
-            view_type: text_field
+            view_type: "text_field"
           name:
-            label: Port Name
+            label: "Port Name"
             editable: true
-            description: Named container port
+            description: "Named container port"
             type: string
             required: false
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
         volumeMounts:
         - name:
-            label: Volume Name
+            label: "Volume Name"
             editable: true
-            description: Name of the volume mount
+            description: "Name of the volume mount"
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
           mountPath:
-            label: Mount Path
+            label: "Mount Path"
             editable: true
-            description: Path to mount the volume
+            description: "Path to mount the volume"
             type: string
             required: true
             regex: ^\/.*$
-            view_type: text_field
+            view_type: "text_field"
   volumeClaimTemplates:
   - metadata:
       name:
-        label: PVC Template Name
+        label: "PVC Template Name"
         editable: true
-        description: PVC template name
+        description: "PVC template name"
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
     spec:
       accessModes:
       - label: Access Mode
         editable: true
-        description: Access mode for the PVC
+        description: "Access mode for the PVC"
         type: string
         required: true
         regex: ^(ReadWriteOnce|ReadOnlyMany|ReadWriteMany)$
-        view_type: dropdown
-        dropdown_values: ReadWriteOnce,ReadOnlyMany,ReadWriteMany
+        view_type: "dropdown"
+        dropdown_values: "ReadWriteOnce,ReadOnlyMany,ReadWriteMany"
       storageClassName:
-        label: Storage Class
+        label: "Storage Class"
         editable: true
-        description: StorageClass for the PVCs
+        description: "StorageClass for the PVCs"
         type: string
         required: false
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
       resources:
         requests:
           storage:
-            label: Storage Request
+            label: "Storage Request"
             editable: true
-            description: Requested storage per replica
+            description: "Requested storage per replica"
             type: string
             required: true
             regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-            view_type: text_field
+            view_type: "text_field"

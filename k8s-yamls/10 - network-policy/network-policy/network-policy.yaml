@@ -1,90 +1,90 @@
-action_type: Network Policy Frontend To Backend Ingress
-action_type_description: Network Policy allowing ingress from frontend to backend.
+action_type: "Network Policy Frontend To Backend Ingress"
+action_type_description: "Network Policy allowing ingress from frontend to backend."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^networking\.k8s\.io\/v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^NetworkPolicy$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: NetworkPolicy name
+    description: "NetworkPolicy name"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace the NetworkPolicy applies to
+    description: "Namespace the NetworkPolicy applies to"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   podSelector:
     matchLabels:
       app:
-        label: Pod Selector
+        label: "Pod Selector"
         editable: true
-        description: Selects backend pods
+        description: "Selects backend pods"
         type: string
         required: true
         regex: ^[a-z0-9-]+$
-        view_type: text_field
+        view_type: "text_field"
   policyTypes:
   - label: Policy Type
     editable: true
-    description: Policy type
+    description: "Policy type"
     type: string
     required: true
     regex: ^(Ingress|Egress)$
-    view_type: dropdown
-    dropdown_values: Ingress,Egress
+    view_type: "dropdown"
+    dropdown_values: "Ingress,Egress"
   ingress:
   - from:
     - podSelector:
         matchLabels:
           app:
-            label: Source Pod Label
+            label: "Source Pod Label"
             editable: true
-            description: Allow ingress from pods labeled frontend
+            description: "Allow ingress from pods labeled frontend"
             type: string
             required: true
             regex: ^[a-z0-9-]+$
-            view_type: text_field
+            view_type: "text_field"
     ports:
     - protocol:
-        label: Protocol
+        label: "Protocol"
         editable: true
-        description: Traffic protocol
+        description: "Traffic protocol"
         type: string
         required: true
         regex: ^(TCP|UDP|SCTP)$
-        view_type: dropdown
-        dropdown_values: TCP,UDP,SCTP
+        view_type: "dropdown"
+        dropdown_values: "TCP,UDP,SCTP"
       port:
-        label: Port
+        label: "Port"
         editable: true
-        description: Port number allowed
+        description: "Port number allowed"
         type: integer
         required: true
         regex: ^[0-9]+$
-        view_type: text_field
+        view_type: "text_field"

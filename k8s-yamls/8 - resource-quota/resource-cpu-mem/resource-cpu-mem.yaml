@@ -1,74 +1,74 @@
-action_type: Resource Quota Compute Resource Limits
-action_type_description: Resource Quota limiting total CPU and memory usage.
+action_type: "Resource Quota Compute Resource Limits"
+action_type_description: "Resource Quota limiting total CPU and memory usage."
 
 apiVersion:
-  label: API Version
+  label: "API Version"
   editable: false
-  description: API group and version for this resource
+  description: "API group and version for this resource"
   type: string
   required: true
   regex: ^v1$
-  view_type: text_field
+  view_type: "text_field"
 
 kind:
-  label: Kind
+  label: "Kind"
   editable: false
-  description: Resource type
+  description: "Resource type"
   type: string
   required: true
   regex: ^ResourceQuota$
-  view_type: text_field
+  view_type: "text_field"
 
 metadata:
   name:
-    label: Name
+    label: "Name"
     editable: true
-    description: Name of the quota object
+    description: "Name of the quota object"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: text_field
+    view_type: "text_field"
 
   namespace:
-    label: Namespace
+    label: "Namespace"
     editable: true
-    description: Namespace to enforce these hard limits
+    description: "Namespace to enforce these hard limits"
     type: string
     required: true
     regex: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$
-    view_type: dropdown
+    view_type: "dropdown"
 
 spec:
   hard:
     "requests.cpu":
-      label: CPU Requests Limit
+      label: "CPU Requests Limit"
       editable: true
-      description: Maximum total CPU requests allowed
+      description: "Maximum total CPU requests allowed"
       type: string
       required: false
       regex: ^[0-9]+([mun]|\.[0-9]+)?$
-      view_type: text_field
+      view_type: "text_field"
     "requests.memory":
-      label: Memory Requests Limit
+      label: "Memory Requests Limit"
       editable: true
-      description: Maximum total memory requests allowed
+      description: "Maximum total memory requests allowed"
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-      view_type: text_field
+      view_type: "text_field"
     "limits.cpu":
-      label: CPU Limits
+      label: "CPU Limits"
       editable: true
-      description: Maximum total CPU limits allowed
+      description: "Maximum total CPU limits allowed"
       type: string
       required: false
       regex: ^[0-9]+([mun]|\.[0-9]+)?$
-      view_type: text_field
+      view_type: "text_field"
     "limits.memory":
-      label: Memory Limits
+      label: "Memory Limits"
       editable: true
-      description: Maximum total memory limits allowed
+      description: "Maximum total memory limits allowed"
       type: string
       required: false
       regex: ^[0-9]+(Ki|Mi|Gi|Ti|Pi|Ei)?$
-      view_type: text_field
+      view_type: "text_field"
