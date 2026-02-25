@@ -19,11 +19,13 @@ spec:
           print("Batch processing completed!")
         resources:
           requests:
-            memory: "64Mi" # requested memory for scheduling
+            memory: "256Mi" # requested memory for scheduling
             cpu: "250m" # requested CPU for scheduling
+            ephemeral-storage: "1Gi"
           limits:
-            memory: "128Mi" # memory limit for runtime
+            memory: "512Mi" # memory limit for runtime
             cpu: "500m" # CPU limit for runtime
+            ephemeral-storage: "2Gi"
       restartPolicy: OnFailure # restart pods on failure according to job policy
   backoffLimit: 2 # number of retries before marking job failed
 
