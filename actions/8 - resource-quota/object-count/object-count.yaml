@@ -10,12 +10,12 @@ spec:
     configmaps: "20" # maximum number of ConfigMaps allowed
     secrets: "20" # maximum number of Secrets allowed
     replicationcontrollers: "10" # maximum number of ReplicationControllers
-    deployments.apps: "15" # maximum number of Deployments (apps/v1)
-    statefulsets.apps: "5" # maximum number of StatefulSets
-    jobs.batch: "10" # maximum number of Jobs (batch/v1)
-    cronjobs.batch: "5" # maximum number of CronJobs
+    count/deployments.apps: "15" # maximum number of Deployments (apps/v1)
+    count/statefulsets.apps: "5" # maximum number of StatefulSets
+    count/jobs.batch: "10" # maximum number of Jobs (batch/v1)
+    count/cronjobs.batch: "5" # maximum number of CronJobs
     persistentvolumeclaims: "15" # maximum number of PVCs
-    horizontalpodautoscalers.autoscaling: "5" # maximum number of HPAs
-    serviceaccounts: "10" # maximum number of ServiceAccounts
+    count/horizontalpodautoscalers.autoscaling: "5" # maximum number of HPAs
+    count/serviceaccounts: "10" # maximum number of ServiceAccounts
   # Title: ResourceQuota - object count
   # Description: Restricts counts of various resource types in the `development` namespace to control object sprawl.

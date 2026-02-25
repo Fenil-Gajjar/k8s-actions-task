@@ -4,7 +4,7 @@ metadata:
   name: batch-job # job name
   namespace: default # namespace for job execution
 spec:
-  activeDeadlineSeconds: 100 # overall time limit for job run
+  activeDeadlineSeconds: 600 # overall time limit for job run (increased for scheduling delays)
   template:
     spec:
       containers:

@@ -5,9 +5,13 @@ metadata:
   name: secret-ssh # identifier for SSH auth secret
   namespace: default # namespace where the SSH secret will be available
 type: kubernetes.io/ssh-auth # secret type for SSH authentication
-data:
+stringData:
   ssh-privatekey: |
-    LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQo= # base64-encoded private key content
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+    QyNTUxOQAAACA2YWJjZGVmMDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTYAAAARdGVzdEBl
+    eGFtcGxlLmNvbQ==
+    -----END OPENSSH PRIVATE KEY-----
 
 # Title: Secret - SSH auth
-# Description: Stores SSH private key (base64-encoded) for authentication; usable by pods or automation that require SSH access.
+# Description: Stores SSH private key for authentication; usable by pods or automation that require SSH access.
