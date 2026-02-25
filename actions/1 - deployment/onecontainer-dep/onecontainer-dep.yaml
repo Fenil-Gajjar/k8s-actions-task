@@ -6,7 +6,7 @@ metadata:
   labels:
     app: onecontainer-dep # app label grouping
 spec:
-  replicas: 2 # desired number of replicas
+  replicas: 1 # desired number of replicas
   selector:
     matchLabels:
       app: onecontainer-dep # selector that matches pod template labels

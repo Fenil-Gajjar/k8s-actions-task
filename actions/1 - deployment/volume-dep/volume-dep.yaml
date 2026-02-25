@@ -6,7 +6,7 @@ metadata:
   labels:
     app: volume-dep # app label grouping
 spec:
-  replicas: 3 # desired replicas
+  replicas: 1 # desired replicas
   strategy:
     type: RollingUpdate # rollout strategy
     rollingUpdate:

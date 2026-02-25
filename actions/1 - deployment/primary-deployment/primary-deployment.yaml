@@ -6,7 +6,7 @@ metadata:
   labels:
     app: primary-dep # app label
 spec:
-  replicas: 3 # desired number of replicas
+  replicas: 1 # desired number of replicas
   selector:
     matchLabels:
       app: primary-dep # selector matching pod labels

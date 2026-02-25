@@ -10,7 +10,7 @@ metadata:
   annotations:
     description: "My application deployment" # deployment description
 spec:
-  replicas: 3 # desired number of pod replicas
+  replicas: 1 # desired number of pod replicas
   strategy:
     type: RollingUpdate # rollout strategy for updates
     rollingUpdate:

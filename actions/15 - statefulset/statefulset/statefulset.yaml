@@ -6,7 +6,7 @@ metadata:
   namespace: default # namespace where the StatefulSet runs
 spec:
   serviceName: "web-service" # headless service that governs the network identities
-  replicas: 3 # desired number of pod replicas managed by the StatefulSet
+  replicas: 1 # desired number of pod replicas managed by the StatefulSet
   selector:
     matchLabels:
       app: web # selector to match pods belonging to this StatefulSet

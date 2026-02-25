@@ -16,7 +16,7 @@ spec:
     apiVersion: apps/v1 # target resource API version
     kind: Deployment # target resource kind to scale
     name: primary-dep # name of the target Deployment
-  minReplicas: 2 # minimum number of replicas HPA will scale down to
+  minReplicas: 1 # minimum number of replicas HPA will scale down to
   maxReplicas: 10 # maximum number of replicas HPA will scale up to
   metrics:
   - type: Resource
