@@ -27,11 +27,13 @@ spec:
         - containerPort: 80 # exposed container port
         resources:
           requests:
-            memory: "64Mi" # requested memory for scheduling
+            memory: "256Mi" # requested memory for scheduling
             cpu: "250m"
+            ephemeral-storage: "1Gi"
           limits:
-            memory: "128Mi" # runtime memory limit
+            memory: "512Mi" # runtime memory limit
             cpu: "500m" # runtime CPU limit
+            ephemeral-storage: "2Gi"
         volumeMounts:
         - name: cache-volume
           mountPath: /var/cache/app # mount for temporary cache
