@@ -11,7 +11,7 @@ metadata:
 spec:
   type: ClusterIP # Service type: ClusterIP (internal cluster-only load balancer)
   selector:
-    app: my-app # selector to match Pods targeted by this Service
+    app: minimal-dep # selector to match Pods targeted by this Service
   ports:
   - name: http # logical name of the port
     protocol: TCP # transport protocol for the port

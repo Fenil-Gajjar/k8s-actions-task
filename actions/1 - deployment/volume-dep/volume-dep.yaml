@@ -1,10 +1,10 @@
 apiVersion: apps/v1 # read-only mode
 kind: Deployment # read-only mode
 metadata:
-  name: my-app # deployment name
+  name: volume-dep # deployment name
   namespace: default # namespace for the Deployment
   labels:
-    app: my-app # app label grouping
+    app: volume-dep # app label grouping
 spec:
   replicas: 3 # desired replicas
   strategy:
@@ -14,11 +14,11 @@ spec:
       maxUnavailable: 1 # pods allowed to be unavailable during update
   selector:
     matchLabels:
-      app: my-app # selector matching the pod template
+      app: volume-dep # selector matching the pod template
   template:
     metadata:
       labels:
-        app: my-app # labels applied to pod template
+        app: volume-dep # labels applied to pod template
     spec:
       containers:
       - name: my-app-container

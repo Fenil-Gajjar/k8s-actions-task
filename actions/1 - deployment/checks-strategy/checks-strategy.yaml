@@ -2,10 +2,10 @@ apiVersion: apps/v1 # read-only mode
 kind: Deployment # read-only mode
 # metadata: identifies the Deployment (name/namespace/labels)
 metadata:
-  name: my-app # deployment name
+  name: checks-strategy-dep # deployment name
   namespace: default # namespace for the Deployment
   labels:
-    app: my-app # label for grouping related resources
+    app: checks-strategy-dep # label for grouping related resources
     version: v1 # version label
   annotations:
     description: "My application deployment" # deployment description
@@ -18,11 +18,11 @@ spec:
       maxUnavailable: 1 # max pods that can be unavailable during update
   selector:
     matchLabels:
-      app: my-app
+      app: checks-strategy-dep
   template:
     metadata:
       labels:
-        app: my-app
+        app: checks-strategy-dep
         version: v1
     spec:
       containers:
@@ -45,14 +45,14 @@ spec:
           value: "info"
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /
             port: 80
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5

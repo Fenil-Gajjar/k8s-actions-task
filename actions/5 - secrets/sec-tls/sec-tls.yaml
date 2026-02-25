@@ -5,9 +5,53 @@ metadata:
   name: secret-tls # name for TLS credential secret
   namespace: default # namespace where TLS secret is stored
 type: kubernetes.io/tls # secret type holding TLS cert/key pair
-data:
-  tls.crt: BASE64_ENCODED_CERT # base64-encoded x509 certificate
-  tls.key: BASE64_ENCODED_KEY # base64-encoded private key for TLS
+stringData:
+  tls.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIICpDCCAYwCCQDU+pQ4pHgSpDANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAls
+    b2NhbGhvc3QwHhcNMjUwMTAxMDAwMDAwWhcNMjYwMTAxMDAwMDAwWjAUMRIwEAYD
+    VQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7
+    o4qne60TB3pOYaBy/YFksFBqsHmHFaBBVEFk0gMRLFuzuJYjEOWDMjJbNBZ2FAIS
+    k2JkMVDmRZQ8FTnVNaPq/aarGPeyFOkLIqUJ/K/VBTYnJaPOU8DBIBfl0IaGQ9YE
+    2wY9TpfpKHYwjVKVJGW+YzijOH0LnwSHYZJxk0NQ/QOlJEgH5c2IU+SmkpEPDKZ
+    U5crhFShWBxeMLIGbG5K/LQOxEerqJ0/kklDB8G+AlFEBm3MYLZ6CfOrGRWBOKWE
+    M0H9aaT0GOlNZiCCJSRWuE2e3rEU32lDMmRVE1rlAkJ0FJwpOaahfCz8sZYwDF0F
+    MH7BZAFE9GDohDJUf2CvAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGWIz3XF+DKJ
+    IZvF0K9OwFaU6iZGEDBTYj7HgPHhQ6LE3bMLsP9K8rmKQiD+0IXA/6W0K5gp3kVB
+    nHyYB5YBBJNS3MkhIvW3oa9Kge3vFOJK3IhIR6MrGczFFhdBOvx2D2TPeB8tFXIT
+    aP+TB7VH5ybBCvlr1dePwcI9BKlD+yrh9sSO3CqT6GaDz4ZzDLPw0Nuu3MFqKOqc
+    I2S5BJKS5rYmih3bD1IqZ8d8J5v9nZcWI0s3L54ljPa01c3WDRGPPbv4Rko6h8xD
+    +kTnkCMG0MOLi/HJH3WGxQ3VUt/eI0q2ij2aWrQLI3BQSLSE+dYBYW5TR5MelWMr
+    V3bT7+xiyOI=
+    -----END CERTIFICATE-----
+  tls.key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpAIBAAKCAQEAu6OKp3utEwd6TmGgcv2BZLBQarB5hxWgQVRBZNIDESxbs7iW
+    IxDlgzIyWzQWdhQCEpNiZDFQ5kWUPBU51TWj6v+mqxj3shTpCyKlCfyv1QU2JyWj
+    zlPAwSAX5dCGhkPWBNsGPU6X6Sh2MI1SlSRlvmM4ozh9C58Eh2GScZNDUP0DpSRI
+    B+XNiFPkppKRDwymVOXK4RUoVgcXsiyBmxuSvy0DsRHq6idP5JJRQ4fBvgJRRAZt
+    zGC2egn0qxkVgTilhDNB/Wmk9BjpTWYggiUkVrhNnt6xFN9pQzJkVRNa5QJCdBSc
+    KTmmoXws/LGWMAxdBTB+wWQBRPRg6IQyVH9grwIDAQABAoIBAC5RgZ+hBx7xHNaM
+    pPgwGMnCdNNUBMIw/AoP+P0wCAMj/JC+bRcd/X4RpFJVpJJt9JjFVt+n9L0GmJIH
+    sMrvL3IJUFLVOE4dE3Cg/FXSNN0aMVWY5aVIMVqRJqL3RmHHHPQQ8TJkqOBbAtlF
+    V/g523sJ+V5POmOz5pZk/CNrnJkYCrAkshJGRz1V3GjZ0L5iWVG5htHxajw7BQVW
+    Dw+C4p7wLI3Q5gDf9cKfzJXPBOBJfRRW5L3mN2VU8lEn0v4JWOFg1bYDEccJMqsW
+    G0bBBYCaUBUAEwSZRr3OhHZ5dDBqlQsm+a5T/Z0jnhFb6kRl6kFLqOx8Qt8bGifM
+    LThMb7kCgYEA6OmZ3XbCxiU42GfK6dEBq7DjXB8n9k7UMsOJZH6fLD1tm0lIxuJ1
+    gT5dEr/jGGIPkcdK6Ff1rL7A4SBrZVH/9JGqf5t5K4PNiGe9r2LBj1M2GiNrPJcO
+    3KBE5B/l1fjsb3t94jk2bBokZXBLiGK1U+aKW0fjaiPZaNfXbC3B4lMCgYEAzetk
+    E8fO1DlYHueqbUWH7J+Hq+VYtXPInLzVm/k9QcQJ2RVfEfKBVk9HBFwmF2r7cRd
+    BCG9lsD0Hh5R6VPQQ3pFq1jR/Fsi1U4sH2fMd7MpCiMfF+DpW0Kd9rR7aaJ+Wh7
+    TaZbrLMj7RLFnQR0jJMBd5vH6rW0EERi3MBpYukCgYBIh1MKFjAh9GPqBqlo/o57
+    Z6P7UhVh1RCllWElfh0VCfxJNXOzHPOX0AuMPPuN3Ja3RbCMxJ4EaaFF0V9wy8TA
+    b0OxrHf/LJ5RpxAF5Kk7rkVRhiHfatpJh97ey3pf8TUVB9fVKa3MQ2N6bSxXVgJ0
+    GQf4cPRYPB/vnQ1U7x0WnQKBgQCJESwWd7CB8EhCDKJ7lYz/W/CCCY3J1DriPzjN
+    SHxH0djW5Nd/oHqJVpPF2jVVKWp0f19BESG5fr8TPIlDgP4k3bZ27q5asFyyeSHA
+    Z7N2e4xOTxX3tFCR/vW4VKFJ7f0c9tAWbfCNXZTYf1ntELM1s9hnJp5hZbJ1n7k4
+    cSPSeQKBgQCv2IR0c+OGHn1AGPaZnr7lkf3Gd57XWdZ+WCUQPHJ4k8DLpFTTRiRW
+    OKdJh8qO2nH8cPTaZ2y/x3Nh0q5P9iyFo7qxOr4bSenIxrQ3J/mJFUTiZht4Gj2
+    3hPaFSJCx5bTqVLeIMRmRsLfoVMHhd4r3pLkxXGXlHDkqC+j+kk5PA==
+    -----END RSA PRIVATE KEY-----
 
 # Title: Secret - TLS cert
-# Description: Stores TLS certificate and private key (base64) used for TLS termination by Ingress or services.
+# Description: Stores TLS certificate and private key used for TLS termination by Ingress or services. Uses stringData for automatic encoding.

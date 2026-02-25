@@ -7,6 +7,6 @@ spec:
   minAvailable: 2 # minimum number of pods that must be available
   selector:
     matchLabels:
-      app: my-app # selects Pods to which this PDB applies
+      app: primary-dep # selects Pods to which this PDB applies
     # Title: PodDisruptionBudget - my-app (minAvailable)
     # Description: Ensures at least 2 `my-app` pods remain available during voluntary disruptions in `default` namespace.

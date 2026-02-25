@@ -2,7 +2,7 @@ apiVersion: v1 # read-only mode
 kind: Pod # read-only mode
 # metadata: object metadata (name/namespace/labels/annotations)
 metadata:
-  name: my-pod # unique Pod name
+  name: checks-volume-pod # unique Pod name
   namespace: default # namespace for the Pod
   labels:
     app: my-app # label to identify app ownership

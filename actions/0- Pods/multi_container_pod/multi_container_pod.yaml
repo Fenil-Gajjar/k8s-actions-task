@@ -1,5 +1,36 @@
-# This file is intentionally empty: no Pod manifest present to annotate.
-# If you want a multi-container Pod example, add a `Pod` manifest here.
+apiVersion: v1 # read-only mode
+kind: Pod # read-only mode
+# metadata: Pod identity and grouping information
+metadata:
+  name: multi-container-pod # pod name
+  namespace: default # namespace for the Pod
+  labels:
+    app: multi-container # label for app identification
+spec:
+  containers:
+  - name: nginx-container # primary web server container
+    image: nginx:1.25
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    volumeMounts:
+    - name: shared-data
+      mountPath: /usr/share/nginx/html # serves content written by sidecar
+  - name: sidecar-container # sidecar that writes content for nginx
+    image: busybox:latest
+    command: ["sh", "-c"]
+    args:
+    - |
+      while true; do
+        echo "Hello from sidecar at $(date)" > /shared/index.html
+        sleep 10
+      done
+    volumeMounts:
+    - name: shared-data
+      mountPath: /shared # writes content here, shared with nginx
+  volumes:
+  - name: shared-data
+    emptyDir: {} # shared ephemeral volume between containers
 
-# Title: Placeholder - multi-container Pod
-# Description: Placeholder file; currently no manifest. Add a Pod manifest here to define a multi-container example with shared volumes and containers.
+# Title: Pod - multi-container example
+# Description: Creates a multi-container Pod with an nginx server and a busybox sidecar sharing an emptyDir volume; the sidecar writes content that nginx serves.

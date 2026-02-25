@@ -1,19 +1,19 @@
 apiVersion: apps/v1 # read-only mode
 kind: Deployment # read-only mode
 metadata:
-  name: my-app # deployment name
+  name: primary-dep # deployment name
   namespace: default # namespace for this deployment
   labels:
-    app: my-app # app label
+    app: primary-dep # app label
 spec:
   replicas: 3 # desired number of replicas
   selector:
     matchLabels:
-      app: my-app # selector matching pod labels
+      app: primary-dep # selector matching pod labels
   template:
     metadata:
       labels:
-        app: my-app # labels applied to pods created by this deployment
+        app: primary-dep # labels applied to pods created by this deployment
     spec:
       containers:
       - name: my-app-container # main application container
@@ -32,13 +32,13 @@ spec:
           value: "production" # environment variable provided to container
         livenessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 80
           initialDelaySeconds: 30 # wait before first probe
           periodSeconds: 10 # probe interval
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5

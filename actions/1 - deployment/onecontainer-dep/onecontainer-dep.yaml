@@ -1,19 +1,19 @@
 apiVersion: apps/v1 # read-only mode
 kind: Deployment # read-only mode
 metadata:
-  name: my-app # deployment name
+  name: onecontainer-dep # deployment name
   namespace: default # namespace for this deployment
   labels:
-    app: my-app # app label grouping
+    app: onecontainer-dep # app label grouping
 spec:
   replicas: 2 # desired number of replicas
   selector:
     matchLabels:
-      app: my-app # selector that matches pod template labels
+      app: onecontainer-dep # selector that matches pod template labels
   template:
     metadata:
       labels:
-        app: my-app # labels applied to pod template
+        app: onecontainer-dep # labels applied to pod template
     spec:
       containers:
       - name: my-app-container # container name

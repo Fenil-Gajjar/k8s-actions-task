@@ -15,7 +15,7 @@ spec:
   resources:
     requests:
       storage: 10Gi # requested storage capacity
-  storageClassName: standard # StorageClass to use for provisioning
+  storageClassName: gp2 # StorageClass to use for provisioning (EKS default)
 
 # Title: PersistentVolumeClaim - my-pvc
 # Description: Creates a namespaced PVC `my-pvc` requesting 10Gi storage with `ReadWriteOnce` access and `standard` StorageClass.

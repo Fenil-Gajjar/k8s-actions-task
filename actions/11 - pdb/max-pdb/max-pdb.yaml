@@ -7,4 +7,4 @@ spec:
   maxUnavailable: 1 # maximum number of pods that can be unavailable during disruptions
   selector:
     matchLabels:
-      app: my-app # selects Pods to which this PDB applies
+      app: checks-strategy-dep # selects Pods to which this PDB applies

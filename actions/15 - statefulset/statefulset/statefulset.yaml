@@ -29,7 +29,7 @@ spec:
       name: www # PVC template name used per replica
     spec:
       accessModes: [ "ReadWriteOnce" ] # access mode for each PVC
-      storageClassName: "standard" # StorageClass for the PVCs
+      storageClassName: "gp2" # StorageClass for the PVCs (EKS default)
       resources:
         requests:
           storage: 1Gi # requested storage per replica

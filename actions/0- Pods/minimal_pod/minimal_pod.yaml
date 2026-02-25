@@ -1,7 +1,7 @@
 apiVersion: v1 # read-only mode
 kind: Pod # read-only mode
 metadata:
-  name: my-pod # pod name
+  name: minimal-pod # pod name
   namespace: default # namespace for the Pod
 spec:
   containers:
